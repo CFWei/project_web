@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+
+setInterval("loadXMLDoc()",100);
+function loadXMLDoc()	
+	{
+		var xmlhttp;
+		if(window.XMLHttpRequest)
+			xmlhttp=new XMLHttpRequest();
+		else 
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		xmlhttp.onreadystatechange=function()
+		  {
+			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			    {
+			    	document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+			    }
+		  }
+		xmlhttp.open("POST","ajax.txt",true);
+		xmlhttp.send();
+		
+	}
+</script>
+</head>
+
+<body>
+<div id="myDiv">
+<h2>Let ajax change this context</h2>
+</div>
+
+<button type="button" onclick="loadXMLDoc()" >
+click me
+</button>
+
+</body>
+</html>

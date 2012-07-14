@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	</head>
+	<body>
+		<div>
+			<form method="post" action="register.php">
+				<p><a>帳號：</a><input type="text" name="UserID" maxlength="20"></p>
+				<p><a>密碼：</a><input type="password" name="UserPassword" maxlength="20"></p>
+				<p><a>店家名稱：</a><input type="text" name="StoreName" maxlength="100"></p>
+				<p><a>店家地址：</a><input type="text" name="StoreAddress" size="50" maxlength="100" ></p>
+				<p><a>店家電話：</a><input type="text" name="StoreTelephone"  maxlength="100" ></p>	
+				<input type="submit" value="提交">
+			</form>
+		</div>
+	</body>
+</html>

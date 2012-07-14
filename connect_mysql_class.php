@@ -1,0 +1,82 @@
+<?php
+
+class DB 
+{
+    var $_dbConn = 0;
+    var $_queryResource = 0;
+    
+    function DB()
+    {
+        //do nothing
+    }
+    	
+    function connect_db($host, $user, $pwd, $dbname)
+    {
+        $dbConn = mysql_connect($host, $user, $pwd);
+        if (! $dbConn)
+            die ("MySQL Connect Error");
+        mysql_query("SET NAMES utf8");
+        if (! mysql_select_db($dbname, $dbConn))
+            die ("MySQL Select DB Error");
+        $this->_dbConn = $dbConn;
+        return true;
+    }
+    
+    //
+    function query($sql)
+    {
+        if (! $queryResource = mysql_query($sql, $this->_dbConn))
+            die ("MySQL Query Error");
+        
+        $this->_queryResource = $queryResource;
+        return $queryResource;        
+    }
+    
+    function fetch_array()
+    {
+        return mysql_fetch_array($this->_queryResource, MYSQL_ASSOC);
+    }
+    
+    function fetch_assoc()
+	{
+		return mysql_fetch_assoc($this->_queryResource);
+	}
+
+    function get_num_rows()
+    {
+        return mysql_num_rows($this->_queryResource);
+    }
+
+    
+    function get_insert_id()
+    {
+        return mysql_insert_id($this->_dbConn);
+    }
+
+    
+    function create_table($tablename,$column)
+    {
+    	
+    	$table_content="";
+    	foreach($column as $temp=>$value)
+    	{
+    		if(strlen($table_content)!=0)
+    		{
+    			$table_content.=",";
+    		}
+    		$table_content.=$value;
+    	
+    	}
+    	
+    	$sql="CREATE TABLE ".$tablename." (".$table_content.");";
+    	
+    	$result=$this->query($sql);
+    	if($result)
+    		return true;
+    	else
+    		return false;
+    	
+    }
+    
+}
+?>

@@ -1,0 +1,129 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="ANSI">
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+//arg1為緯度 arg2為經度 arg3為地址 
+function codeAddress(arg1,arg2,arg3)
+	{	var geocoder;
+		geocoder= new google.maps.Geocoder();
+		var address=document.getElementById(arg3).value;;
+		geocoder.geocode({'address':address},
+							function(results,status)
+								{
+									if(status==google.maps.GeocoderStatus.OK)
+										{	
+											document.getElementById(arg1).value=results[0].geometry.location.lat();
+											document.getElementById(arg2).value=results[0].geometry.location.lng();
+										}
+									else
+										{
+											alert("Geocode was not successful for the following reason: " + status);
+										}
+								}
+						);
+		
+
+	}
+	
+function codeLatLng(arg1,arg2)
+	{	
+		var geocoder= new google.maps.Geocoder();
+		var lat=document.getElementById(arg1).value;
+		var lng=document.getElementById(arg2).value;
+		var latlng=new google.maps.LatLng(lat, lng);
+		geocoder.geocode({'latLng':latlng},
+							function(results,status)
+								{
+									if(status==google.maps.GeocoderStatus.OK)
+										{
+											if(results[1])
+												{
+													alert(results[1].formatted_address);
+												}
+											else
+												{
+													 alert("Geocoder failed due to: " + status);
+												}
+										}
+									
+								
+								}
+		
+						);
+	
+	}
+
+function calcuate_distance()
+		{	
+		
+			var geocoder = new google.maps.Geocoder();
+			var origin=new google.maps.LatLng(document.getElementById('lat1').value,document.getElementById('lng1').value);
+			var destination=new google.maps.LatLng(document.getElementById('lat2').value,document.getElementById('lng2').value);
+			var service=new google.maps.DistanceMatrixService();
+		
+			service.getDistanceMatrix(
+				{
+					origins:[origin],
+					destinations:[destination],
+					travelMode:google.maps.TravelMode.WALKING,
+					avoidHighways:true,
+					avoidTolls:true
+				},callback
+			
+			);
+			
+		
+		}
+		
+function callback(response,status)
+			{	
+					
+				if(status!=google.maps.DistanceMatrixStatus.OK)
+					{
+						alert('Error was: ' + status);
+					}
+				else
+					{	
+						
+						var origins = response.originAddresses;
+						var destinations = response.destinationAddresses;
+						var outputDiv = document.getElementById('outputdistance');
+						var results = response.rows[0].elements;
+						var element = results[0];
+						var distance = element.distance.text;
+						//alert("hi");
+						alert(distance);
+					}	
+			
+			}
+
+</script>
+</head>
+<body>
+
+<div>
+	<form name="register_content1" action="" method="post">
+	地址：
+		<input name="address" id="address1" type="textbox" value="taiwan" size="50">
+		<input type="button" value="轉換" onclick="codeAddress('lat1','lng1','address1')"><br>
+		緯度：<input type="text" id="lat1"  size="10" DISABLED >
+		經度：<input type="text" id="lng1"  size="10" DISABLED>
+	</form>
+</div>
+<div>
+	<form name="register_content2" action="" method="post">
+	地址：
+		<input name="address" id="address2" type="textbox" value="台南" size="50">
+		<input type="button" value="轉換" onclick="codeAddress('lat2','lng2','address2')"><br>
+		緯度：<input type="text" id="lat2"  size="10" DISABLED >
+		經度：<input type="text" id="lng2"  size="10" DISABLED>
+	</form>
+</div>
+<div id="outputdistance"></div>
+<input type="button" value="座標轉回地址 1" onclick="codeLatLng('lat1','lng1')">
+<input type="button" value="座標轉回地址 2" onclick="codeLatLng('lat2','lng2')">
+<input type="button" value="計算距離" onclick="calcuate_distance()">
+</body>
+</html>
