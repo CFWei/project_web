@@ -3,7 +3,7 @@
 require_once("../connect_mysql_class.php");
 require_once("../mysql_inc.php");
 
-$limit_distance=500;
+$limit_distance=2000;
 
 function getDis($lat1,$lat2,$lng1,$lng2)
 {
@@ -21,11 +21,11 @@ function getDis($lat1,$lat2,$lng1,$lng2)
 }
 
 
-//$logitude=$_POST['logitude'];
-//$latitude=$_POST['latitude'];
+$logitude=$_POST['logitude'];
+$latitude=$_POST['latitude'];
 
-$logitude="120.2360508";
-$latitude="23.0025696";
+//$logitude="120.2360508";
+//$latitude="23.0025696";
 
 
 $db=new DB();

@@ -1,6 +1,6 @@
 <?php
-	$custom_id=$_POST['custom_id'];
-	//$custom_id="356514044378347";
+	//$custom_id=$_POST['custom_id'];
+	$custom_id="356514044378347";
 	require_once("../connect_mysql_class.php");
 	require_once("../mysql_inc.php");
 
@@ -17,7 +17,7 @@
 		$output[]=$temp;
 
 	
-	for($i=0;$i<count(output);$i++)
+	for($i=0;$i<count($output);$i++)
 	{	
 		$check_num=1;
 
