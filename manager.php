@@ -30,6 +30,7 @@ while($store_data=$db->fetch_array())
 	
 	$parameter="SerialNumber=".$SerialNumbers."&Item_Id=".$store_data['ID']."&State=".$store_data['State'];
 	echo '<button onclick="location=\'change_state.php?'.$parameter.'\'">change_state</button>';
+	echo '<button onclick="location=\'next_value.php?'.$parameter.'\'">next_value</button>';
 	echo "<br>========================<br>"	;
 }
 
