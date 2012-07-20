@@ -1,13 +1,13 @@
 <?php
-	//$custom_id=$_POST['custom_id'];
-	$custom_id="356514044378347";
+	$custom_id=$_POST['custom_id'];
+	//$custom_id="356514044378347";
 	require_once("../connect_mysql_class.php");
 	require_once("../mysql_inc.php");
 
 	$db=new DB();
 	$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
-	$query="SELECT * FROM  custom_information where `custom_id` = '".$custom_id."'";
+	$query="SELECT custom_id,store,item,number FROM  custom_information where `custom_id` = '".$custom_id."'";
 	$db->query($query);
 	$db->get_num_rows();
 	
@@ -17,7 +17,7 @@
 		$output[]=$temp;
 
 	
-	for($i=0;$i<count(output);$i++)
+	for($i=0;$i<count($output);$i++)
 	{	
 		$check_num=1;
 
