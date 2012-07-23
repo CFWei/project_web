@@ -21,12 +21,14 @@
 	{	
 		$check_num=1;
 
-		$query="SELECT StoreName FROM store_information where `SerialNumbers` = '".$output[$i]['store']."'";
+		$query="SELECT StoreName,GPS_Longitude,GPS_Latitude FROM store_information where `SerialNumbers` = '".$output[$i]['store']."'";
 		$db->query($query);
 		if($db->get_num_rows()==1)
 		{
 			$temp=$db->fetch_assoc();
 			$StoreName=$temp['StoreName'];
+			$GPS_Longitude=$temp['GPS_Longitude'];
+			$GPS_Latitude=$temp['GPS_Latitude'];
 		}
 		else
 		{
@@ -50,6 +52,8 @@
 		{
 			$output[$i]['StoreName']=$StoreName;
 			$output[$i]['ItemName']=$ItemName;
+			$output[$i]['GPS_Longitude']=$GPS_Longitude;
+			$output[$i]['GPS_Latitude']=$GPS_Latitude;
 			$output_final[]=$output[$i];
 		}
 		else
