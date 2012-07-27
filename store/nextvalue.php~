@@ -33,7 +33,6 @@ if((int)$Now_Value>=(int)$Value)
 	echo "-1";
 	exit;
 }
-
 $Now_Value++;
 $query="UPDATE `".$SerialNumbers."` SET `Now_Value`=\"".$Now_Value."\" where `ID` =\"".$Item_Id."\"";
 $db->query($query);
