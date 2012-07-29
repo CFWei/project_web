@@ -11,7 +11,7 @@ $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
 
-$query="SELECT * FROM ".$SerialNumbers." WHRER State !='DIE'";
+$query="SELECT * FROM ".$SerialNumbers." WHERE State !='DIE'";
 
 $db->query($query);
 if($db-> get_num_rows()<=0)
