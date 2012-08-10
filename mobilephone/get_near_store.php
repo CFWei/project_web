@@ -45,7 +45,8 @@ while(($temp=$db->fetch_assoc())!=null)
 	//echo $distance.<br>";
 	
 	if($distance<=$limit_distance)
-	{
+	{	
+		$distance=round($distance);
 		$temp['distance']=$distance;
 		$near_store_list[]=$temp;
 	}

@@ -3,7 +3,7 @@
 require_once("../connect_mysql_class.php");
 require_once("../mysql_inc.php");
 
-$limit_distance=2000;
+$limit_distance=5000;
 
 function getDis($lat1,$lat2,$lng1,$lng2)
 {
