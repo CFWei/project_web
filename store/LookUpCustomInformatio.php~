@@ -1,0 +1,30 @@
+<?php
+
+require_once("../connect_mysql_class.php");
+require_once("../mysql_inc.php");
+
+$ID=$_POST['ID'];
+$store=$_POST['store'];
+
+//$ID="ueuKJKpyMD";
+//$store="5mrXWaA7wbYgindrQZmh";
+
+$db=new DB();
+$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+
+
+$query="SELECT number,custom_id,life FROM custom_information WHERE store='".$store."' and item='".$ID."'";
+
+$db->query($query);
+
+
+echo $query;
+while(($temp=$db->fetch_assoc())!=null)
+{
+
+	$custom[]=$temp;
+
+}
+//echo json_encode($custom);
+?>
+

@@ -17,6 +17,7 @@ $query="SELECT Now_Value,Value FROM ".$SerialNumbers." WHERE ID = '".$Item_Id."'
 
 $db->query($query);
 
+//若找不到此商品則回傳fail
 if($db->get_num_rows()!=1)
 {
 	echo "fail";
@@ -27,12 +28,16 @@ $temp=$db->fetch_array();
 $Now_Value=$temp['Now_Value'];
 $Value=$temp['Value'];
 
+$query="UPDATE custom_information SET life=1 where `store` ='".$SerialNumbers."' and `item`='".$Item_Id."' and `number`='".$Now_Value."'";
+$db->query($query);
 
+//若下一號不存在則回傳-1
 if((int)$Now_Value>=(int)$Value)
 {
 	echo "-1";
 	exit;
 }
+
 $Now_Value++;
 $query="UPDATE `".$SerialNumbers."` SET `Now_Value`=\"".$Now_Value."\" where `ID` =\"".$Item_Id."\"";
 $db->query($query);
