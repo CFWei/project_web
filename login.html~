@@ -1,7 +1,3 @@
-<html>
-<head>
-</head>
-<body>
 <div id="centerbox" class="ContentStyle">
 	<div id="hint">
 		<?php
@@ -15,12 +11,11 @@
 				<p>密碼:<input type="password" name="PASSWD"></p>
 			</div>
 
-			<div id="Button">
+			<div id="LoginButton">
 				<input type="submit" class="ButtonStyle" onclick="gopage(1)" value="登入">
 			</div>
 		</form>
 		<button id="RegisterButton" class="ButtonStyle" onclick="gopage(2)">註冊</button>	
 	</div>
 </div>
-</body>
-</html>
+
