@@ -1,42 +1,105 @@
 body
 {
-	background:#333;
-
+	background:#000 url(img/img07.jpg) no-repeat left top;
+	font: normal .90em 'times', arial, sans-serif;	
+	text-align:center;
 }
-.LoginBox
+#header
 {
-
-	border:double 10px #D00;
-	width:500px;
-	height:200px;
-	position:relative;
-	top:10%;
-	left:25%;
-	background:#FFFFFF;
-
+	width:100%;
+	height:150px;
+	color:#fff;
 }
-.centerbox
+#title
 {
-	position:relative;
-	width:300px;
-	height:100px;
-	top:15%;
-	left:28%;
+	padding-top:30px;
+	font-size:50px;
+	text-transform:uppercase;
 	font-weight:bold;
+	letter-spacing:-4px:
+
+
 }
-#button1
+
+#content
+{	
+	
+	width:700px;
+	height:220px;
+	position:relative;
+	top:0%;
+	left:20%;
+	background-color:#fff;
+	border:outset 10px #D00;
+	border-radius:20px;
+	overflow:hidden;
+
+}
+
+#footer
+{
+	color:#fff;	
+	font-size:20px;
+	padding-top:15px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+
+
+
+#centerbox
+{	
+	width:700px;
+	height:220px;
+	font-weight:bold;
+	font-size:25px;
+	/*margin:0 auto;*/
+}
+
+
+#Button
 {
 	position:relative;
-	left:40%;
-	top:5%;
-
+	margin:0;
+	text-align:center;
 }
-#test1
+
+#hint
 {
-	border:dotted 10px ;
-	width:98%;
-	height:80px;
-	background:#fff;
-	margin-left:0%;
+	font-size:15px;
+	height:4px;
+	padding-top:8px;
+	margin-bottom:-8px;
+	color:#00f;
 
 }
+#CenterContent
+{
+	padding-top:0px;
+}
+
+
+.ButtonStyle
+{
+	font-size:25px;
+	font-family:Arial,sans-serif;
+	font-weight:bold;
+	color:#444444;
+	background-color:#EEEEEE;
+	border-style:double;
+	border-color:#999999;
+	border-width:3px;
+
+}
+#LoginButton
+{
+	margin-right:15%;
+}
+
+
+#RegisterButton
+{	
+	margin-top:-9.5%;
+	margin-left:15%;
+}
+

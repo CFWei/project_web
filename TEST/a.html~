@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+
+function loadHTML()
+{
+
+	$('#content').animate({
+				width: "70%",
+				marginLeft: "0.6in",
+				fontSize: "3em", 
+				borderWidth: "10px"
+			      },1500);	
+	$('#content').load('123.html'); 
+
+}
+
+</SCRIPT>
+
+<style type="text/css"> 
+#content
+{
+	border:double 10px;
+	width:100px;
+	height:100px;
+	margin:0 auto;
+
+}
+</style>
+</HEAD>
+<body>
+<div id="content">
+</div>
+
+
+
+<button href="#" onclick="javascript:loadHTML()">123</button>
+</body>
+</HTML>
