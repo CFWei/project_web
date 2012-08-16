@@ -23,7 +23,7 @@ $Now_Value++;
 $query="UPDATE `".$SerialNumber."` SET `Now_Value`=\"".$Now_Value."\" where `ID` =\"".$Item_Id."\"";
 $db->query($query);
 
-header("Refresh:01; url=\"manager.php\"");
+header("Refresh:0; url=\"manager.php\"");
 
 
 ?>

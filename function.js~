@@ -11,7 +11,7 @@ function gopage(choose)
 		$('#content').animate({
 				height:"58%"
 			      },800);
-		$('#content').load('register.html');	
+		$('#content').load('register.php');	
 	}
 	
 }
@@ -39,4 +39,20 @@ function codeAddress()
 	
 }
 
+function NextValue(SerialNumber,Item_Id)
+{	
+	alert(SerialNumber);
+	/*
+	$.post('next_value.php',
+		{},
+		function(data)
+		{	
+			var as='#'+Item_Id;
+			alert(as);
+			
+		},
+		"json"
+		);
+*/
+}
 

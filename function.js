@@ -39,4 +39,20 @@ function codeAddress()
 	
 }
 
+function NextValue(SerialNumber,Item_Id)
+{	
+	alert("456");
+	/*
+	$.post('next_value.php',
+		{},
+		function(data)
+		{	
+			var as='#'+Item_Id;
+			alert(as);
+			
+		},
+		"json"
+		);
+*/
+}
 

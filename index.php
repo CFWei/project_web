@@ -19,11 +19,11 @@
 
 	</div>
 	<script>
-	//	$('#content').load('login.php');
-		$('#content').load('managepage.php');
+		$('#content').load('login.php');
+		//$('#content').load('managepage.php');
 	</script>
 	<div id="footer">
-		Copyright (c) 2012 Sitename.com. All rights reserved. Design by FCT.		
+		Copyright (c) 2012 Sitename.com. All rights reserved. Design by CFWei.		
 	</div>
 </div>
 </body>

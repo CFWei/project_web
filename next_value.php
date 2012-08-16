@@ -1,4 +1,5 @@
 <?php
+/*
 require_once("session.php");
 require_once("connect_mysql_class.php");
 require_once("mysql_inc.php");
@@ -24,6 +25,6 @@ $query="UPDATE `".$SerialNumber."` SET `Now_Value`=\"".$Now_Value."\" where `ID`
 $db->query($query);
 
 header("Refresh:0; url=\"manager.php\"");
-
+*/
 
 ?>

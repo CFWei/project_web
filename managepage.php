@@ -1,7 +1,25 @@
 <?php
-	$content='<div class="ItemBlock">
+require_once("session.php");
+$session=new session();
+if(!$SerialNumbers=$session->get_value("SerialNumbers"))
+{
+	echo "******************取得SerialNumbers失敗******************";
+	exit();
+}
+
+require_once("connect_mysql_class.php");
+require_once("mysql_inc.php");
+
+$db=new DB();
+$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+$query="SELECT * FROM ".$SerialNumbers." WHERE State !='DIE'";
+$db->query($query);
+
+function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue)
+{
+	$content='<div id="'.$ItemID.'" class="ItemBlock">
 				<div class="ControlBlock">
-					<button class="ControlButton">下一號</button>	
+					<button class="ControlButton" onclick="NextValue(456,\''.$ItemID.'\')">下一號</button>	
 					<button class="ControlButton">跳過</button>
 					<button class="ControlButton">使用者</button>
 					<button class="ControlButton">輸入號碼</button>
@@ -9,10 +27,10 @@
 				<div class="InformationBlock">	
 					<div class="ItemTop">
 						<div class="ItemName">
-							商品名稱
+							'.$ItemName.'
 						</div>
 						<div class="NowValue">
-							999
+							'.$ItemNowValue.'
 						</div>
 					</div>
 					<div class="ItemButtom">
@@ -29,7 +47,7 @@
 								已抽號碼：
 							</span>
 							<span class="TakenNumValue">
-								100
+								'.$ItemValue.'
 							</span>
 						</div>
 
@@ -37,27 +55,51 @@
 				</div>
 			</div>';
 
+	return $content;
+}
+
+
+
+
+while($ItemData=$db->fetch_array())
+{	
+		
+	$ItemID=$ItemData['ID'];
+	$ItemName=$ItemData['Name'];
+	$ItemValue=$ItemData['Value'];
+	$ItemNowValue=$ItemData['Now_Value'];
+	$ItemOutput[]=addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue);
+}
+
+
+
+echo '<div class="ItemTable">';
+for($i=0;$i<count($ItemOutput);$i++)
+{	
+
+	if($i%2==0)
+	{
+		if($i!=0)
+			echo '</div>';	
+		echo '<div class="ItemTr">';
+	}
+	
+	echo '<div class="ItemTd">';
+	echo $ItemOutput[$i];
+	echo '</div>';
+
+
+}
+echo '</div>';	
+echo '</div>';
+
+
+
+
 
 ?>
 
 
-<div class="ItemTable">
-	<div class="ItemTr">
-		<div class="ItemTd">
-			<?php echo $content?>
-		</div>
-		<div class="ItemTd">
-			<?php echo $content?>
-		</div>		
-	</div>
-	<div class="ItemTr">
-		<div class="ItemTd">
-			<?php echo $content?>
-		</div>
-		<div class="ItemTd">
-			<?php echo $content?>
-		</div>		
-	</div>
-</div>
+
 
 	

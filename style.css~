@@ -22,15 +22,15 @@ body
 }
 #content
 {	
-	/*width:650px;*/
-	/*height:220px;*/
-	height:500px;
-	width:1100px;
-	
+	width:650px;
+	height:220px;
+
+	margin:0 auto;
+	/*
 	position:relative;
 	top:0%;
-	/*left:20%;*/
-	left:3%;
+	left:20%;
+	left:3%;*/
 	background-color:#fff;
 	border:outset 10px #D00;
 	border-radius:20px;
@@ -156,16 +156,16 @@ body
 .ItemTr
 {
 	display:table-row;
-	border:solid;
+	/*border:solid;*/
 	
-	height:300px;
+	height:220px;
 	
 
 }
 .ItemTd
 {
 	display:table-cell;
-	border:solid;
+	/*border:solid;*/
 	width:550px;
 	vertical-align:middle;
 
