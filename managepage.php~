@@ -1,8 +1,5 @@
-<div class="ItemTable">
-	<div class="ItemTr">
-		<div class="ItemTd">
-
-			<div class="ItemBlock">
+<?php
+	$content='<div class="ItemBlock">
 				<div class="ControlBlock">
 					<button class="ControlButton">下一號</button>	
 					<button class="ControlButton">跳過</button>
@@ -38,8 +35,20 @@
 
 					</div>
 				</div>
-			</div>
-		
+			</div>';
+
+
+?>
+
+
+<div class="ItemTable">
+	<div class="ItemTr">
+		<div class="ItemTd">
+			<?php echo $content?>
+		</div>
+		<div class="ItemTd">
+			<?php echo $content?>
+		</div>		
 	</div>
 </div>
 

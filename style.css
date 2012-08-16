@@ -24,8 +24,8 @@ body
 {	
 	/*width:650px;*/
 	/*height:220px;*/
-	height:500px;
-	width:1000px;
+	height:1000px;
+	width:1100px;
 	
 	position:relative;
 	top:0%;
@@ -34,7 +34,7 @@ body
 	background-color:#fff;
 	border:outset 10px #D00;
 	border-radius:20px;
-	overflow:hidden;
+	overflow:auto;
 
 }
 
@@ -145,32 +145,45 @@ body
 
 /*mamagepage.php*/
 .ItemTable
-{
+{	
 	display:table;
+	border:solid;
+	text-align:center;
+	margin-top:50px;
+
 
 }
 .ItemTr
 {
 	display:table-row;
+	border:solid;
+	
+	height:300px;
+	
 
 }
 .ItemTd
 {
+	display:table-cell;
+	border:solid;
+	width:550px;
+	vertical-align:middle;
+
+
 
 }
 
 .ItemBlock
 {	
 	text-align:left;
-	display:inline-table;
 	width:350px;
 	height:200px;
-	margin-top:20px;
 	border-style:ridge;
 	border-width:8px;
 	border-color:blue;
 	border-radius:10px;
 	overflow:hidden;
+	margin:0 auto;
 	
 }
 
