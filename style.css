@@ -22,11 +22,15 @@ body
 }
 #content
 {	
-	width:650px;
-	height:220px;
+	/*width:650px;*/
+	/*height:220px;*/
+	height:500px;
+	width:1000px;
+	
 	position:relative;
 	top:0%;
-	left:20%;
+	/*left:20%;*/
+	left:3%;
 	background-color:#fff;
 	border:outset 10px #D00;
 	border-radius:20px;
@@ -139,4 +143,103 @@ body
 }
 /*********************/
 
+/*mamagepage.php*/
+.ItemTable
+{
+	display:table;
 
+}
+.ItemTr
+{
+	display:table-row;
+
+}
+.ItemTd
+{
+
+}
+
+.ItemBlock
+{	
+	text-align:left;
+	display:inline-table;
+	width:350px;
+	height:200px;
+	margin-top:20px;
+	border-style:ridge;
+	border-width:8px;
+	border-color:blue;
+	border-radius:10px;
+	overflow:hidden;
+	
+}
+
+.InformationBlock
+{
+	float:left;
+	width:70%;
+	margin:0 0 0 0;
+}
+.ItemTop
+{
+	width:100%;
+	height:80%;
+	text-align:center;
+
+
+}
+.ItemName
+{
+	width:100%;
+	height:30%;
+	line-height:48px;
+	font-size:40px;
+	border-bottom:solid 3px;
+}
+.NowValue
+{
+	width:100%;
+	height:70%;
+	line-height:112px;
+	font-size:90px;
+	border-bottom:solid 3px;
+}
+
+
+.ItemButtom
+{
+	width:100%;
+	height:20%;
+	
+}
+.WaitNum
+{
+	float:right;
+	width:50%;
+	line-height:40px;
+	font-size:15px;
+	overflow:hidden;
+}
+
+.TakenNum
+{
+	width:50%;
+	line-height:40px;
+	font-size:15px;
+	overflow:hidden;	
+}
+.ControlBlock
+{
+	width:29.6%;
+	height:100%;
+	float:right;
+	border-left:solid 2px;
+}
+
+.ControlButton
+{
+	width:100%;
+	height:52px;
+	font-size:20px;
+	margin:0 0 0 0;
+}

@@ -31,7 +31,7 @@ if($ID!=""&&$PASSWD!="")
 				width:"1000px",
 				left:"3%",
 			      },800);
-		$("#content").load("register.html")</script>';	
+		$("#content").load("managepage.php")</script>';	
 		exit;		
 		//header("Location:manager.php");
 	}
