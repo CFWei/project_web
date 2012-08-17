@@ -32,7 +32,12 @@ if($ID!=""&&$PASSWD!="")
 				left:"3%",
 			      },800);
 		$("#content").load("managepage.php");
-
+		$("#ControlBar").animate({
+					width:"120px",
+					height:"300px",
+					borderWidth:"5px"
+				 },800);
+		$("#ControlBar").load("controlbar.html");
 		</script>';	
 		exit;		
 		//header("Location:manager.php");

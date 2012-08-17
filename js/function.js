@@ -1,4 +1,15 @@
 
+//控制ControlBar和scroll一起移動
+$().ready(function() {  
+ var $scrollingDiv = $("#ControlBar"); // #scrollingDiv請改成自己要移動的元素 
+ $(window).scroll(function(){ 
+  $scrollingDiv
+   .stop()
+   .animate({"marginTop": ($(window).scrollTop() + 30) + "px"}, "slow" );   
+ });
+});
+
+
 //login.html的選擇器
 function gopage(choose)
 {	
@@ -72,12 +83,12 @@ function UpdateValue(SerialNumbers)
 			{	
 
 				if($("#"+data.Item_Id+" .WaiNumValue").html()!=data.WaiNumValue)
-					//$("#"+data.Item_Id+" .WaiNumValue").html(data.WaiNumValue);
+					$("#"+data.Item_Id+" .WaiNumValue").html(data.WaiNumValue);
 							
 				if($("#"+data.Item_Id+" .TakenNumValue").html()!=data.Value)
-					//$("#"+data.Item_Id+" .TakenNumValue").html(data.Value);	
+					$("#"+data.Item_Id+" .TakenNumValue").html(data.Value);	
 				if($("#"+data.Item_Id+" .NowValue").html()!=data.Now_Value)
-					//$("#"+data.Item_Id+" .NowValue").html(data.Now_Value);
+				$("#"+data.Item_Id+" .NowValue").html(data.Now_Value);
 				 
 			},
 			"json"
@@ -88,4 +99,8 @@ function UpdateValue(SerialNumbers)
 	window.setTimeout('UpdateValue(\''+SerialNumbers+'\')', 2000);
 	
 
+}
+function RegisterContextMenu()
+{
+	$(".ItemBlock").contextMenu("myMenu1",{});
 }

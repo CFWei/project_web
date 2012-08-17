@@ -1,6 +1,8 @@
 <?php
 require_once("session.php");
 $session=new session();
+
+
 if(!$SerialNumbers=$session->get_value("SerialNumbers"))
 {
 	echo "******************取得SerialNumbers失敗******************";
@@ -15,12 +17,12 @@ $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']
 $query="SELECT * FROM ".$SerialNumbers." WHERE State !='DIE'";
 $db->query($query);
 
-function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue)
+function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 {
 	$content='<div id="'.$ItemID.'" class="ItemBlock">
 				<div class="ControlBlock">
-					<button class="ControlButton" onclick="NextValue(456,\''.$ItemID.'\')">下一號</button>	
-					<button class="ControlButton">跳過</button>
+					<button class="ControlButton" onclick="NextValue(\''.$SerialNumbers.'\',\''.$ItemID.'\',1)">下一號</button>	
+					<button class="ControlButton" onclick="NextValue(\''.$SerialNumbers.'\',\''.$ItemID.'\',2)">跳過</button>
 					<button class="ControlButton">使用者</button>
 					<button class="ControlButton">輸入號碼</button>
 				</div>
@@ -29,7 +31,7 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue)
 						<div class="ItemName">
 							'.$ItemName.'
 						</div>
-						<div class="NowValue">
+						<div "NowValue" class="NowValue">
 							'.$ItemNowValue.'
 						</div>
 					</div>
@@ -38,7 +40,7 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue)
 							<span class="WaitNumText">
 								等候人數：
 							</span>
-							<span class="WaiNumValue">
+							<span id="4564" name="WaiNumValue" class="WaiNumValue">
 								100
 							</span>
 						</div>
@@ -68,7 +70,7 @@ while($ItemData=$db->fetch_array())
 	$ItemName=$ItemData['Name'];
 	$ItemValue=$ItemData['Value'];
 	$ItemNowValue=$ItemData['Now_Value'];
-	$ItemOutput[]=addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue);
+	$ItemOutput[]=addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers);
 }
 
 
@@ -93,12 +95,17 @@ for($i=0;$i<count($ItemOutput);$i++)
 echo '</div>';	
 echo '</div>';
 
-
-
-
+echo'<script>';	
+echo'$(document).ready(UpdateValue("'.$SerialNumbers.'"));';
+echo'RegisterContextMenu()';
+echo'</script>';
 
 ?>
-
+<div class="contextMenu" id="myMenu1" style="display:none;">
+		<ul>
+			<li id="open">delete</li>
+		</ul>
+</div>
 
 
 

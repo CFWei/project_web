@@ -77,7 +77,23 @@ body
 {
 	padding-top:0px;
 }
+#ControlBar
+{
+	position:absolute;
+	left:0px;
+	top:30px;
 
+	width:0px;
+	height:0px;
+	/*border:solid #f00 10px;*/
+	background:#fff;
+	margin-top:30px;
+	margin-left:10px;
+	border-radius:50px;
+	border-width:auto;
+	border-style:inset;
+	border-color:red;
+}
 
 .ButtonStyle
 {
@@ -141,6 +157,9 @@ body
 	color:#00f;
 	text-align:center;
 }
+
+
+
 /*********************/
 
 /*mamagepage.php*/
@@ -255,4 +274,10 @@ body
 	height:52px;
 	font-size:20px;
 	margin:0 0 0 0;
+}
+/*******************/
+/*controlbar.html*/
+#controlbarcontent
+{
+	padding-top:15px;
 }

@@ -31,8 +31,13 @@ if($ID!=""&&$PASSWD!="")
 				width:"1000px",
 				left:"3%",
 			      },800);
-		$("#content").load("managepage.php")
-
+		$("#content").load("managepage.php");
+		$("#ControlBar").animate({
+					width:"120px",
+					height:"300px",
+					borderWidth:"5px"
+				 },800);
+		$("#ControlBar").load('login.php');
 		</script>';	
 		exit;		
 		//header("Location:manager.php");

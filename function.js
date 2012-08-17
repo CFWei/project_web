@@ -39,20 +39,52 @@ function codeAddress()
 	
 }
 
-function NextValue(SerialNumber,Item_Id)
+function NextValue(SerialNumbers,Item_Id,choose)
 {	
-	alert("456");
-	/*
 	$.post('next_value.php',
-		{},
+		{"SerialNumbers":SerialNumbers,"Item_Id":Item_Id,"choose":choose},
 		function(data)
 		{	
-			var as='#'+Item_Id;
-			alert(as);
+			if(data==(-1))
+			{
+				//alert("wait!!");
+			}
+			else
+			{
+				$('#'+Item_Id+' .InformationBlock .NowValue').html(data);
+			}
 			
 		},
-		"json"
+		"text"
 		);
-*/
-}
 
+}
+function UpdateValue(SerialNumbers)
+{
+	var ItemBlock=document.getElementsByClassName("ItemBlock");
+	for(var i=0;i<ItemBlock.length;i++)
+	{
+		 var Item_Id=ItemBlock[i].id;
+		 
+		 $.post('updatevalue.php',
+		 	{"SerialNumbers":SerialNumbers,"Item_Id":Item_Id},
+			function(data)
+			{	
+
+				if($("#"+data.Item_Id+" .WaiNumValue").html()!=data.WaiNumValue)
+					$("#"+data.Item_Id+" .WaiNumValue").html(data.WaiNumValue);
+							
+				if($("#"+data.Item_Id+" .TakenNumValue").html()!=data.Value)
+					$("#"+data.Item_Id+" .TakenNumValue").html(data.Value);	
+				if($("#"+data.Item_Id+" .NowValue").html()!=data.Now_Value)
+					$("#"+data.Item_Id+" .NowValue").html(data.Now_Value);
+				 
+			},
+			"json"
+		 	);
+		
+	}
+	window.setInterval('UpdateValue(\''+SerialNumbers+'\')', 2000);
+	
+
+}

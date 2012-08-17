@@ -5,7 +5,8 @@
 <link rel=stylesheet type="text/css" href="style.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="function.js"></script>
+<script type="text/javascript" src="js/contextmenu.js"></script>
+<script type="text/javascript" src="js/function.js"></script>
 </head>
 <body>
 <div id="main">
@@ -25,6 +26,11 @@
 	<div id="footer">
 		Copyright (c) 2012 Sitename.com. All rights reserved. Design by CFWei.		
 	</div>
+	<div id="ControlBar">
+	</div>
 </div>
+<script>
+
+</script>
 </body>
 </html>
