@@ -2,6 +2,20 @@
 $content="";
 $ID=$_POST['ID'];
 $PASSWD=$_POST['PASSWD'];
+/*
+if($ID==""&&$PASSWD=="")
+{
+	require_once("session.php");
+	$se=new session();
+	$USERID=$se->get_value("USERID");
+	if($USERID!="")
+		$ID=$USERID;
+	$USERPASSWD=$se->get_value("USERPASSWD");
+	if($USERPASSWD!="")
+		$PASSWD=$USERPASSWD;
+		
+}
+*/
 if($ID!=""&&$PASSWD!="")
 {	
 	require_once("session.php");
@@ -23,27 +37,26 @@ if($ID!=""&&$PASSWD!="")
 		$result=$db->fetch_array();
 		$se=new session();
 		$se->register_value("USERID",$_POST['ID']);
+		$se->register_value("USERPASSWD",$_POST['PASSWD']);
 		$se->register_value("SerialNumbers",$result['SerialNumbers']);
 		$content="登入成功";
 		echo '<script>
-			$("#content").animate({
-				height:"500px",
-				width:"1000px",
-				left:"3%",
-			      },800);
-		$("#content").load("managepage.php");
+
+		loadpage("#content","managepage.php");
 		$("#ControlBar").animate({
 					width:"120px",
-					height:"300px",
+					height:"230px",
 					borderWidth:"5px"
 				 },800);
-		$("#ControlBar").load('login.php');
+		$("#ControlBar").load("Controlbar.html");
 		</script>';	
 		exit;		
 		//header("Location:manager.php");
 	}
 
 }
+
+
 
 ?>
 
@@ -56,8 +69,9 @@ if($ID!=""&&$PASSWD!="")
 	<div id=CenterContent">
 		<form id="LoginBox" method="post" action="">
 			<div>
-				<p>帳號:<input type="text" class="LoginTextArea" id="ID"></p>
-				<p>密碼:<input type="password" class="LoginTextArea" id="PASSWD"></p>
+			   
+				<p>帳號:<input type="text" class="LoginTextArea" id="ID" value="<?php echo $USERID ?>"></p>
+				<p>密碼:<input type="password" class="LoginTextArea" id="PASSWD" value="<?php echo $USERPASSWD ?>"></p>
 			</div>
 		</form>
 		<button id="LoginButton" class="ButtonStyle" >登入</button>

@@ -5,6 +5,7 @@ class session
 		function session()
 		{
 			session_start();
+			//start_session(0);
 		}	
 		
 		function register_value($name,$value)
@@ -33,6 +34,10 @@ class session
 		
 			return session_id();
 		}
+
+
+
 }
+		
 
 ?>

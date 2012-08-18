@@ -30,7 +30,7 @@
 	</div>
 </div>
 <script>
-$("#content").contextMenu("myMenu1",{});
+
 </script>
 </body>
 </html>

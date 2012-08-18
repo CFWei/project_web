@@ -34,8 +34,7 @@ body
 	background-color:#fff;
 	border:outset 10px #D00;
 	border-radius:20px;
-	overflow:auto;
-
+	overflow:hidden;
 }
 
 #footer
@@ -93,6 +92,7 @@ body
 	border-width:auto;
 	border-style:inset;
 	border-color:red;
+	overflow:hidden;
 }
 
 .ButtonStyle
@@ -168,7 +168,7 @@ body
 	display:table;
 	/*border:solid;*/
 	text-align:center;
-	margin-top:50px;
+	margin-top:30px;
 
 
 }
@@ -194,8 +194,9 @@ body
 
 .ItemBlock
 {	
+	z-index: 1; 
 	text-align:left;
-	width:350px;
+	width:320px;
 	height:200px;
 	border-style:ridge;
 	border-width:8px;
@@ -279,5 +280,17 @@ body
 /*controlbar.html*/
 #controlbarcontent
 {
-	padding-top:15px;
+	padding-top:30px;
+	overflow:hidden;
+	
+}
+.controlbarbutton
+{
+	width:120px;
+	height:40px;
+	font-size:23px;
+	border:solid 3px;
+	border-radius:5px;
+	overflow:hidden;
+	
 }

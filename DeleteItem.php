@@ -1,0 +1,20 @@
+<?php
+	require_once("connect_mysql_class.php");
+	require_once("mysql_inc.php");
+
+	$ItemID=$_POST['ItemID'];
+	$SerialNumbers=$_POST['SerialNumbers'];
+	//$ID="8zMgCDbj1S";
+	//$SerialNumbers="j5I5hh56nZVNqG3N4WcM";
+
+	$db=new DB();
+	$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+
+	$query="UPDATE ".$SerialNumbers." SET State='DIE' where `ID`='".$ItemID."'";
+	$db->query($query);
+
+?>
+<script>
+alert("刪除成功");
+loadpage("#content","managepage.php");
+</script>

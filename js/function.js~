@@ -100,7 +100,91 @@ function UpdateValue(SerialNumbers)
 	
 
 }
-function RegisterContextMenu()
+function EditValue()
 {
-	$("#content").contextMenu("myMenu1",{});
+
 }
+
+
+function loadpage(DivName,LoadPage)
+{
+
+	if(DivName=="#content"&&LoadPage=="managepage.php")
+	{	
+		
+		$(DivName).load(LoadPage,function(){
+			$('#ItemTable').hide();
+			var heig=$('#ItemTable').height()+30;
+			$("#content").animate({
+					height:heig,
+					width:"1050px",
+					left:"3%",
+				      },800,function(){$('#ItemTable').fadeIn(400);});
+			
+			});
+		
+	}
+
+	else if(DivName=="#content"&&LoadPage=="add_item.php")
+	{	
+		
+		$(DivName).load(LoadPage,function(){
+			$('#AddItemContent').hide();
+			$("#content").animate({
+					height:"300px",
+					width:"600px",
+					left:"5%",
+				      },800,function(){$('#AddItemContent').fadeIn(400);});
+		});
+	}
+	else if(DivName=="#content"&&LoadPage=="login.php")
+	{
+		$(DivName).load(LoadPage,function(){
+			$("#content").animate({
+					height:"220px",
+					width:"650px",
+					left:"5%",
+				      },800,function(){});
+		});
+	
+	}
+	else
+	{	
+		$(DivName).load(LoadPage);
+
+	}
+
+}
+
+function RegisterContextMenu(SerialNumbers)
+{
+	$(".ItemBlock").contextMenu("myMenu1",{
+				bindings: 
+				{
+					"delete":function(t)
+						{
+							DeleteItem(t.id,SerialNumbers);
+						},
+					"ItemFullScreen":function(t)
+						{
+							var wid=$('#content').width();
+							var heig=$('#content').height();
+							$('#'+t.id).animate({
+										height:heig,
+										width:wid,
+										zIndex:"333"
+							
+										},800);
+						}
+						
+
+				},
+				});
+}
+function DeleteItem(ItemID,SerialNumbers)
+{
+	$('#content').load('DeleteItem.php',{"ItemID":ItemID,"SerialNumbers":SerialNumbers});
+}
+
+
+

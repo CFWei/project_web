@@ -1,0 +1,60 @@
+<?php 
+
+class session
+{
+		function session()
+		{
+			//session_start();
+			start_session(0);
+		}	
+		
+		function register_value($name,$value)
+		{	
+			$_SESSION[$name]=$value;
+			return true;
+		}
+		
+		function get_value($name)
+		{	
+			
+			if(isset($_SESSION[$name]))
+				return $_SESSION[$name];
+			else
+				return false;
+			
+		
+		}
+		function destroy()
+		{
+			session_destroy();
+		}
+		
+		function id()
+		{
+		
+			return session_id();
+		}
+
+
+
+		function start_session($expire)
+		{
+		    if ($expire == 0) {
+			$expire = ini_get('session.gc_maxlifetime');
+		    } else {
+			ini_set('session.gc_maxlifetime', $expire);
+		    }
+
+		    if (empty($_COOKIE['PHPSESSID'])) {
+			session_set_cookie_params($expire);
+			session_start();
+		    } else {
+			session_start();
+			setcookie('PHPSESSID', session_id(), time() + $expire);
+		    }
+		}
+
+}
+		
+
+?>

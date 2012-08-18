@@ -24,7 +24,7 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 					<button class="ControlButton" onclick="NextValue(\''.$SerialNumbers.'\',\''.$ItemID.'\',1)">下一號</button>	
 					<button class="ControlButton" onclick="NextValue(\''.$SerialNumbers.'\',\''.$ItemID.'\',2)">跳過</button>
 					<button class="ControlButton">使用者</button>
-					<button class="ControlButton">輸入號碼</button>
+					<button class="ControlButton" onclick="EditValue()">輸入號碼</button>
 				</div>
 				<div class="InformationBlock">	
 					<div class="ItemTop">
@@ -75,11 +75,11 @@ while($ItemData=$db->fetch_array())
 
 
 
-echo '<div class="ItemTable">';
+echo '<div id="ItemTable" class="ItemTable">';
 for($i=0;$i<count($ItemOutput);$i++)
 {	
 
-	if($i%2==0)
+	if($i%3==0)
 	{
 		if($i!=0)
 			echo '</div>';	
@@ -97,16 +97,19 @@ echo '</div>';
 
 echo'<script>';	
 echo'$(document).ready(UpdateValue("'.$SerialNumbers.'"));';
-echo'RegisterContextMenu()';
+echo'RegisterContextMenu("'.$SerialNumbers.'")';
 echo'</script>';
 
 ?>
 <div class="contextMenu" id="myMenu1" style="display:none;">
-		<ul>
-			<li id="open">delete</li>
-		</ul>
+	<ul>
+		<li id="ItemFullScreen">商品全螢幕</li>
+		<li id="delete">刪除商品</li>		
+	</ul>
 </div>
 
-
+<div id="dialog" title="Basic dialog" style="display:none;">
+	<p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
 
 	
