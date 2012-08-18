@@ -97,6 +97,7 @@
 		</p>	
 	</form>
 	<button id="RegisterSubmitButton" class="ButtonStyle" >註冊</button>
+	<button id="BackToLoginPageButton" class="ButtonStyle" >返回</button>
 	<script>
 			$('#RegisterSubmitButton').click(
 			function()
@@ -117,6 +118,10 @@
 						});	
 
 			});
+
+			$('#BackToLoginPageButton').click(function(){
+								loadpage("#content","login.php");
+							});
 	</script>
 </div>
 
