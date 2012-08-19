@@ -34,7 +34,7 @@ body
 	background-color:#fff;
 	border:outset 10px #D00;
 	border-radius:20px;
-
+	overflow:hidden;
 }
 
 #footer
@@ -293,4 +293,28 @@ body
 	border-radius:5px;
 	overflow:hidden;
 	
+}
+/*******************/
+/*LookUpCustomInformation.php*/
+
+#LookUpCustomInformationTable
+{
+	display:table;	
+	border:solid;
+	text-align:center;
+	margin:0 auto;
+	
+
+}
+#LookUpCustomInformationTable .TableTr
+{
+	display:table-row;
+	border:solid;
+
+}
+#LookUpCustomInformationTable .TableTr .TableTd
+{	
+	display:table-cell;
+	border:solid;
+	font-size:50px;
 }

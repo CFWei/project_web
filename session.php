@@ -3,7 +3,8 @@
 class session
 {
 		function session()
-		{
+		{	
+			ini_set(‘session.gc_maxlifetime’,86400);
 			session_start();
 			//start_session(0);
 		}	

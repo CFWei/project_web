@@ -1,4 +1,5 @@
 <?php
+
 require_once("session.php");
 $session=new session();
 
@@ -8,6 +9,7 @@ if(!$SerialNumbers=$session->get_value("SerialNumbers"))
 	echo "******************取得SerialNumbers失敗******************";
 	exit();
 }
+
 
 require_once("connect_mysql_class.php");
 require_once("mysql_inc.php");
@@ -21,9 +23,9 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 {
 	$content='<div id="'.$ItemID.'" class="ItemBlock">
 				<div class="ControlBlock">
-					<button class="ControlButton" onclick="NextValue(\''.$SerialNumbers.'\',\''.$ItemID.'\',1)">下一號</button>	
-					<button class="ControlButton" onclick="NextValue(\''.$SerialNumbers.'\',\''.$ItemID.'\',2)">跳過</button>
-					<button class="ControlButton">使用者</button>
+					<button class="ControlButton" onclick="NextValue(\''.$ItemID.'\',1)">下一號</button>	
+					<button class="ControlButton" onclick="NextValue(\''.$ItemID.'\',2)">跳過</button>
+					<button class="ControlButton" onclick="LookUpCustomInformation(\''.$ItemID.'\')">使用者</button>
 					<button class="ControlButton" onclick="EditValue()">輸入號碼</button>
 				</div>
 				<div class="InformationBlock">	
@@ -96,8 +98,8 @@ echo '</div>';
 echo '</div>';
 
 echo'<script>';	
-echo'$(document).ready(UpdateValue("'.$SerialNumbers.'"));';
-echo'RegisterContextMenu("'.$SerialNumbers.'")';
+echo'$(document).ready(UpdateValue());';
+echo'RegisterContextMenu()';
 echo'</script>';
 
 ?>

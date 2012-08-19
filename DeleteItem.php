@@ -2,8 +2,15 @@
 	require_once("connect_mysql_class.php");
 	require_once("mysql_inc.php");
 
+	require_once("session.php");
+	$se=new session();	
+	if(!$SerialNumbers=$se->get_value("SerialNumbers"))
+	{
+		echo "******************取得SerialNumbers失敗******************";
+		exit();
+	}	
+
 	$ItemID=$_POST['ItemID'];
-	$SerialNumbers=$_POST['SerialNumbers'];
 	//$ID="8zMgCDbj1S";
 	//$SerialNumbers="j5I5hh56nZVNqG3N4WcM";
 

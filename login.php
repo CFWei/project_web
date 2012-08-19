@@ -2,6 +2,14 @@
 $content="";
 $ID=$_POST['ID'];
 $PASSWD=$_POST['PASSWD'];
+session_start();
+if($_SESSION["SerialNumbers"]!=null)
+{
+	changepage();
+	exit;
+}
+
+
 
 if($ID==""&&$PASSWD=="")
 {
@@ -13,6 +21,7 @@ if($ID==""&&$PASSWD=="")
 	$USERPASSWD=$se->get_value("USERPASSWD");
 	if($USERPASSWD!="")
 		$PASSWD=$USERPASSWD;
+
 		
 }
 
@@ -40,16 +49,7 @@ if($ID!=""&&$PASSWD!="")
 		$se->register_value("USERPASSWD",$_POST['PASSWD']);
 		$se->register_value("SerialNumbers",$result['SerialNumbers']);
 		$content="登入成功";
-		echo '<script>
-
-		loadpage("#content","managepage.php");
-		$("#ControlBar").animate({
-					width:"120px",
-					height:"230px",
-					borderWidth:"5px"
-				 },800);
-		$("#ControlBar").load("Controlbar.html");
-		</script>';	
+		changepage();
 		exit;		
 		//header("Location:manager.php");
 	}
@@ -57,6 +57,20 @@ if($ID!=""&&$PASSWD!="")
 }
 
 
+
+function changepage()
+{
+	echo '<script>
+	loadpage("#content","managepage.php");
+	$("#ControlBar").animate({
+					width:"120px",
+					height:"270px",
+					borderWidth:"5px"
+				 },800);
+	loadpage("#ControlBar","controlbar.php");
+	</script>';
+
+}
 
 ?>
 

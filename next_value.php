@@ -4,7 +4,13 @@ require_once("session.php");
 require_once("connect_mysql_class.php");
 require_once("mysql_inc.php");
 
-$SerialNumbers=$_POST['SerialNumbers'];
+//$SerialNumbers=$_POST['SerialNumbers'];
+$se=new session();	
+	if(!$SerialNumbers=$se->get_value("SerialNumbers"))
+	{
+		echo "******************取得SerialNumbers失敗******************";
+		exit();
+	}
 $Item_Id=$_POST['Item_Id'];
 $choose=$_POST['choose'];
 //1:下一號 2：跳號

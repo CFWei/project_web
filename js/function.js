@@ -50,10 +50,10 @@ function codeAddress()
 	
 }
 
-function NextValue(SerialNumbers,Item_Id,choose)
+function NextValue(Item_Id,choose)
 {	
 	$.post('next_value.php',
-		{"SerialNumbers":SerialNumbers,"Item_Id":Item_Id,"choose":choose},
+		{"Item_Id":Item_Id,"choose":choose},
 		function(data)
 		{	
 			if(data==(-1))
@@ -70,7 +70,7 @@ function NextValue(SerialNumbers,Item_Id,choose)
 		);
 
 }
-function UpdateValue(SerialNumbers)
+function UpdateValue()
 {
 	var ItemBlock=document.getElementsByClassName("ItemBlock");
 	for(var i=0;i<ItemBlock.length;i++)
@@ -78,7 +78,7 @@ function UpdateValue(SerialNumbers)
 		 var Item_Id=ItemBlock[i].id;
 		
 		 $.post('updatevalue.php',
-		 	{"SerialNumbers":SerialNumbers,"Item_Id":Item_Id},
+		 	{"Item_Id":Item_Id},
 			function(data)
 			{	
 
@@ -96,7 +96,7 @@ function UpdateValue(SerialNumbers)
 		
 		
 	}
-	window.setTimeout('UpdateValue(\''+SerialNumbers+'\')', 2000);
+	window.setTimeout('UpdateValue()', 2000);
 	
 
 }
@@ -106,7 +106,7 @@ function EditValue()
 }
 
 
-function loadpage(DivName,LoadPage)
+function loadpage(DivName,LoadPage,parameter)
 {
 
 	if(DivName=="#content"&&LoadPage=="managepage.php")
@@ -148,6 +148,19 @@ function loadpage(DivName,LoadPage)
 		});
 	
 	}
+	else if(DivName=="#content"&&LoadPage=="LookUpCustomInformation.php")
+	{
+		$(DivName).load(LoadPage,{ 'ItemID':parameter},function(){
+					
+			var heig=$('#LookUpCustomInformationTable').height()+30;
+			$("#content").animate({
+					height:heig,
+					width:"500px",
+					left:"5%",
+				      },800,function(){});
+					
+					});
+	}
 	else
 	{	
 		$(DivName).load(LoadPage);
@@ -163,7 +176,7 @@ function RegisterContextMenu(SerialNumbers)
 				{
 					"delete":function(t)
 						{
-							DeleteItem(t.id,SerialNumbers);
+							DeleteItem(t.id);
 						},
 					"ItemFullScreen":function(t)
 						{
@@ -181,10 +194,13 @@ function RegisterContextMenu(SerialNumbers)
 				},
 				});
 }
-function DeleteItem(ItemID,SerialNumbers)
+function DeleteItem(ItemID)
 {
-	$('#content').load('DeleteItem.php',{"ItemID":ItemID,"SerialNumbers":SerialNumbers});
+	$('#content').load('DeleteItem.php',{"ItemID":ItemID});
 }
-
+function LookUpCustomInformation(ItemID)
+{
+	loadpage("#content","LookUpCustomInformation.php",ItemID);
+}
 
 

@@ -6,7 +6,11 @@ if(isset($_POST['Item_Name']))
 	require_once("mysql_inc.php");
 	require_once("session.php");
 	$se=new session();	
-	$SerialNumbers=$se->get_value("SerialNumbers");
+	if(!$SerialNumbers=$se->get_value("SerialNumbers"))
+	{
+		echo "******************取得SerialNumbers失敗******************";
+		exit();
+	}
 	$Item_Name=$_POST['Item_Name'];
 
 	$word ='abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ123456789';//樣本

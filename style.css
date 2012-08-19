@@ -294,3 +294,27 @@ body
 	overflow:hidden;
 	
 }
+/*******************/
+/*LookUpCustomInformation.php*/
+
+#LookUpCustomInformationTable
+{
+	display:table;	
+	border:solid;
+	text-align:center;
+	margin:0 auto;
+	
+
+}
+#LookUpCustomInformationTable .TableTr
+{
+	display:table-row;
+	border:solid;
+
+}
+#LookUpCustomInformationTable .TableTr .TableTd
+{	
+	display:table-cell;
+	border:solid;
+	font-size:30px;
+}
