@@ -1,13 +1,16 @@
 
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 <link rel=stylesheet type="text/css" href="style.css">
+<link href="css/imprompt.css" rel="stylesheet" type="text/css" media="screen" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="js/colorbox.js"></script>
+<script type="text/javascript" src="js/jquery.alerts.js"></script>
 <script type="text/javascript" src="js/contextmenu.js"></script>
 <script type="text/javascript" src="js/function.js"></script>
+<script type="text/javascript" src="js/jquery-impromptu.4.0.js"></script>
 </head>
 <body>
 <div id="main">

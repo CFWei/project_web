@@ -99,7 +99,7 @@ echo '</div>';
 
 echo'<script>';	
 echo'$(document).ready(UpdateValue());';
-echo'RegisterContextMenu("'.$SerialNumbers.'")';
+echo'RegisterContextMenu()';
 echo'</script>';
 
 ?>

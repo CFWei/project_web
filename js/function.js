@@ -100,10 +100,47 @@ function UpdateValue()
 	
 
 }
-function EditValue()
+function EditValue(ItemID)
 {
+var txt = '請輸入要跳的號碼:<br /><input type="text" name="EditValue"}" />';
+
+
+
+$.prompt(txt,{
+	callback:function(e,v,m,f)
+		{
+			if(v=="Submit"&&f.EditValue!="")
+			{
+				 $.post('EditNum.php',
+					{"ItemID":ItemID,"EditValue":f.EditValue},
+					function(data)
+					{
+						if(data=="-1")
+							alert("沒有這個號碼的顧客");
+						if(data=="-2")
+							alert("無法取得SerialNumbers");
+						if(data=="-3")
+							alert("輸入的不是數字");
+						if(data==f.EditValue)
+						{
+							//alert("跳號成功");
+							$("#"+ItemID+" .NowValue").html(data);
+						}
+					},
+					"text");
+			}
+			
+			
+		},
+	buttons: { 確認: 'Submit', 取消: 'Cancel' },
+	prefix:'cleanblue',
+	focus: 0,
+	show:'slideDown'
+	});
 
 }
+
+
 
 
 function loadpage(DivName,LoadPage,parameter)

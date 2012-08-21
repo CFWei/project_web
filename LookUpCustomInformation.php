@@ -37,6 +37,9 @@ $db->query($query);
 		<div class="TableTd">
 		狀態
 		</div>
+		<div class="TableTd">
+		動作
+		</div>
 	</div>
 
 <?php
@@ -62,6 +65,9 @@ while(($temp=$db->fetch_assoc())!=null)
 	
 	echo '</div>';
 	/***************************/
+	echo '	<div class="TableTd">
+		跳號
+		</div>';
 	echo '</div>';
 }
 

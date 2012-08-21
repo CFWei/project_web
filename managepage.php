@@ -26,7 +26,7 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 					<button class="ControlButton" onclick="NextValue(\''.$ItemID.'\',1)">下一號</button>	
 					<button class="ControlButton" onclick="NextValue(\''.$ItemID.'\',2)">跳過</button>
 					<button class="ControlButton" onclick="LookUpCustomInformation(\''.$ItemID.'\')">使用者</button>
-					<button class="ControlButton" onclick="EditValue()">輸入號碼</button>
+					<button class="ControlButton" onclick="EditValue(\''.$ItemID.'\')">輸入號碼</button>
 				</div>
 				<div class="InformationBlock">	
 					<div class="ItemTop">

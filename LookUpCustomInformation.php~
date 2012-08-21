@@ -37,6 +37,9 @@ $db->query($query);
 		<div class="TableTd">
 		狀態
 		</div>
+		<div class="TableTd">
+		動作
+		</div>
 	</div>
 
 <?php
@@ -58,9 +61,13 @@ while(($temp=$db->fetch_assoc())!=null)
 		else if( $temp['life']=="1")
 			echo "已服務";
 		else
+			echo "未定義";
 	
 	echo '</div>';
 	/***************************/
+	echo '	<div class="TableTd">
+		動作
+		</div>';
 	echo '</div>';
 }
 
