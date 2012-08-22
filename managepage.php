@@ -81,7 +81,7 @@ echo '<div id="ItemTable" class="ItemTable">';
 for($i=0;$i<count($ItemOutput);$i++)
 {	
 
-	if($i%3==0)
+	if($i%2==0)
 	{
 		if($i!=0)
 			echo '</div>';	
@@ -110,8 +110,6 @@ echo'</script>';
 	</ul>
 </div>
 
-<div id="dialog" title="Basic dialog" style="display:none;">
-	<p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-</div>
+
 
 	

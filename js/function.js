@@ -59,6 +59,7 @@ function NextValue(Item_Id,choose)
 			if(data==(-1))
 			{
 				//alert("wait!!");
+				
 			}
 			else
 			{
@@ -89,6 +90,11 @@ function UpdateValue()
 					$("#"+data.Item_Id+" .TakenNumValue").html(data.Value);	
 				if($("#"+data.Item_Id+" .NowValue").html()!=data.Now_Value)
 				$("#"+data.Item_Id+" .NowValue").html(data.Now_Value);
+
+				if(data.State=="WAIT")
+					{
+						NextValue(data.Item_Id,3);
+					}
 				 
 			},
 			"json"
@@ -152,10 +158,11 @@ function loadpage(DivName,LoadPage,parameter)
 		$(DivName).load(LoadPage,function(){
 			$('#ItemTable').hide();
 			var heig=$('#ItemTable').height()+30;
+			
+			
 			$("#content").animate({
-					height:heig,
-					width:"1050px",
-					left:"3%",
+					height:heig, 
+					width:"903px",
 				      },800,function(){$('#ItemTable').fadeIn(400);});
 			
 			});
@@ -192,7 +199,7 @@ function loadpage(DivName,LoadPage,parameter)
 			var heig=$('#LookUpCustomInformationTable').height()+30;
 			$("#content").animate({
 					height:heig,
-					width:"500px",
+					width:"550px",
 					left:"5%",
 				      },800,function(){});
 					
@@ -219,12 +226,14 @@ function RegisterContextMenu(SerialNumbers)
 						{
 							var wid=$('#content').width();
 							var heig=$('#content').height();
-							$('#'+t.id).animate({
+							/*
+								$('#'+t.id).animate({
 										height:heig,
 										width:wid,
 										zIndex:"333"
 							
 										},800);
+							*/
 						}
 						
 

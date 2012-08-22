@@ -30,13 +30,13 @@
 	$db=new DB();
 	$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
-	$query="SELECT * FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."' and number='".$EditValue."'";
+	$query="SELECT * FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."' and number='".$EditValue."' and life='0'";
 	$db->query($query);
 
 	if($db->get_num_rows()>0)
 	{	
 		$query="UPDATE `".$SerialNumbers."` SET `Now_Value`=\"".$EditValue."\" where `ID` =\"".$ItemID."\"";
-		//$db->query($query);
+		$db->query($query);
 		echo $EditValue;
 	}
 	else

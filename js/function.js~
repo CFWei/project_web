@@ -59,6 +59,7 @@ function NextValue(Item_Id,choose)
 			if(data==(-1))
 			{
 				//alert("wait!!");
+				
 			}
 			else
 			{
@@ -89,6 +90,11 @@ function UpdateValue()
 					$("#"+data.Item_Id+" .TakenNumValue").html(data.Value);	
 				if($("#"+data.Item_Id+" .NowValue").html()!=data.Now_Value)
 				$("#"+data.Item_Id+" .NowValue").html(data.Now_Value);
+
+				if(data.State=="WAIT")
+					{
+						NextValue(data.Item_Id,3);
+					}
 				 
 			},
 			"json"
@@ -123,7 +129,7 @@ $.prompt(txt,{
 							alert("輸入的不是數字");
 						if(data==f.EditValue)
 						{
-							alert("跳號成功");
+							//alert("跳號成功");
 							$("#"+ItemID+" .NowValue").html(data);
 						}
 					},
@@ -152,10 +158,11 @@ function loadpage(DivName,LoadPage,parameter)
 		$(DivName).load(LoadPage,function(){
 			$('#ItemTable').hide();
 			var heig=$('#ItemTable').height()+30;
+			
+			
 			$("#content").animate({
-					height:heig,
-					width:"1050px",
-					left:"3%",
+					height:heig, 
+					width:"903px",
 				      },800,function(){$('#ItemTable').fadeIn(400);});
 			
 			});
@@ -219,12 +226,14 @@ function RegisterContextMenu(SerialNumbers)
 						{
 							var wid=$('#content').width();
 							var heig=$('#content').height();
-							$('#'+t.id).animate({
+							/*
+								$('#'+t.id).animate({
 										height:heig,
 										width:wid,
 										zIndex:"333"
 							
 										},800);
+							*/
 						}
 						
 

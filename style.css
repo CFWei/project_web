@@ -318,3 +318,17 @@ body
 	border:solid;
 	font-size:30px;
 }
+.SkipButton
+{
+	width:60px;
+	height:35px;
+	font-size:20px;
+
+}
+.DeleteButton
+{
+	width:60px;
+	height:35px;
+	font-size:20px;
+
+}

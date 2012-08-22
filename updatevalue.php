@@ -15,12 +15,13 @@ $Item_Id=$_POST['Item_Id'];
 $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
-$query="SELECT Now_Value , Value FROM ".$SerialNumbers." WHERE ID ='".$Item_Id."'";
+$query="SELECT Now_Value , Value , State FROM ".$SerialNumbers." WHERE ID ='".$Item_Id."'";
 $db->query($query);
 
 $result=$db->fetch_array();
 $Now_Value=$result['Now_Value'];
 $Value=$result['Value'];
+$State=$result['State'];
 
 $query="SELECT * FROM custom_information WHERE store='".$SerialNumbers."' and item='".$Item_Id."' and life=0 and number !='".$Now_Value."'";
 $db->query($query);
@@ -31,6 +32,8 @@ $output['Item_Id']=$Item_Id;
 $output['WaiNumValue']=$WaiNumValue;
 $output['Value']=$Value;
 $output['Now_Value']=$Now_Value;
+$output['State']=$State;
+
 echo json_encode($output);
 
 
