@@ -11,6 +11,8 @@ if(!$SerialNumbers=$se->get_value("SerialNumbers"))
 }
 
 $ItemID=$_POST['ItemID'];
+$selector=$_POST['selector'];
+
 
 //$ID="ueuKJKpyMD";
 //$store="5mrXWaA7wbYgindrQZmh";
@@ -18,13 +20,34 @@ $ItemID=$_POST['ItemID'];
 $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
-
-$query="SELECT number,custom_id,life FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."'";
+if($selector==""||$selector==-1)
+	{
+		$query="SELECT number,custom_id,life FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."'";
+		$t=0;
+	}
+else	
+	{
+		$query="SELECT number,custom_id,life FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."' and life='".$selector."'";
+		$t=(int)$selector+1;
+	}
 
 $db->query($query);
 
 
+$Selectcontent[$t]="selected";
 ?>
+<div>
+	<form name="SelectorForm">                                                                           
+		<select name="Selector" onchange="LookUpCustomInformationSelector('<?php echo $ItemID ?>')">
+			<option value=-1  <?php echo $Selectcontent[0] ?>>全部
+			<option value=0  <?php echo $Selectcontent[1] ?>>未服務
+			<option value=1 <?php echo $Selectcontent[2] ?>>已服務
+			<option value=2 <?php echo $Selectcontent[3] ?>>已刪除
+		</select>
+				                                                              
+		                                                                        
+	</form>    
+</div>
 <div id ="LookUpCustomInformationTable">
 	<div class="TableTr">
 		<div class="TableTd">

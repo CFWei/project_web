@@ -194,9 +194,9 @@ function loadpage(DivName,LoadPage,parameter)
 	}
 	else if(DivName=="#content"&&LoadPage=="LookUpCustomInformation.php")
 	{
-		$(DivName).load(LoadPage,{ 'ItemID':parameter},function(){
+		$(DivName).load(LoadPage,{ 'ItemID':parameter.ItemID,'selector':parameter.selector},function(){
 					
-			var heig=$('#LookUpCustomInformationTable').height()+30;
+			var heig=$('#LookUpCustomInformationTable').height()+60;
 			$("#content").animate({
 					height:heig,
 					width:"550px",
@@ -246,7 +246,11 @@ function DeleteItem(ItemID)
 }
 function LookUpCustomInformation(ItemID)
 {
-	loadpage("#content","LookUpCustomInformation.php",ItemID);
+	loadpage("#content","LookUpCustomInformation.php",{"ItemID":ItemID});
 }
-
+function LookUpCustomInformationSelector(ItemID)
+{
+	var selector=document.SelectorForm.Selector.value;
+	loadpage("#content","LookUpCustomInformation.php",{"ItemID":ItemID,"selector":selector});
+}
 

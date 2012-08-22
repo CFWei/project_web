@@ -11,6 +11,8 @@ if(!$SerialNumbers=$se->get_value("SerialNumbers"))
 }
 
 $ItemID=$_POST['ItemID'];
+$selector=$_POST['selector'];
+
 
 //$ID="ueuKJKpyMD";
 //$store="5mrXWaA7wbYgindrQZmh";
@@ -18,13 +20,34 @@ $ItemID=$_POST['ItemID'];
 $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
-
-$query="SELECT number,custom_id,life FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."'";
+if($selector==""||$selector==-1)
+	{
+		$query="SELECT number,custom_id,life FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."'";
+		$t=0;
+	}
+else	
+	{
+		$query="SELECT number,custom_id,life FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."' and life='".$selector."'";
+		$t=(int)$selector+1;
+	}
 
 $db->query($query);
 
 
+$Selectcontent[$t]="selected";
 ?>
+<div>
+	<form name="SelectorForm">                                                                           
+		<select name="Selector" onchange="LookUpCustomInformationSelector('<?php echo $ItemID ?>')">
+			<option value=-1  <?php echo $Selectcontent[0] ?>>全部
+			<option value=0  <?php echo $Selectcontent[1] ?>>未服務
+			<option value=1 <?php echo $Selectcontent[2] ?>>已服務
+			<option value=2 <?php echo $Selectcontent[3] ?>>已刪除
+		</select>
+				                                                              
+		                                                                        
+	</form>    
+</div>
 <div id ="LookUpCustomInformationTable">
 	<div class="TableTr">
 		<div class="TableTd">
@@ -47,13 +70,15 @@ while(($temp=$db->fetch_assoc())!=null)
 	echo '<div class="TableTr">';
 	/***************************/
 	echo '<div class="TableTd">';
-	echo '<span class="Number">';
-	echo $temp['number'];
-	echo '</span>';
+		echo '<span class="Number">';
+			echo $temp['number'];
+		echo '</span>';
 	echo '</div>';
 
 	echo '<div class="TableTd">';	
-	echo $temp['custom_id'];
+		echo '<span class="CustomID">';
+			echo $temp['custom_id'];
+		echo '</span>';
 	echo '</div>';
 
 	echo '<div class="TableTd">';
@@ -61,19 +86,24 @@ while(($temp=$db->fetch_assoc())!=null)
 			echo "未服務";
 		else if( $temp['life']=="1")
 			echo "已服務";
+		else if($temp['life']=="2")
+			echo "已刪除";
 		else
 			echo "未定義";
 	
 	echo '</div>';
 	/***************************/
-	echo '	<div class="TableTd">
-			<button class="SkipButton"  >
-				跳號
-			</button>
-			<button class="DeleteButton" >
+	echo '	<div class="TableTd">';
+	if($temp['life']==0)
+	{
+		echo '<button class="SkipButton">
+					跳號
+				</button>';
+		echo '<button class="DeleteButton">
 				刪除
-			</button>
-		</div>';
+			</button>';
+	}
+	echo '</div>';
 	echo '</div>';
 }
 
@@ -102,4 +132,20 @@ while(($temp=$db->fetch_assoc())!=null)
 				
 			
 				});	
+
+	$('.DeleteButton').click(function(){
+				var ItemID="<?php
+						echo $ItemID;
+						?>";
+				var CustomID = $(this).parent().parent().children('.TableTd').children('.CustomID').html();
+				var Value = $(this).parent().parent().children('.TableTd').children('.Number').html();
+				$.post('ModifyCustomState.php',
+					{"ItemID":ItemID,"CustomID":CustomID,"Value":Value},
+					function(data)
+					{
+					},
+					"text");					
+				LookUpCustomInformation(ItemID);		
+				
+				});
 </script>
