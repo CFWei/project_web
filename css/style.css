@@ -1,6 +1,6 @@
 body
 {
-	background:#000 url(img/img07.jpg) no-repeat left top;
+	background:#000 url(images/img07.jpg) no-repeat left top;
 	font: normal .90em 'times', arial, sans-serif;	
 	text-align:center;
 }
@@ -330,5 +330,31 @@ body
 	width:60px;
 	height:35px;
 	font-size:20px;
+
+}
+
+/*********************/
+
+/*MyItem.php*/
+
+#MyItemTable
+{
+	display:table;
+	border:solid;
+	text-align:center;
+	margin:0 auto;
+	
+}
+#MyItemTable .MyItemTableTr
+{
+	display:table-row;
+	border:solid;
+	
+}
+#MyItemTable .MyItemTableTr .MyItemTableTd
+{
+	display:table-cell;
+	font-size:20px;
+	border:solid;
 
 }

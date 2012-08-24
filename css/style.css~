@@ -1,0 +1,360 @@
+body
+{
+	background:#000 url(images/img07.jpg) no-repeat left top;
+	font: normal .90em 'times', arial, sans-serif;	
+	text-align:center;
+}
+#header
+{
+	width:100%;
+	height:120px;
+	color:#fff;
+}
+#title
+{
+	padding-top:30px;
+	font-size:50px;
+	text-transform:uppercase;
+	font-weight:bold;
+	letter-spacing:-4px:
+
+
+}
+#content
+{	
+	width:650px;
+	height:220px;
+
+	margin:0 auto;
+	/*
+	position:relative;
+	top:0%;
+	left:20%;
+	left:3%;*/
+	background-color:#fff;
+	border:outset 10px #D00;
+	border-radius:20px;
+	overflow:hidden;
+}
+
+#footer
+{
+	color:#fff;	
+	font-size:20px;
+	padding-top:15px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+
+
+
+#centerbox
+{	
+	font-weight:bold;
+	font-size:25px;
+	/*margin:0 auto;*/
+}
+
+
+#Button
+{
+	position:relative;
+	margin:0;
+	text-align:center;
+}
+
+#hint
+{
+	font-size:15px;
+	height:4px;
+	padding-top:8px;
+	margin-bottom:-8px;
+	color:#00f;
+
+}
+#CenterContent
+{
+	padding-top:0px;
+}
+#ControlBar
+{
+	position:absolute;
+	left:0px;
+	top:30px;
+
+	width:0px;
+	height:0px;
+	/*border:solid #f00 10px;*/
+	background:#fff;
+	margin-top:30px;
+	margin-left:10px;
+	border-radius:50px;
+	border-width:auto;
+	border-style:inset;
+	border-color:red;
+	overflow:hidden;
+}
+
+.ButtonStyle
+{
+	font-size:25px;
+	font-family:Arial,sans-serif;
+	font-weight:bold;
+	color:#444444;
+	background-color:#EEEEEE;
+	border-style:double;
+	border-color:#999999;
+	border-width:3px;
+
+}
+#LoginButton
+{
+	margin-right:0%;
+}
+#RegisterButton
+{	
+	margin-top:-9.4%;
+	margin-left:5%;
+}
+.LoginTextArea
+{
+	border:double;
+	height:27px;
+}
+
+
+
+/*register.html*/
+#RegisterPage
+{
+	text-align:left;
+	font-weight:bold;
+	padding-left:13px;
+	padding-top:8px;
+}
+.RegisterText
+{
+	float:left;
+	width:70px;
+	display:inline;
+	letter-spacing:0.1px;
+}
+.RegisterTextArea
+{
+	border:double;
+}
+#RegisterTitle
+{
+	text-align:center;
+	font-size:30px;
+	letter-spacing:5px;
+}
+#RegisterHint
+{
+	font-size:15px;
+	height:6px;
+
+	color:#00f;
+	text-align:center;
+}
+
+
+
+/*********************/
+
+/*mamagepage.php*/
+.ItemTable
+{	
+	display:table;
+	/*border:solid;*/
+	text-align:center;
+	margin-top:30px;
+
+
+}
+.ItemTr
+{
+	display:table-row;
+	/*border:solid;*/
+	
+	height:220px;
+	
+
+}
+.ItemTd
+{
+	display:table-cell;
+	/*border:solid;*/
+	width:550px;
+	vertical-align:middle;
+
+
+
+}
+
+.ItemBlock
+{	
+	z-index: 1; 
+	text-align:left;
+	width:320px;
+	height:200px;
+	border-style:ridge;
+	border-width:8px;
+	border-color:blue;
+	border-radius:10px;
+	overflow:hidden;
+	margin:0 auto;
+	
+}
+
+.InformationBlock
+{
+	float:left;
+	width:70%;
+	margin:0 0 0 0;
+}
+.ItemTop
+{
+	width:100%;
+	height:80%;
+	text-align:center;
+
+
+}
+.ItemName
+{
+	width:100%;
+	height:30%;
+	line-height:48px;
+	font-size:40px;
+	border-bottom:solid 3px;
+}
+.NowValue
+{
+	width:100%;
+	height:70%;
+	line-height:112px;
+	font-size:90px;
+	border-bottom:solid 3px;
+}
+
+
+.ItemButtom
+{
+	width:100%;
+	height:20%;
+	
+}
+.WaitNum
+{
+	float:right;
+	width:50%;
+	line-height:40px;
+	font-size:15px;
+	overflow:hidden;
+}
+
+.TakenNum
+{
+	width:50%;
+	line-height:40px;
+	font-size:15px;
+	overflow:hidden;	
+}
+.ControlBlock
+{
+	width:29.6%;
+	height:100%;
+	float:right;
+	border-left:solid 2px;
+}
+
+.ControlButton
+{
+	width:100%;
+	height:52px;
+	font-size:20px;
+	margin:0 0 0 0;
+}
+/*******************/
+/*controlbar.html*/
+#controlbarcontent
+{
+	padding-top:30px;
+	overflow:hidden;
+	
+}
+.controlbarbutton
+{
+	width:120px;
+	height:40px;
+	font-size:23px;
+	border:solid 3px;
+	border-radius:5px;
+	overflow:hidden;
+	
+}
+/*******************/
+/*LookUpCustomInformation.php*/
+
+#LookUpCustomInformationTable
+{
+	display:table;	
+	border:solid;
+	text-align:center;
+	margin:0 auto;
+	
+
+}
+#LookUpCustomInformationTable .TableTr
+{
+	display:table-row;
+	border:solid;
+
+}
+#LookUpCustomInformationTable .TableTr .TableTd
+{	
+	display:table-cell;
+	border:solid;
+	font-size:30px;
+}
+.SkipButton
+{
+	width:60px;
+	height:35px;
+	font-size:20px;
+
+}
+.DeleteButton
+{
+	width:60px;
+	height:35px;
+	font-size:20px;
+
+}
+
+/*********************/
+
+/*MyItem.php*/
+
+#MyItemTable
+{
+	display:table;
+	border:solid;
+	text-align:center;
+	margin:0 auto;
+	
+}
+#MyItemTable .MyItemTableTr
+{
+	display:table-row;
+	border:solid;
+	
+}
+#MyItemTable .MyItemTableTr .MyItemTableTd
+{
+	display:table-cell;
+	font-size:20px;
+		border:solid;
+
+}

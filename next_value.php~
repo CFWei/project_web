@@ -38,7 +38,7 @@ $db->query($query);
 $check=-1;
 while($t=$db->fetch_array())
 {
-	//將
+	//將目前號碼的使用者 life 設為 1(已服務）
 	if($t['number']==$Now_Value && $t['life']!=1 && $choose==1)
 	{
 		$db1=new DB();

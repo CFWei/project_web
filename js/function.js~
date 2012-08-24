@@ -58,7 +58,7 @@ function NextValue(Item_Id,choose)
 		{	
 			if(data==(-1))
 			{
-				//alert("wait!!");
+				alert("wait!!");
 				
 			}
 			else
@@ -194,11 +194,35 @@ function loadpage(DivName,LoadPage,parameter)
 	}
 	else if(DivName=="#content"&&LoadPage=="LookUpCustomInformation.php")
 	{
-		$(DivName).load(LoadPage,{ 'ItemID':parameter.ItemID,'selector'},function(){
+		$(DivName).load(LoadPage,{ 'ItemID':parameter.ItemID,'selector':parameter.selector},function(){
 					
 			var heig=$('#LookUpCustomInformationTable').height()+60;
 			$("#content").animate({
 					height:heig,
+					width:"550px",
+					left:"5%",
+				      },800,function(){});
+					
+					});
+	}
+	else if(DivName=="#content"&&LoadPage=="ModifyStoreInformation.php")
+	{
+		$(DivName).load(LoadPage,{},function(){
+					
+			$("#content").animate({
+					height:"300px",
+					width:"550px",
+					left:"5%",
+				      },800,function(){});
+					
+					});
+	}
+	else if(DivName=="#content"&&LoadPage=="MyItem.php")
+	{
+		$(DivName).load(LoadPage,{},function(){
+			var height=$('#MyItemDiv').height();			
+			$("#content").animate({
+					height:height,
 					width:"550px",
 					left:"5%",
 				      },800,function(){});
@@ -252,5 +276,19 @@ function LookUpCustomInformationSelector(ItemID)
 {
 	var selector=document.SelectorForm.Selector.value;
 	loadpage("#content","LookUpCustomInformation.php",{"ItemID":ItemID,"selector":selector});
+}
+
+function MyItemSelector()
+{
+	var selector=document.SelectorForm.Selector.value;
+	$("#content").load("MyItem.php",{"Category":selector},function(){
+			var height=$('#MyItemDiv').height();			
+			$("#content").animate({
+					height:height,
+					width:"550px",
+					left:"5%",
+				      },800,function(){});
+					
+					});
 }
 

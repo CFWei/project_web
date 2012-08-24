@@ -105,7 +105,6 @@ echo'</script>';
 ?>
 <div class="contextMenu" id="myMenu1" style="display:none;">
 	<ul>
-		<li id="ItemFullScreen">商品全螢幕</li>
 		<li id="delete">刪除商品</li>		
 	</ul>
 </div>
