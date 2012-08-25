@@ -12,18 +12,11 @@ if(isset($_POST['Item_Name']))
 	}
 
 	$Item_Name=$_POST['Item_Name'];
-
-	$word ='abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ123456789';//樣本
-	$len = strlen($word);
-	$item_id="";
-	for($i=0;$i<10;$i++)
-	{
-		$item_id.=$word[rand() % $len];
-	}
-	
 	
 	$db=new DB();
 	$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+
+	/***確認有沒有相同名稱的產品已經存在*/
 	$query="SELECT * FROM ".$SerialNumbers." WHERE Name ='".$Item_Name."' and State !='DIE'";
 	$db->query($query);
 
@@ -38,7 +31,16 @@ if(isset($_POST['Item_Name']))
 		echo "已有相同名稱商品";
 		exit;
 	}
+	
 
+	/*產生新的Item的key*/
+	$word ='abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ123456789';//樣本
+	$len = strlen($word);
+	$item_id="";
+	for($i=0;$i<10;$i++)
+	{
+		$item_id.=$word[rand() % $len];
+	}
 
 	$result=$db->query("INSERT INTO `".$SerialNumbers."`(`ID`,`Name`,`State`,`Value`,`Now_Value`) VALUES ('".$item_id."','".$Item_Name."','STOP','0','0')");
 	if($result)

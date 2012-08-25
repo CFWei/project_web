@@ -52,13 +52,13 @@ while($t=$db->fetch_array())
 	}
 }	
 echo $check;
-
+/*
 if($check==-1&&$State!='WAIT')
 {
 	$query="UPDATE `".$SerialNumbers."` SET `State`=\"WAIT\" where `ID` =\"".$Item_Id."\"";
 	$db->query($query);
 }
-
+*/
 
 if($check!=-1)
 {

@@ -28,11 +28,11 @@ $db->query($query);
 
 $WaiNumValue=$db->get_num_rows();
 
-$output['Item_Id']=$Item_Id;
-$output['WaiNumValue']=$WaiNumValue;
-$output['Value']=$Value;
-$output['Now_Value']=$Now_Value;
-$output['State']=$State;
+$output[0]['Item_Id']=$Item_Id;
+$output[0]['WaiNumValue']=$WaiNumValue;
+$output[0]['Value']=$Value;
+$output[0]['Now_Value']=$Now_Value;
+$output[0]['State']=$State;
 
 echo json_encode($output);
 

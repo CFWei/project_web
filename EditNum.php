@@ -7,7 +7,6 @@
 	require_once("session.php");
 	$se=new session();
 
-
 	if(!$SerialNumbers=$se->get_value("SerialNumbers"))
 	{
 		echo "-2";

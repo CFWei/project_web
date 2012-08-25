@@ -1,4 +1,5 @@
 <?php
+	//-1:fail 正數:要跳的號碼
 	require_once("../connect_mysql_class.php");
 	require_once("../mysql_inc.php");
 	
@@ -15,15 +16,16 @@
 
 	$db=new DB();
 	$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
-
+	/*
 	$query="SELECT Value,Now_Value FROM ".$SerialNumbers." WHERE ID='".$ID."'";
 	$db->query($query);
 	
 	$temp=$db->fetch_assoc();
 	$Now_Value=$temp['Now_Value'];
 	$Value=$temp['Value'];
-	
-	$query="SELECT * FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ID."' and number='".$EditValue."'";
+	*/
+
+	$query="SELECT * FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ID."' and number='".$EditValue."' and life='0'";
 	$db->query($query);
 
 
@@ -31,11 +33,11 @@
 	{	
 		$query="UPDATE `".$SerialNumbers."` SET `Now_Value`=\"".$EditValue."\" where `ID` =\"".$ID."\"";
 		$db->query($query);
-		echo "success";
+		echo $EditValue;
 	}
 	else
 	{
-		echo "fail";
+		echo "-1";
 
 	}
 	
