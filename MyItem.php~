@@ -30,6 +30,8 @@ if(isset($_POST['ItemName'])&&isset($_POST['Group'])&&$_POST['Group']!=""&&$_POS
 }
 
 
+
+
 if(isset($_POST['Category']))
 	{
 		$query="SELECT * FROM StoreItemList WHERE SerialNumbers = '".$SerialNumbers."' and `Group`='".$_POST['Category']."'";
@@ -154,9 +156,16 @@ $('#DeleteChooseItem').click(
 					if($('.SelectCheckBox').eq(i).attr('checked'))
 					{
 						var ItemName=$('.SelectCheckBox').eq(i).parent().parent().children('.MyItemTableTd').children('.MyItemName').html();
-						var Group=$('.SelectCheckBox').eq(i).parent().parent().children('.MyItemTableTd').children('.MyItemGroup').html();
-					
-						$.post("MyItem.php",{"ItemName":ItemName,"Group":Group,"Choose":"1"},function(data){alert("123");},"txt");
+						var Group=$('.SelectCheckBox').eq(i).parent().parent().children('.MyItemTableTd').children('.MyItemGroup').html();			
+						var sendgroup=0;
+						if(Group=="群組一")
+							sendgroup=1;
+						if(Group=="群組二")
+							sendgroup=2;
+						if(Group=="群組三")
+							sendgroup=3;
+						$.post("MyItem.php",{"ItemName":ItemName,"Group":sendgroup,"Choose":"1"},function(data){},"txt");
+						alert("123");
 					}
 				}
 					$('#content').load('MyItem.php',{},
@@ -183,7 +192,7 @@ $('#AddChooseItem').click(
 				}
 
 				alert("新增完畢");
-									$('#content').load('MyItem.php',{},
+				$('#content').load('MyItem.php',{},
 							function(){
 							var height=$('#MyItemDiv').height();			
 							$("#content").animate({
