@@ -39,7 +39,7 @@ class DB
     
     function fetch_assoc()
 	{
-	return mysql_fetch_assoc($this->_queryResource);
+		return mysql_fetch_assoc($this->_queryResource);
 	}
 
     function get_num_rows()
