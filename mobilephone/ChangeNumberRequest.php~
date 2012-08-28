@@ -47,10 +47,6 @@ if($db->get_num_rows()!=1)
 $query="Insert into `ChangeNumberList` (`CustomID`, `ItemID`, `Store`, `Choose`) VALUES ('".$CustomID."','".$ItemID."','".$Store."','".$Choose."')";
 $db->query($query);
 
-if($Choose==1)
-	$SelectChoose=2;
-if($Choose==2)
-	$SelectChoose=1;
 
 
 
