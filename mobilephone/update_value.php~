@@ -3,8 +3,14 @@
 $store=$_POST['store'];
 $item=$_POST['item'];
 $CustomID=$_POST['CustomID'];
+$number=$_POST['number'];
+
 //$store="eFm7hGveXcGCTNmqKEHf";
 //$item="fJIssVc8yA";
+//$store="j5I5hh56nZVNqG3N4WcM";
+//$item="ZQkQgqIqKV";
+//$CustomID="356514044378347";
+
 
 require_once("../connect_mysql_class.php");
 require_once("../mysql_inc.php");
@@ -19,10 +25,34 @@ $db->query($query);
 if($db->get_num_rows()==1)
 {
 	$temp=$db->fetch_assoc();
-	
-	$query="SELECT life FROM custom_information WHERE store='".$store."' and custom_id='".$CustomID."' and item='".$item."'";	
+	$NowValue=$temp['Now_Value'];
 
-	echo $temp['Now_Value'];
+	$query="SELECT life FROM custom_information WHERE store='".$store."' and custom_id='".$CustomID."' and item='".$item."' and number ='".$number."'";
+	$db->query($query);
+	$temp=$db->fetch_assoc();
+	$ItemLife=$temp['life'];
+	
+	$query="SELECT State,MatchNumber FROM ChangeNumberList where CustomID='".$CustomID."' and ItemID = '".$item."' and Store ='".$store."'";
+	$db->query($query);
+
+	if($db->get_num_rows()==1)
+	{
+		$temp=$db->fetch_assoc();
+		$ChangeNumberCheck=$temp['State'];
+		
+	
+	}
+	else
+	{
+		$ChangeNumberCheck="-1";
+	
+	}
+
+	$output[0]['NowValue']=$NowValue;
+	$output[0]['ItemLife']=$ItemLife;
+	$output[0]['ChangeNumberCheck']=$ChangeNumberCheck;
+	echo json_encode($output);
+
 }
 
 

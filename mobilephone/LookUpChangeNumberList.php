@@ -15,7 +15,7 @@ $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']
 $query="SELECT * FROM ChangeNumberList WHERE CustomID='".$CustomID."' and ItemID ='".$ItemID."' and Store='".$StoreID."'";
 $db->query($query);
 
-if($db-> get_num_rows()!=1)
+if($db->get_num_rows()!=1)
 {
 	echo "-1";
 	exit;
@@ -30,8 +30,9 @@ if($Choose=="1")
 if($Choose=="2")
 	$SelectChoose="1";
 
-$SelectChoose=2;
-$query="SELECT * FROM ChangeNumberList WHERE CustomID ='".$CustomID."' and ItemID ='".$ItemID."' and Store ='".$StoreID."' and Choose ='".$SelectChoose."' and State='0'";
+
+$query="SELECT * FROM ChangeNumberList WHERE CustomID !='".$CustomID."' and ItemID ='".$ItemID."' and Store ='".$StoreID."' and Choose ='".$SelectChoose."' and State='0'";
+
 $db->query($query);
 
 
@@ -48,7 +49,6 @@ for($i=0;$i<count($output);$i++)
 	$output[$i]['number']=$temp['number'];
 
 }
-
 
 echo json_encode($output);
 ?>
