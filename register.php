@@ -86,10 +86,16 @@
 	?>
 	</div>
 	<form method="post" action="register.php">
-		<p><div class="RegisterText">帳號：</div><input type="text" class="RegisterTextArea" name="UserID" maxlength="20"></p>
-		<p><div class="RegisterText">密碼：</div><input type="password" class="RegisterTextArea" name="UserPassword" maxlength="20"></p>
-		<p><div class="RegisterText">店家名稱：</div><input type="text" class="RegisterTextArea" name="StoreName" maxlength="100"></p>
-		<p><div class="RegisterText">店家電話：</div><input type="text" class="RegisterTextArea" name="StoreTelephone"  maxlength="100" ></p>
+		<p><div class="RegisterText">帳號：</div><input type="text" class="RegisterTextArea"  id="UserID" name="UserID" maxlength="20"></p>
+		<p><div class="RegisterText">密碼：</div><input type="password" class="RegisterTextArea" id="UserPassword" name="UserPassword" maxlength="20"></p>
+		<p><div class="RegisterText">店家名稱：</div><input type="text" class="RegisterTextArea" id="StoreName" name="StoreName" maxlength="100"></p>
+		<p><div class="RegisterText">店家電話：</div><input type="text" class="RegisterTextArea"  id="StoreTelephone" name="StoreTelephone"  maxlength="100" ></p>	
+		<p><div class="RegisterText">店家型態：</div>
+		<select name="StoreType" id="StoreType">
+			<option value=1  >1
+			<option value=2  >2
+		</select>
+		</p>
 		<p><div class="RegisterText">店家地址：</div><input type="text" class="RegisterTextArea" id="StoreAddress" name="StoreAddress" size="50" maxlength="100" onchange="codeAddress()"></p>
 		<p>
 		<div class="RegisterText">經度：</div><input type="text" class="RegisterTextArea" name="GPS_Latitude" id="GPS_Latitude" > 
@@ -109,12 +115,13 @@
 				var StoreAddress=$('#StoreAddress').val();
 				var GPS_Latitude=$('#GPS_Latitude').val();
 				var GPS_Longitude=$('#GPS_Longitude').val();
-			
+				var StoreType=$('#StoreType').val();
+
 				$('#content').load('register.php',
 						{"UserID":UserID,"UserPassword":UserPassword,
 						"StoreName":StoreName,"StoreTelephone":StoreTelephone,
 						"StoreAddress":StoreAddress,"GPS_Latitude":GPS_Latitude,
-						"GPS_Longitude":GPS_Longitude										
+						"GPS_Longitude":GPS_Longitude,"StoreType":StoreType										
 						});	
 
 			});

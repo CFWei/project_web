@@ -13,9 +13,6 @@ if(isset($_POST['Item_Name']))
 
 	$Item_Name=$_POST['Item_Name'];
 	
-
-	
-	
 	$db=new DB();
 	$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 

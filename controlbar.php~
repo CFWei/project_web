@@ -1,16 +1,53 @@
+<?php
+//	<button class="controlbarbutton" id="ModifyInformation">修改資訊</button>
+//	<button class="controlbarbutton" id="MyItem">我的商品</button>
+//
+//
+require_once("session.php");
+$session=new session();
+
+if(!$StoreType=$session->get_value("StoreType"))
+{
+	echo "******************取得StoreType失敗******************";
+	exit();
+}
+
+?>
 <div id="controlbarcontent">
-	<button class="controlbarbutton" id="additem">新增商品</button>
-	<button class="controlbarbutton" id="ModifyInformation">修改資訊</button>
-	<button class="controlbarbutton" id="MyItem">我的商品</button>
-	<button class="controlbarbutton" id="BackToManage">返回主頁</button>
-	<button class="controlbarbutton" id="Logout">登出</button>
+	<?php
+		if($StoreType=="1")
+		{
+			echo 
+			'
+			<button class="controlbarbutton" id="additem">新增商品</button>
+			<button class="controlbarbutton" id="Setting">設定</button>
+			<button class="controlbarbutton" id="BackToManage">返回主頁</button>
+			<button class="controlbarbutton" id="Logout">登出</button>
+			';
+		}
+
+		if($StoreType=="2")
+		{
+			echo 
+			'
+			<button class="controlbarbutton" id="StoreItemList">商品清單</button>
+			<button class="controlbarbutton" id="Setting">設定</button>
+			<button class="controlbarbutton" id="BackToManage">返回主頁</button>
+			<button class="controlbarbutton" id="Logout">登出</button>
+			';
+			
+		}
+	?>
+
 </div>
 
 <script>
 	$("#additem").click(function(){
 				loadpage("#content","add_item.php");				
 			});
-	
+	$("#StoreItemList").click(function(){
+				loadpage("#content","StoreItemList.php");
+			});
 	$('#BackToManage').click(
 		function()
 		{	
@@ -24,7 +61,7 @@
 	$('#MyItem').click(
 		function()
 		{	
-			loadpage("#content","ModifyStoreInformation.php");
+			loadpage("#content","MyItem.php");
 		});
 	$('#Logout').click(
 		function()

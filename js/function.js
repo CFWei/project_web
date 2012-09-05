@@ -79,7 +79,7 @@ function UpdateValue()
 		 var Item_Id=ItemBlock[i].id;
 		
 		 $.post('updatevalue.php',
-		 	{"Item_Id":Item_Id},
+		 	{"Item_Id":Item_Id,"Type":"1"},
 			function(data)
 			{	
 
@@ -229,6 +229,10 @@ function loadpage(DivName,LoadPage,parameter)
 					
 					});
 	}
+	else if(DivName=="#RightBlock"&&LoadPage=="ChooseCustomItem.php")
+	{	
+		$(DivName).load(LoadPage,{"CustomNumber":parameter.CustomNumber});
+	}
 	else
 	{	
 		$(DivName).load(LoadPage);
@@ -292,3 +296,100 @@ function MyItemSelector()
 					});
 }
 
+function StartBusiness()
+{	
+	/*
+	$.post('StartBusiness.php',
+			function(data)
+			{
+				alert("123");
+			},
+			"txt");
+	*/
+	$.ajax({
+		  type: 'POST',
+		  url: 'StartBusiness.php',
+		  statusCode:{
+				200:function(){
+					loadpage("#content","managepage.php");
+						;}
+				},
+		  dataType: "txt"
+});
+
+
+}
+
+
+function GetValue(Item_Id)
+{	
+	/*
+	$.post('updatevalue.php',
+		 	{"Item_Id":Item_Id,"Type":"2"},
+			function(data)
+			{},
+			"json");
+	*/
+	var c=1;
+	
+
+	$.ajax({
+		  type: 'POST',
+		  url: 'updatevalue.php',
+		  data: {"Item_Id":Item_Id,"Type":"2"},
+		  statusCode:{
+				200:function(data){
+						//$('#NumberSelector').append(new Option('Foo', 'foo', false, false));
+						var NumberSelector=$('#NumberSelector');
+						for(i=0;i<data.length;i++)
+						{
+							var Number=NumberSelector.children("option[value='"+data[i]+"']").size();
+							if(Number==0)
+							{	
+									NumberSelector.append(new Option(data[i]+"號", data[i], true, false));
+							}
+						}
+						//檢查是否有已不在server上的資料 若有則remove()
+						NumberSelector.children().each(function()
+										{
+											var flag=0;
+											for(i=0;i<data.length;i++)
+											{
+												if(data[i]==$(this).val())
+												{
+													flag=1;
+													break;
+												}
+											}
+											if(flag==0)
+												$(this).remove();
+										});
+						;}
+				},
+		  dataType: "json"
+		});
+
+}
+function Type2NextValue(SelectNumber,ItemID)
+{			
+		
+		$.ajax({
+		  type: 'POST',
+		  url: 'Type2NextValue.php',
+		  data: {"Number":SelectNumber,"ItemID":ItemID},
+		  statusCode:{
+				200:function(data)
+					{	
+						if(data>0)
+						{
+							$('#NumberSelector').children("[value="+SelectNumber+"]").remove();
+							$('#NumberSelector').children("[value="+data+"]").attr("selected","selected");
+							$('#RightBlock').html("");
+						}
+					}
+			     },
+		  dataType: "json"
+		});
+
+
+}

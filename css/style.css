@@ -23,7 +23,8 @@ body
 #content
 {	
 	width:650px;
-	height:220px;
+	/*height:220px;*/
+	height:500px;
 
 	margin:0 auto;
 	/*
@@ -143,6 +144,12 @@ body
 {
 	border:double;
 }
+
+#Type2Block
+{
+
+}
+
 #RegisterTitle
 {
 	text-align:center;
@@ -276,6 +283,101 @@ body
 	font-size:20px;
 	margin:0 0 0 0;
 }
+#Type2Block
+{
+	width:800px;
+	height:450px;
+	border:5px solid;
+	margin:0 auto;
+
+}
+#LeftBlock
+{	
+	width:25%;
+	height:100%;
+	border:1px double;
+
+}
+
+#RightBlock
+{	
+	width:75%;
+	height:100%;
+	float:right;
+	border:1px double blue;
+}
+#NumberBlock
+{	
+	width:98%;
+	height:33%;
+	border:2px solid red;
+
+	/*
+	width:100px;
+	height:100px;
+	border:5px solid;
+	*/
+
+}
+
+#ItemBlock
+{	
+		
+	/*
+	width:100px;
+	height:100px;
+	border:5px solid;
+	*/
+}
+#StatusBlock
+{
+	width:98%;
+	height:33%;
+	border:2px solid yellow;
+
+}
+#ControlBlock
+{	
+	width:98%;
+	height:33%;
+	border:2px solid green;
+	/*
+	width:100px;
+	height:100px;
+	border:5px solid;
+	*/
+}
+#NumberSelector
+{
+	width:100%;
+	height:99%;
+	overflow:hidden;
+
+}
+
+
+#ItemListBlock
+{
+	display:table;	
+	text-align:center;
+	margin:0 auto;
+	padding-top:15px;
+	font-size:30px;
+
+
+}
+#ItemListBlock .ItemListTr
+{
+	display:table-row;
+	border:solid 1px;
+
+}
+
+#ItemListBlock .ItemListTr .ItemListTd
+{
+	display:table-cell;
+	border:solid 1px; 
+}
 /*******************/
 /*controlbar.html*/
 #controlbarcontent
@@ -294,6 +396,11 @@ body
 	overflow:hidden;
 	
 }
+
+
+
+
+
 /*******************/
 /*LookUpCustomInformation.php*/
 
@@ -358,3 +465,29 @@ body
 	border:solid;
 
 }
+
+/*StoreItemList.php*/
+
+#StoreItemList
+{
+	display:table;
+	border:solid;
+	text-align:center;
+	margin:0 auto;
+
+}
+#StoreItemList .StoreItemListTr
+{
+	display:table-row;
+	border:solid;
+
+
+}
+#StoreItemList .StoreItemListTr .StoreItemListTd
+{
+	display:table-cell;
+	border:solid;
+
+
+}
+

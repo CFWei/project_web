@@ -8,33 +8,55 @@ if(!$SerialNumbers=$se->get_value("SerialNumbers"))
 	echo "******************取得SerialNumbers失敗******************";
 	exit();
 }
+
+$Type=$_POST['Type'];
 $Item_Id=$_POST['Item_Id'];
+
 //$SerialNumbers='j5I5hh56nZVNqG3N4WcM';
 //$Item_Id='7PQSzAnpec';
 
 $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
-$query="SELECT Now_Value , Value , State FROM ".$SerialNumbers." WHERE ID ='".$Item_Id."'";
-$db->query($query);
+if($Type=="1")
+{	
 
-$result=$db->fetch_array();
-$Now_Value=$result['Now_Value'];
-$Value=$result['Value'];
-$State=$result['State'];
+	//取得NowValue Value State
+	$query="SELECT Now_Value , Value , State FROM ".$SerialNumbers." WHERE ID ='".$Item_Id."'";
+	$db->query($query);
+	$result=$db->fetch_array();
 
-$query="SELECT * FROM custom_information WHERE store='".$SerialNumbers."' and item='".$Item_Id."' and life=0 and number !='".$Now_Value."'";
-$db->query($query);
+	$Now_Value=$result['Now_Value'];
+	$Value=$result['Value'];
+	$State=$result['State'];
+	
+	//取得WaiNumValue
+	$query="SELECT * FROM custom_information WHERE store='".$SerialNumbers."' and item='".$Item_Id."' and life=0 and number !='".$Now_Value."'";
+	$db->query($query);
 
-$WaiNumValue=$db->get_num_rows();
+	$WaiNumValue=$db->get_num_rows();
 
-$output[0]['Item_Id']=$Item_Id;
-$output[0]['WaiNumValue']=$WaiNumValue;
-$output[0]['Value']=$Value;
-$output[0]['Now_Value']=$Now_Value;
-$output[0]['State']=$State;
+	$output['Item_Id']=$Item_Id;
+	$output['WaiNumValue']=$WaiNumValue;
+	$output['Value']=$Value;
+	$output['Now_Value']=$Now_Value;
+	$output['State']=$State;
 
-echo json_encode($output);
+	echo json_encode($output);
+	exit;
+}
+if($Type=="2")
+{
+	$query="SELECT number FROM custom_information WHERE store='".$SerialNumbers."' and item='".$Item_Id."' and life=0";
+	$db->query($query);
+	while($temp=$db->fetch_array())
+	{
+		$WaitValue[]=$temp['number'];
+	}
+
+		echo json_encode($output);
+	exit;
+}
 
 
 ?>

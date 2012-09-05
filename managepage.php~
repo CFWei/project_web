@@ -10,14 +10,91 @@ if(!$SerialNumbers=$session->get_value("SerialNumbers"))
 	exit();
 }
 
+if(!$StoreType=$session->get_value("StoreType"))
+{
+	echo "******************取得StoreType失敗******************";
+	exit();
+}
+
 
 require_once("connect_mysql_class.php");
 require_once("mysql_inc.php");
 
 $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
-$query="SELECT * FROM ".$SerialNumbers." WHERE State !='DIE'";
-$db->query($query);
+
+
+
+if($StoreType=="1")
+{
+	$query="SELECT * FROM ".$SerialNumbers." WHERE State !='DIE'";
+	$db->query($query);
+	while($ItemData=$db->fetch_array())
+	{	
+		
+		$ItemID=$ItemData['ID'];
+		$ItemName=$ItemData['Name'];
+		$ItemValue=$ItemData['Value'];
+		$ItemNowValue=$ItemData['Now_Value'];
+		$ItemOutput[]=addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers);
+	}
+
+
+
+	echo '<div id="ItemTable" class="ItemTable">';
+	for($i=0;$i<count($ItemOutput);$i++)
+	{	
+
+		if($i%2==0)
+		{
+			if($i!=0)
+				echo '</div>';	
+			echo '<div class="ItemTr">';
+		}
+	
+		echo '<div class="ItemTd">';
+		echo $ItemOutput[$i];
+		echo '</div>';
+
+
+	}
+	echo '</div>';	
+	echo '</div>';
+
+	echo'<script>';	
+	echo'$(document).ready(UpdateValue());';
+	echo'RegisterContextMenu()';
+	echo'</script>';
+	echo '<div class="contextMenu" id="myMenu1" style="display:none;">
+		<ul>
+			<li id="delete">刪除商品</li>		
+		</ul>
+		</div>';
+
+	exit;
+
+}
+
+if($StoreType=="2")
+{
+
+	$query="SELECT * FROM ".$SerialNumbers." WHERE State !='DIE'";
+	$db->query($query);
+	if($db->get_num_rows()!=1)
+	{
+		echo "<span id='status'>尚未營運</span><br>";
+		echo '<button onclick="StartBusiness()">開始營業</button>';
+		exit;
+	}
+	$temp=$db->fetch_array();
+
+	$ItemID=$temp['ID'];
+
+
+
+}
+
+
 
 function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 {
@@ -64,52 +141,54 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 
 
 
-
-while($ItemData=$db->fetch_array())
-{	
-		
-	$ItemID=$ItemData['ID'];
-	$ItemName=$ItemData['Name'];
-	$ItemValue=$ItemData['Value'];
-	$ItemNowValue=$ItemData['Now_Value'];
-	$ItemOutput[]=addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers);
-}
-
-
-
-echo '<div id="ItemTable" class="ItemTable">';
-for($i=0;$i<count($ItemOutput);$i++)
-{	
-
-	if($i%2==0)
-	{
-		if($i!=0)
-			echo '</div>';	
-		echo '<div class="ItemTr">';
-	}
-	
-	echo '<div class="ItemTd">';
-	echo $ItemOutput[$i];
-	echo '</div>';
-
-
-}
-echo '</div>';	
-echo '</div>';
-
-echo'<script>';	
-echo'$(document).ready(UpdateValue());';
-echo'RegisterContextMenu()';
-echo'</script>';
-
 ?>
-<div class="contextMenu" id="myMenu1" style="display:none;">
-	<ul>
-		<li id="ItemFullScreen">商品全螢幕</li>
-		<li id="delete">刪除商品</li>		
-	</ul>
+<div id="Type2Block">
+	<div id="RightBlock">
+			
+	</div>
+	<div id="LeftBlock">
+		<div id="NumberBlock">
+			<select id="NumberSelector" multiple="1">
+			</select>
+		</div>
+		<div id="StatusBlock">
+			<div>目前號碼:<span id="NowValue">10</span></div>
+			<div>等候人數:<span id="NowValue">10</span></div>
+		</div>
+		<div id="ControlBlock">
+			<button id="NextValue">下一號</button>
+			<button >選擇號碼</button>
+		</div>
+	</div>
+
 </div>
 
+<script>
+$("#NumberSelector").change(function()
+{	
+	var Count=$(this).children("[selected]").size();
+	if(Count>1)
+	{
+		alert("請勿選取兩個數");
+		$('#NumberSelector').children().attr("selected",false);
+		return;
+	}
 
+
+	$(this).children("[selected]").each(function(){
+						
+						loadpage("#RightBlock","ChooseCustomItem.php",{"CustomNumber":$(this).val()});
+						
+					});
+});
+$("#NextValue").click(function()
+			{
+				var Number=$('#NumberSelector').children("[selected]").val();
+				Type2NextValue(Number,'<?php echo $ItemID ?>');
+				//$('#NumberSelector').children("[selected]").remove();
+			});
+
+GetValue('<?php echo $ItemID ?>');
+</script>
 
 	
