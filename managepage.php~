@@ -152,8 +152,9 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 			</select>
 		</div>
 		<div id="StatusBlock">
-			<div>目前號碼:<span id="NowValue">10</span></div>
-			<div>等候人數:<span id="NowValue">10</span></div>
+			<div style="font-size:25px;">目前號碼:<span id="NowValue">10</span></div>
+			<div>已抽號碼:<span id="Value">10</span></div>
+			<div>等候人數:<span id="WaitValue">10</span></div>
 		</div>
 		<div id="ControlBlock">
 			<button id="NextValue">下一號</button>
@@ -173,13 +174,24 @@ $("#NumberSelector").change(function()
 		$('#NumberSelector').children().attr("selected",false);
 		return;
 	}
-
-
-	$(this).children("[selected]").each(function(){
+	
+	if(Count!=0)
+	{
+		$(this).children("[selected]").each(function(){
 						
 						loadpage("#RightBlock","ChooseCustomItem.php",{"CustomNumber":$(this).val()});
 						
 					});
+	}
+	if(Count==0)
+	{
+		var Count=$(this).children().size();
+		if(Count==1)
+		{
+			$(this).children()
+		}
+
+	}
 });
 $("#NextValue").click(function()
 			{

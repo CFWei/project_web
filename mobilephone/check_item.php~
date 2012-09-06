@@ -7,7 +7,7 @@
 	$db=new DB();
 	$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
-	$query="SELECT custom_id,store,item,number FROM  custom_information where `custom_id` = '".$custom_id."' and life='0'";
+	$query="SELECT custom_id,store,item,number,SelectItem FROM  custom_information where `custom_id` = '".$custom_id."' and life='0'";
 	$db->query($query);
 	$db->get_num_rows();
 	
@@ -22,7 +22,7 @@
 		$check_num=1;
 
 		//找尋店家資料 若有此店家則存入相關資料 若無此店家 $check_num設為0
-		$query="SELECT StoreName,GPS_Longitude,GPS_Latitude FROM store_information where `SerialNumbers` = '".$output[$i]['store']."'";
+		$query="SELECT StoreName,GPS_Longitude,GPS_Latitude,StoreType FROM store_information where `SerialNumbers` = '".$output[$i]['store']."'";
 		$db->query($query);
 		if($db->get_num_rows()==1)
 		{
@@ -30,6 +30,7 @@
 			$StoreName=$temp['StoreName'];
 			$GPS_Longitude=$temp['GPS_Longitude'];
 			$GPS_Latitude=$temp['GPS_Latitude'];
+			$StoreType=$temp['StoreType'];
 		}
 		else
 		{
@@ -57,6 +58,7 @@
 			$output[$i]['ItemName']=$ItemName;
 			$output[$i]['GPS_Longitude']=$GPS_Longitude;
 			$output[$i]['GPS_Latitude']=$GPS_Latitude;
+			$output[$i]['GPS_Latitude']
 			$output_final[]=$output[$i];
 		}
 		else

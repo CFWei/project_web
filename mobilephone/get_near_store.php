@@ -3,7 +3,7 @@
 require_once("../connect_mysql_class.php");
 require_once("../mysql_inc.php");
 
-$limit_distance=5000;
+$limit_distance=5000000;
 
 function getDis($lat1,$lat2,$lng1,$lng2)
 {
@@ -32,7 +32,7 @@ $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
 
-$query="SELECT StoreName,StoreAddress,StoreTelephone,GPS_Longitude,GPS_Latitude,SerialNumbers FROM store_information";
+$query="SELECT StoreName,StoreAddress,StoreTelephone,GPS_Longitude,GPS_Latitude,SerialNumbers,StoreType FROM store_information";
 $db->query($query);
 
 //$near_store_list[];

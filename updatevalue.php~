@@ -46,15 +46,30 @@ if($Type=="1")
 	exit;
 }
 if($Type=="2")
-{
+{	
+	//取得目前等待服務的號碼
 	$query="SELECT number FROM custom_information WHERE store='".$SerialNumbers."' and item='".$Item_Id."' and life=0";
 	$db->query($query);
-	while($temp=$db->fetch_array())
+	
+	if($db->get_num_rows()<=0)
 	{
-		$WaitValue[]=$temp['number'];
-	}
 
-		echo json_encode($output);
+
+	}
+	else
+	{
+		while($temp=$db->fetch_array())
+		{
+			$Result['WaitCustomValue'][]=$temp['number'];
+		}
+	}
+	$query="SELECT Now_Value,Value FROM ".$SerialNumbers." WHERE ID ='".$Item_Id."'";
+	$db->query($query);
+	$temp=$db->fetch_array();
+	$Result['NowValue'][]=$temp['Now_Value'];
+	$Result['Value'][]=$temp['Value'];
+
+	echo json_encode($Result);
 	exit;
 }
 

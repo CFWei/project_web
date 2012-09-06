@@ -13,9 +13,11 @@ $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']
 
 $Number=$_POST['Number'];
 $ItemID=$_POST['ItemID'];
-
-$query="UPDATE custom_information SET life='1' where store='".$SerialNumbers."' and item='".$ItemID."' and number='".$Number."'";
-//$db->query($query);
+if($Number!=""&&$ItemID!="")
+	{
+		$query="UPDATE custom_information SET life='1' where store='".$SerialNumbers."' and item='".$ItemID."' and number='".$Number."'";
+		$db->query($query);
+	}
 
 
 $query="SELECT * FROM custom_information where store='".$SerialNumbers."' and item='".$ItemID."' and life='0' order by number";
@@ -31,7 +33,13 @@ while($temp=$db->fetch_array())
 		break;
 	}
 }
-
 echo $NextValue;
+
+if($NextValue!=-2)
+{
+	$query="UPDATE `".$SerialNumbers."` SET `Now_Value`=\"".$NextValue."\" where `ID` =\"".$ItemID."\"";
+	$db->query($query);
+
+}
 
 ?>

@@ -331,43 +331,61 @@ function GetValue(Item_Id)
 			"json");
 	*/
 	var c=1;
-	
-
+	//更新value清單
 	$.ajax({
 		  type: 'POST',
 		  url: 'updatevalue.php',
 		  data: {"Item_Id":Item_Id,"Type":"2"},
 		  statusCode:{
 				200:function(data){
-						//$('#NumberSelector').append(new Option('Foo', 'foo', false, false));
+						
+						
 						var NumberSelector=$('#NumberSelector');
-						for(i=0;i<data.length;i++)
+						if(data.WaitCustomValue!=-1)
 						{
-							var Number=NumberSelector.children("option[value='"+data[i]+"']").size();
-							if(Number==0)
-							{	
-									NumberSelector.append(new Option(data[i]+"號", data[i], true, false));
+							for(i=0;i<data.WaitCustomValue.length;i++)
+							{
+								var Number=NumberSelector.children("option[value='"+data.WaitCustomValue[i]+"']").size();
+							
+								if(Number==0)
+								{	
+									
+						NumberSelector.append(new Option(data.WaitCustomValue[i]+"號", data.WaitCustomValue[i], false, false));
+								}
 							}
-						}
-						//檢查是否有已不在server上的資料 若有則remove()
-						NumberSelector.children().each(function()
-										{
-											var flag=0;
-											for(i=0;i<data.length;i++)
+							//檢查是否有已不在server上的資料 若有則remove()
+						
+							NumberSelector.children().each(function()
 											{
-												if(data[i]==$(this).val())
-												{
-													flag=1;
-													break;
+												var flag=0;
+												for(i=0;i<data.WaitCustomValue.length;i++)
+												{	
+													if(data.WaitCustomValue[i]==$(this).val())
+													{	
+														flag=1;
+														break;
+													}
 												}
-											}
-											if(flag==0)
-												$(this).remove();
-										});
-						;}
+												if(flag==0)
+													;//$(this).remove();
+											});
+						}
+
+						$('#WaitValue').html(data.WaitCustomValue.length);
+						$('#NowValue').html(data.NowValue);
+						$('#Value').html(data.Value);
+						
+						
+						}
+						
 				},
 		  dataType: "json"
 		});
+	alert(Item_Id);
+	window.setTimeout('GetValue("'+Item_Id+'");', 2000);
+
+
+
 
 }
 function Type2NextValue(SelectNumber,ItemID)
@@ -380,11 +398,14 @@ function Type2NextValue(SelectNumber,ItemID)
 		  statusCode:{
 				200:function(data)
 					{	
+						if(data!=-1)
+							$('#NumberSelector').children("[value="+SelectNumber+"]").remove();
 						if(data>0)
 						{
-							$('#NumberSelector').children("[value="+SelectNumber+"]").remove();
+							
 							$('#NumberSelector').children("[value="+data+"]").attr("selected","selected");
-							$('#RightBlock').html();
+							loadpage("#RightBlock","ChooseCustomItem.php",{"CustomNumber":data});
+							//$('#RightBlock').html("");
 						}
 					}
 			     },
