@@ -3,9 +3,9 @@ $content="";
 $ID=$_POST['ID'];
 $PASSWD=$_POST['PASSWD'];
 session_start();
-if($_SESSION["SerialNumbers"]!=null)
+if($_SESSION["SerialNumbers"]!=null&&$_SESSION["StoreType"]!=null)
 {
-	changepage();
+	changepage($_SESSION["StoreType"]);
 	exit;
 }
 
@@ -54,7 +54,7 @@ if($ID!=""&&$PASSWD!="")
 		$se->register_value("SerialNumbers",$result['SerialNumbers']);
 		$se->register_value("StoreType",$StoreType);
 		$content="登入成功";
-		changepage();
+		changepage($StoreType);
 		
 		exit;		
 		//header("Location:manager.php");
@@ -65,9 +65,9 @@ if($ID!=""&&$PASSWD!="")
 
 function changepage($StoreType)
 {	
-
+		
 		echo '<script>
-		loadpage("#content","managepage.php");
+		loadpage("#content","managepage.php","'.$StoreType.'");
 		$("#ControlBar").animate({
 						width:"120px",
 						height:"270px",

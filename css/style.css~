@@ -332,7 +332,7 @@ body
 #StatusBlock
 {
 	width:98%;
-	height:30%;
+	height:33%;
 	border:2px solid yellow;
 
 }

@@ -158,7 +158,7 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 		</div>
 		<div id="ControlBlock">
 			<button id="NextValue">下一號</button>
-			<button >選擇號碼</button>
+			
 		</div>
 	</div>
 
@@ -188,7 +188,11 @@ $("#NumberSelector").change(function()
 		var Count=$(this).children().size();
 		if(Count==1)
 		{
-			$(this).children()
+			$(this).children().each(function(){
+						
+						loadpage("#RightBlock","ChooseCustomItem.php",{"CustomNumber":$(this).val()});
+						
+					});
 		}
 
 	}

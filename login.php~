@@ -3,7 +3,7 @@ $content="";
 $ID=$_POST['ID'];
 $PASSWD=$_POST['PASSWD'];
 session_start();
-if($_SESSION["SerialNumbers"]!=null)
+if($_SESSION["SerialNumbers"]!=null&&$_SESSION["StoreType"]!=null)
 {
 	changepage();
 	exit;
@@ -65,9 +65,9 @@ if($ID!=""&&$PASSWD!="")
 
 function changepage($StoreType)
 {	
-
+		
 		echo '<script>
-		loadpage("#content","managepage.php");
+		loadpage("#content","managepage.php","'.$StoreType.'");
 		$("#ControlBar").animate({
 						width:"120px",
 						height:"270px",

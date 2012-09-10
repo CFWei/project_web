@@ -51,7 +51,7 @@ if(!$StoreType=$session->get_value("StoreType"))
 	$('#BackToManage').click(
 		function()
 		{	
-			loadpage("#content","managepage.php");
+			loadpage("#content","managepage.php","<?php echo $StoreType ?>");
 		});
 	$('#ModifyInformation').click(
 		function()

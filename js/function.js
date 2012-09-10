@@ -157,8 +157,11 @@ function loadpage(DivName,LoadPage,parameter)
 		
 		$(DivName).load(LoadPage,function(){
 			$('#ItemTable').hide();
-			var heig=$('#ItemTable').height()+30;
-			
+		
+			if(parameter=="1")
+				var heig=$('#ItemTable').height()+30;
+			if(parameter=="2")
+				var heig=$('#Type2Block').height()+30;
 			
 			$("#content").animate({
 					height:heig, 
@@ -341,6 +344,7 @@ function GetValue(Item_Id)
 						
 						
 						var NumberSelector=$('#NumberSelector');
+						
 						if(data.WaitCustomValue!=-1)
 						{
 							for(i=0;i<data.WaitCustomValue.length;i++)
@@ -370,8 +374,10 @@ function GetValue(Item_Id)
 													;//$(this).remove();
 											});
 						}
-
-						$('#WaitValue').html(data.WaitCustomValue.length);
+						if(data.WaitCustomValue!=-1)
+							$('#WaitValue').html(data.WaitCustomValue.length);
+						else
+							$('#WaitValue').html("0");
 						$('#NowValue').html(data.NowValue);
 						$('#Value').html(data.Value);
 						

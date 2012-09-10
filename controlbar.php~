@@ -46,12 +46,12 @@ if(!$StoreType=$session->get_value("StoreType"))
 				loadpage("#content","add_item.php");				
 			});
 	$("#StoreItemList").click(function(){
-				loadpage("#content","StoreItemList.php");
+				loadpage("#content","StoreTakenItemList.php");
 			});
 	$('#BackToManage').click(
 		function()
 		{	
-			loadpage("#content","managepage.php");
+			loadpage("#content","managepage.php","<?php echo  ?>");
 		});
 	$('#ModifyInformation').click(
 		function()

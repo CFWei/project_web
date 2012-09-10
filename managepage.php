@@ -152,13 +152,13 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 			</select>
 		</div>
 		<div id="StatusBlock">
-			<div style="font-size:25px;">目前號碼:<span id="NowValue">10</span></div>
-			<div>已抽號碼:<span id="Value">10</span></div>
-			<div>等候人數:<span id="WaitValue">10</span></div>
+			<div style="font-size:25px;">目前號碼:<span id="NowValue">9999</span></div>
+			<div>已抽號碼:<span id="Value">9999</span></div>
+			<div>等候人數:<span id="WaitValue">9999</span></div>
 		</div>
 		<div id="ControlBlock">
 			<button id="NextValue">下一號</button>
-			<button >選擇號碼</button>
+			
 		</div>
 	</div>
 
