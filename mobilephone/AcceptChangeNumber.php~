@@ -47,6 +47,6 @@ $db->query($query);
 $query="UPDATE ChangeNumberList SET STATE='3' where MatchNumber ='".$MatchNumber."'";
 $db->query($query);
 
-echo $MatchIDNumber;
+echo "1";
 
 ?>
