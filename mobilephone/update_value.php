@@ -52,6 +52,7 @@ if($db->get_num_rows()==1)
 
 		$temp=$db->fetch_assoc();
 		$ChangeNumber=$temp['number'];
+		
 	}
 	else
 	{

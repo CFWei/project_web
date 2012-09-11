@@ -34,13 +34,29 @@ if($db->get_num_rows()==1)
 	
 	$query="SELECT State,MatchNumber FROM ChangeNumberList where CustomID='".$CustomID."' and ItemID = '".$item."' and Store ='".$store."'";
 	$db->query($query);
-
+	$ChangeNumber="-1";
 	if($db->get_num_rows()==1)
 	{
 		$temp=$db->fetch_assoc();
 		$ChangeNumberCheck=$temp['State'];
+		$MatchNumber=$temp['MatchNumber'];
+
+		$query="SELECT * from ChangeNumberList where CustomID !='".$CustomID."' and ItemID ='".$item."' and Store='".$store."'";
+		$db->query($query);
+
+		$temp=$db->fetch_assoc();
+		$MatchID=$temp['CustomID'];
 		
-	
+		$query="SELECT * from custom_information where custom_id='".$MatchID."' and store='".$store."' and item ='".$item."' and life ='0'";
+		$db->query($query);			
+
+		$temp=$db->fetch_assoc();
+		$ChangeNumber=$temp['number'];
+		if($ChangeNumber="")
+		{
+			
+
+		}
 	}
 	else
 	{
@@ -51,6 +67,7 @@ if($db->get_num_rows()==1)
 	$output[0]['NowValue']=$NowValue;
 	$output[0]['ItemLife']=$ItemLife;
 	$output[0]['ChangeNumberCheck']=$ChangeNumberCheck;
+	$output[0]['ChangeNumber']=$ChangeNumber;
 	echo json_encode($output);
 
 }
