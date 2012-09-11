@@ -161,7 +161,11 @@ function loadpage(DivName,LoadPage,parameter)
 			if(parameter=="1")
 				var heig=$('#ItemTable').height()+30;
 			if(parameter=="2")
-				var heig=$('#Type2Block').height()+30;
+				{
+					var heig=$('#Type2Block').height()+30;
+					if(heig=="30")
+						heig="120";
+				}
 			
 			$("#content").animate({
 					height:heig, 
