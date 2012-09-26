@@ -1,0 +1,59 @@
+<?php
+require_once("session.php");
+$session=new session();
+if(!$SerialNumbers=$session->get_value("SerialNumbers"))
+{
+	echo "******************取得SerialNumbers失敗******************";
+	exit();
+}
+
+if(!$StoreType=$session->get_value("StoreType"))
+{
+	echo "******************取得StoreType失敗******************";
+	exit();
+}
+
+if($StoreType=="1")
+{
+	$text="我的商品";
+	$link="";
+}
+if($StoreType=="2")
+{
+	$text="商品清單";
+	$link="StoreTakenItemList.php";
+}
+?>
+
+
+
+<div id="StoreSettingTable">
+	<div class="StoreSettingTableTr">
+		<div class="StoreSettingTableTd">
+			<button id="ModifyInformation" class="StoreSettngFont"><span>修改商家資訊</span></button>
+		</div>
+	</div>
+
+	<div class="StoreSettingTableTr">
+		<div class="StoreSettingTableTd">
+			<button id="StoreItemListSettingButton" class="StoreSettngFont"><span ><?php echo $text; ?></span></button>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	$('#ModifyInformation').click(
+		function()
+		{	
+			loadpage("#content","ModifyStoreInformation.php");
+		});
+
+	$('#StoreItemListSettingButton').click(
+		function()
+		{	
+			loadpage("#content","<?php echo $link; ?>");
+		});
+
+
+</script>

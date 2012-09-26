@@ -30,9 +30,10 @@ if(!$StoreType=$session->get_value("StoreType"))
 		{
 			echo 
 			'
-			<button class="controlbarbutton" id="StoreItemList">商品清單</button>
 			<button class="controlbarbutton" id="Setting">設定</button>
+			<button class="controlbarbutton" onclick="self.location.href=\'FullScreen.php\'">全螢幕</button>
 			<button class="controlbarbutton" id="BackToManage">返回主頁</button>
+			<button class="controlbarbutton" id="EndBusiness">結束營業</button>
 			<button class="controlbarbutton" id="Logout">登出</button>
 			';
 			
@@ -45,9 +46,7 @@ if(!$StoreType=$session->get_value("StoreType"))
 	$("#additem").click(function(){
 				loadpage("#content","add_item.php");				
 			});
-	$("#StoreItemList").click(function(){
-				loadpage("#content","StoreTakenItemList.php");
-			});
+
 	$('#BackToManage').click(
 		function()
 		{	
@@ -63,6 +62,23 @@ if(!$StoreType=$session->get_value("StoreType"))
 		{	
 			loadpage("#content","MyItem.php");
 		});
+	$('#Setting').click(
+		function(){
+				loadpage("#content","StoreSetting.php");
+			});
+
+	$("#EndBusiness").click(
+		function()
+		{
+			check=confirm("你確定要結束營業嗎?");
+			if(check)
+			{
+				loadpage("#content","EndBusiness.php");
+			}
+		});
+	
+
+
 	$('#Logout').click(
 		function()
 		{	

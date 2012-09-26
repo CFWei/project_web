@@ -112,4 +112,4 @@ $db->query($query);
 				
 </div>
 
-總金額: <?php //echo $TotalCost ?> 元
+總金額: <?php echo $TotalCost ?> 元

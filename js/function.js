@@ -1,5 +1,6 @@
 
 //控制ControlBar和scroll一起移動
+/*
 $().ready(function() {  
  var $scrollingDiv = $("#ControlBar"); // #scrollingDiv請改成自己要移動的元素 
  $(window).scroll(function(){ 
@@ -8,7 +9,7 @@ $().ready(function() {
    .animate({"marginTop": ($(window).scrollTop() + 30) + "px"}, "slow" );   
  });
 });
-
+*/
 
 //login.html的選擇器
 function gopage(choose)
@@ -157,19 +158,24 @@ function loadpage(DivName,LoadPage,parameter)
 		
 		$(DivName).load(LoadPage,function(){
 			$('#ItemTable').hide();
-		
+			var wid="95%";
 			if(parameter=="1")
+			
 				var heig=$('#ItemTable').height()+30;
+				
 			if(parameter=="2")
-				{
+				{	
 					var heig=$('#Type2Block').height()+30;
 					if(heig=="30")
+					{
 						heig="120";
+						wid="50%";
+					}
 				}
 			
 			$("#content").animate({
 					height:heig, 
-					width:"903px",
+					width:wid,
 				      },800,function(){$('#ItemTable').fadeIn(400);});
 			
 			});
@@ -239,6 +245,31 @@ function loadpage(DivName,LoadPage,parameter)
 	else if(DivName=="#RightBlock"&&LoadPage=="ChooseCustomItem.php")
 	{	
 		$(DivName).load(LoadPage,{"CustomNumber":parameter.CustomNumber});
+	}
+	else if(DivName=="#content"&&LoadPage=="StoreTakenItemList.php")
+	{
+		$(DivName).load(LoadPage,{},function(){
+					
+			var heig=$('#StoreItemListTable').height()+60;
+			$("#content").animate({
+					height:heig,
+					width:"800px",
+				      },800,function(){});
+					
+					});
+	
+
+	}
+	else if(DivName=="#content"&&LoadPage=="StoreSetting.php")
+	{
+		$(DivName).load(LoadPage,{},function(){
+					
+			$("#content").animate({
+					height:"300px",
+					width:"800px",
+				      },800,function(){});
+					
+					});
 	}
 	else
 	{	
@@ -318,7 +349,7 @@ function StartBusiness()
 		  url: 'StartBusiness.php',
 		  statusCode:{
 				200:function(){
-					loadpage("#content","managepage.php");
+					loadpage("#content","managepage.php","2");
 						;}
 				},
 		  dataType: "txt"
@@ -407,15 +438,21 @@ function Type2NextValue(SelectNumber,ItemID)
 		  statusCode:{
 				200:function(data)
 					{	
-						if(data!=-1)
-							$('#NumberSelector').children("[value="+SelectNumber+"]").remove();
-						if(data>0)
+						if(data==-2)
 						{
-							
-							$('#NumberSelector').children("[value="+data+"]").attr("selected","selected");
-							loadpage("#RightBlock","ChooseCustomItem.php",{"CustomNumber":data});
-							//$('#RightBlock').html("");
+							alert("此號碼正在被服務");
+							return ;
 						}
+	
+						$('#NumberSelector').children("[value="+data.Now_Value+"]").remove();
+						
+						$('#NumberSelector').children("[value="+data.Number+"]").attr("selected","selected");
+						$('#NowValue').html(data.Number);
+						loadpage("#RightBlock","ChooseCustomItem.php",{"CustomNumber":data.Number});
+						//$('#RightBlock').html("");
+						
+						
+						
 					}
 			     },
 		  dataType: "json"
@@ -423,3 +460,30 @@ function Type2NextValue(SelectNumber,ItemID)
 
 
 }
+
+function FullScreenUpdateValue(Item_Id)
+{	
+		$.ajax({
+		  type: 'POST',
+		  url: 'updatevalue.php',
+		  data: {"Item_Id":Item_Id,"Type":"2"},
+		  statusCode:{
+				200:function(data){
+						if(data.WaitCustomValue!=-1)
+							$('#FullScreenWaitValue').html(data.WaitCustomValue.length);
+						else
+							$('#FullScreenWaitValue').html("0");
+						$('#FullScreenNowValue').html(data.NowValue);
+
+						$('#FullScreenValue').html(data.Value);
+						
+						
+						}
+						
+				},
+		  dataType: "json"
+		});
+
+	//window.setTimeout('FullScreenUpdateValue("'+Item_Id+'");', 2000);
+}
+

@@ -1,4 +1,4 @@
-body
+#IndexPage
 {
 	background:#000 url(images/img07.jpg) no-repeat left top;
 	font: normal .90em 'times', arial, sans-serif;	
@@ -26,7 +26,7 @@ body
 	height:220px;
 	/*height:500px;*/
 
-	margin:0 auto;
+	margin:10px auto;
 	/*
 	position:relative;
 	top:0%;
@@ -78,18 +78,19 @@ body
 	padding-top:0px;
 }
 #ControlBar
-{
+{	
+	/*
 	position:absolute;
 	left:0px;
 	top:30px;
-
+	*/
 	width:0px;
 	height:0px;
 	/*border:solid #f00 10px;*/
 	background:#fff;
-	margin-top:30px;
-	margin-left:10px;
-	border-radius:50px;
+	/*margin-top:30px;*/
+	margin:0 auto;
+	/*border-radius:50px;*/
 	border-width:auto;
 	border-style:inset;
 	border-color:red;
@@ -145,10 +146,6 @@ body
 	border:double;
 }
 
-#Type2Block
-{
-
-}
 
 #RegisterTitle
 {
@@ -287,8 +284,10 @@ body
 {
 	width:800px;
 	height:450px;
+
 	border:5px solid;
 	margin:0 auto;
+	margin-top:15px;
 
 }
 #LeftBlock
@@ -362,7 +361,7 @@ body
 	text-align:center;
 	margin:0 auto;
 	padding-top:15px;
-	font-size:30px;
+	font-size:25px;
 
 
 }
@@ -378,12 +377,20 @@ body
 	display:table-cell;
 	border:solid 1px; 
 }
+#ItemListBlock .ItemListTr .ItemContentTd
+{
+	display:table-cell;
+	border:solid 1px; 
+	font-size:20px;
+}
+
 /*******************/
 /*controlbar.html*/
+
 #controlbarcontent
 {
-	padding-top:30px;
 	overflow:hidden;
+	margin:5px auto;
 	
 }
 .controlbarbutton
@@ -393,8 +400,6 @@ body
 	font-size:23px;
 	border:solid 3px;
 	border-radius:5px;
-	overflow:hidden;
-	
 }
 
 
@@ -423,7 +428,7 @@ body
 {	
 	display:table-cell;
 	border:solid;
-	font-size:30px;
+	font-size:20px;
 }
 .SkipButton
 {
@@ -466,7 +471,7 @@ body
 
 }
 
-/*StoreItemList.php*/
+/*StoreTakenItemList.php*/
 
 #StoreItemList
 {
@@ -490,4 +495,91 @@ body
 
 
 }
+
+
+#StoreItemListTable
+{
+	display:table;
+	margin:10px auto;	
+	text-align:center;
+	vertical-align:middle;
+	width:500px;
+	height:300px;
+
+
+}
+#StoreItemListTable .StoreItemListTableTr
+{
+	display:table-row;
+
+
+}
+#StoreItemListTable .StoreItemListTableTr .StoreItemListTableTd
+{
+	display:table-cell;
+
+}
+/*FullScreen.php*/
+#FullScreen
+{
+	
+}
+#StoreNameColumn
+{	
+	height:15%;	
+
+	text-align:center; 
+	vertical-align:middle;
+	font-size:130px; 
+}
+
+
+#ItemInformation
+{
+	font-size:500px; 
+	height:70%;
+	text-align:center; 
+	vertical-align:middle;
+}
+
+#OtherContent
+{	
+	height:10%;
+	font-size:50px; 
+
+}
+
+#ValueSpan
+{
+	margin-left:50%; 
+
+}
+/*StoreSetting.php*/
+
+#StoreSettingTable
+{
+	display:table;
+	border:solid 1px;
+	margin:10px auto;
+}
+
+#StoreSettingTable .StoreSettingTableTr
+{
+	display:table-row;
+	border:solid 1px;
+}
+
+
+#StoreSettingTable .StoreSettingTableTr .StoreSettingTableTd
+{
+	display:table-cell;
+	border:solid 1px;
+}
+#StoreSettingTable .StoreSettngFont
+{
+	font-size:40px;
+	width:280px;
+
+}
+
 

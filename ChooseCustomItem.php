@@ -79,7 +79,7 @@ $db->query($query);
 					
 					echo '<div class="ItemListTr">';
 				
-					echo '<div class="ItemListTd">';
+					echo '<div class="ItemContentTd">';
 					$Record=0;
 					
 					for($i=0;$i<count($TakenItemIDList);$i++)
@@ -95,11 +95,11 @@ $db->query($query);
 					
 					echo '</div>';
 
-					echo '<div class="ItemListTd">';
+					echo '<div class="ItemContentTd">';
 					echo $NeedValue;
 					echo '</div>';
 					
-					echo '<div class="ItemListTd">';
+					echo '<div class="ItemContentTd">';
 					echo $TakenItemPriceList[$Record];
 					echo '</div>';
 

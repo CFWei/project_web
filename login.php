@@ -65,12 +65,12 @@ if($ID!=""&&$PASSWD!="")
 
 function changepage($StoreType)
 {	
-		
+		//120 270
 		echo '<script>
 		loadpage("#content","managepage.php","'.$StoreType.'");
 		$("#ControlBar").animate({
-						width:"120px",
-						height:"270px",
+						width:"900px",
+						height:"50px",
 						borderWidth:"5px"
 					 },800);
 		loadpage("#ControlBar","controlbar.php");
