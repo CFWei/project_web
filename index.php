@@ -12,14 +12,15 @@
 <script type="text/javascript" src="js/function.js"></script>
 <script type="text/javascript" src="js/jquery-impromptu.4.0.js"></script>
 </head>
-<body>
+<body id="IndexPage">
 <div id="main">
 	<div id="header">
 		<div id="title">
 			TAKE A NUMBER SYSTEM
 		</div>
 	</div>
-
+	<div id="ControlBar">
+	</div>
 	<div id="content">
 
 	</div>
@@ -30,11 +31,10 @@
 	<div id="footer">
 		Copyright (c) 2012 Sitename.com. All rights reserved. Design by CFWei.		
 	</div>
-	<div id="ControlBar">
-	</div>
+	
 </div>
 <script>
-
+	FullScreenUpdateValue();
 </script>
 </body>
 </html>

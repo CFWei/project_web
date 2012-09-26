@@ -13,33 +13,31 @@ $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']
 
 $Number=$_POST['Number'];
 $ItemID=$_POST['ItemID'];
-if($Number!=""&&$ItemID!="")
-	{
-		$query="UPDATE custom_information SET life='1' where store='".$SerialNumbers."' and item='".$ItemID."' and number='".$Number."'";
-		$db->query($query);
-	}
 
-
-$query="SELECT * FROM custom_information where store='".$SerialNumbers."' and item='".$ItemID."' and life='0' order by number";
+$query="SELECT Now_Value FROM ".$SerialNumbers." WHERE ID='".$ItemID."'";
 $db->query($query);
 
-$NextValue=-2;
+$temp=$db->fetch_array();
+$Now_Value=$temp['Now_Value'];
 
-while($temp=$db->fetch_array())
+//表示此商品正在被服務 傳回-2
+if($Now_Value==$Number)
 {
-	if($temp['number']>$Number)
-	{
-		$NextValue=$temp['number'];
-		break;
-	}
-}
-echo $NextValue;
-
-if($NextValue!=-2)
-{
-	$query="UPDATE `".$SerialNumbers."` SET `Now_Value`=\"".$NextValue."\" where `ID` =\"".$ItemID."\"";
-	$db->query($query);
+	echo "-2";
+	exit;	
 
 }
+
+$query="UPDATE custom_information SET `life` = 1 where `store` ='".$SerialNumbers."' and item ='".$ItemID."' and number ='".$Now_Value."'";
+$db->query($query);
+
+$query="UPDATE `".$SerialNumbers."` SET `Now_Value`=\"".$Number."\" where `ID` =\"".$ItemID."\"";
+$db->query($query);
+
+$output['Now_Value']=$Now_Value;
+$output['Number']=$Number;
+
+
+echo json_encode($output);
 
 ?>
