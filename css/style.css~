@@ -172,7 +172,8 @@
 	display:table;
 	/*border:solid;*/
 	text-align:center;
-	margin-top:30px;
+	margin:30px auto;
+	
 
 
 }
@@ -200,7 +201,7 @@
 {	
 	z-index: 1; 
 	text-align:left;
-	width:320px;
+	width:350px;
 	height:200px;
 	border-style:ridge;
 	border-width:8px;
@@ -214,12 +215,12 @@
 .InformationBlock
 {
 	float:left;
-	width:70%;
+	width:69%;
 	margin:0 0 0 0;
 }
 .ItemTop
 {
-	width:100%;
+	width:99%;
 	height:80%;
 	text-align:center;
 
@@ -245,7 +246,7 @@
 
 .ItemButtom
 {
-	width:100%;
+	width:99%;
 	height:20%;
 	
 }
@@ -267,7 +268,7 @@
 }
 .ControlBlock
 {
-	width:29.6%;
+	width:30.1%;
 	height:100%;
 	float:right;
 	border-left:solid 2px;
@@ -280,6 +281,8 @@
 	font-size:20px;
 	margin:0 0 0 0;
 }
+
+
 #Type2Block
 {
 	width:800px;
@@ -308,7 +311,7 @@
 #NumberBlock
 {	
 	width:98%;
-	height:33%;
+	height:32%;
 	border:2px solid red;
 
 	/*
@@ -338,7 +341,7 @@
 #ControlBlock
 {	
 	width:98%;
-	height:33%;
+	height:32.5%;
 	border:2px solid green;
 	/*
 	width:100px;
@@ -384,6 +387,7 @@
 	font-size:20px;
 }
 
+
 /*******************/
 /*controlbar.html*/
 
@@ -428,7 +432,7 @@
 {	
 	display:table-cell;
 	border:solid;
-	font-size:30px;
+	font-size:20px;
 }
 .SkipButton
 {

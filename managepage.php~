@@ -158,7 +158,7 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 			<div>等候人數:<span id="WaitValue">9999</span></div>
 		</div>
 		<div id="ControlBlock">
-			<button id="CallNumber" style="width:100%; height:40%; font-size:30px;">叫號</button>
+			<button id="CallNumber" style="width:100%; height:100%; font-size:30px;">叫號</button>
 		</div>
 	</div>
 
