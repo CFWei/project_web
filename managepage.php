@@ -200,6 +200,7 @@ $("#NumberSelector").change(function()
 $('#CallNumber').click(function()
 		{	
 			var Number=$('#NumberSelector').children("[selected]").val();
+
 			Type2NextValue(Number,'<?php echo $ItemID ?>');
 		});
 GetValue('<?php echo $ItemID ?>');
