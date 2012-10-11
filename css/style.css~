@@ -172,7 +172,7 @@
 	display:table;
 	/*border:solid;*/
 	text-align:center;
-	margin:30px auto;
+	margin:20px auto;
 	
 
 
@@ -384,7 +384,7 @@
 {
 	display:table-cell;
 	border:solid 1px; 
-	font-size:20px;
+	font-size:10px;
 }
 
 
