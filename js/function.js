@@ -399,15 +399,25 @@ function GetValue(Item_Id)
 												var flag=0;
 												for(i=0;i<data.WaitCustomValue.length;i++)
 												{	
+													
 													if(data.WaitCustomValue[i]==$(this).val())
 													{	
 														flag=1;
 														break;
 													}
 												}
+
 												if(flag==0)
-													;//$(this).remove();
+													{
+														
+														$(this).remove();
+
+													}
 											});
+						}
+						else
+						{
+							NumberSelector.children().remove();
 						}
 						if(data.WaitCustomValue!=-1)
 							$('#WaitValue').html(data.WaitCustomValue.length);
@@ -486,4 +496,20 @@ function FullScreenUpdateValue(Item_Id)
 
 	//window.setTimeout('FullScreenUpdateValue("'+Item_Id+'");', 2000);
 }
+function CloseCustomItemWindow(SelectNumber)
+{
+	$.ajax({
+		  type: 'POST',
+		  url: 'CloseCustomItemWindow.php',
+		  data: {"Number":SelectNumber},
+		  statusCode:{
+				200:function(data){
+						
+						
+						}
+						
+				},
+		  dataType: "json"
+		});
 
+}

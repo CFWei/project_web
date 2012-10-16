@@ -157,7 +157,7 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 			<div>等候人數:<span id="WaitValue">9999</span></div>
 		</div>
 		<div id="ControlBlock">
-			<button id="CallNumber" style="width:100%; height:100%; font-size:30px;">叫號</button>
+			<button id="CallNumber" style="width:99%; height:99%; font-size:30px;">叫號</button>
 		</div>
 	</div>
 
@@ -166,6 +166,7 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 <script>
 $("#NumberSelector").change(function()
 {	
+	
 	var Count=$(this).children("[selected]").size();
 	if(Count>1)
 	{
@@ -175,7 +176,8 @@ $("#NumberSelector").change(function()
 	}
 	
 	if(Count!=0)
-	{
+	{	
+		
 		$(this).children("[selected]").each(function(){
 						
 						loadpage("#RightBlock","ChooseCustomItem.php",{"CustomNumber":$(this).val()});
@@ -183,7 +185,8 @@ $("#NumberSelector").change(function()
 					});
 	}
 	if(Count==0)
-	{
+	{	
+
 		var Count=$(this).children().size();
 		if(Count==1)
 		{
@@ -196,11 +199,35 @@ $("#NumberSelector").change(function()
 
 	}
 });
+
+
 $('#CallNumber').click(function()
 		{	
 			var Number=$('#NumberSelector').children("[selected]").val();
-			Type2NextValue(Number,'<?php echo $ItemID ?>');
+			if(!Number==undefined)
+			{
+				Type2NextValue(Number,'<?php echo $ItemID ?>');
+			}
+			else
+			{
+				var Count=$('#NumberSelector').children().size();
+				if(Count==1)
+				{
+					$('#NumberSelector').children().each(function()
+										{
+											if($(this).attr("selected")==undefined)
+												alert("請選取號碼");
+											else
+												Type2NextValue($(this).val(),'<?php echo $ItemID ?>');
+										});
+				}
+				else
+					alert("請選取號碼");
+			}
 		});
+
+
+
 GetValue('<?php echo $ItemID ?>');
 </script>
 

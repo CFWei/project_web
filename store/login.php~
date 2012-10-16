@@ -21,7 +21,7 @@ if($db->get_num_rows()!=1)
 
 else
 {
-	$temp[]=$db->fetch_assoc();
+	$temp=$db->fetch_assoc();
 	echo json_encode($temp);
 }
 
