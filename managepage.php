@@ -30,8 +30,7 @@ if($StoreType=="1")
 	$query="SELECT * FROM ".$SerialNumbers." WHERE State !='DIE'";
 	$db->query($query);
 	while($ItemData=$db->fetch_array())
-	{	
-		
+	{			
 		$ItemID=$ItemData['ID'];
 		$ItemName=$ItemData['Name'];
 		$ItemValue=$ItemData['Value'];
