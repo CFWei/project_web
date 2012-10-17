@@ -16,6 +16,10 @@ $ItemID=$_POST['ItemID'];
 $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
+//$query="SELET FROM 'custom_information' where store ='".$SerialNumbers."' and item='".$ItemID."'";
+
+
+
 $query="UPDATE ".$SerialNumbers." SET State='DIE' where `ID`='".$ItemID."'";
 $db->query($query);
 
