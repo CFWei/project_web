@@ -17,8 +17,8 @@ $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
 //$query="SELET FROM 'custom_information' where store ='".$SerialNumbers."' and item='".$ItemID."'";
-
-
+$query="UPDATE custom_information SET life ='1' where store='".$SerialNumbers."' and item ='".$ItemID."'";
+$db->query($query);
 
 $query="UPDATE ".$SerialNumbers." SET State='DIE' where `ID`='".$ItemID."'";
 $db->query($query);

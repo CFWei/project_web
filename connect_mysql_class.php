@@ -69,7 +69,6 @@ class DB
     	}
     	
     	$sql="CREATE TABLE ".$tablename." (".$table_content.");";
-    	
     	$result=$this->query($sql);
     	if($result)
     		return true;

@@ -40,9 +40,15 @@ if(!$db->query($query))
 $query="INSERT INTO  `custom_information` (  `custom_id` ,  `store` ,  `item` ,  `number` )  VALUES ('".$UserIMEI."','".$SerialNumbers."','".$ItemId."','".$takevalue."')";
 
 if(!$db->query($query))
+{
 	echo "fail";
-else
-	echo $takevalue;
+	exit;
+}
+
+
+
+
+echo $takevalue;
 
 
 

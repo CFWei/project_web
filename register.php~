@@ -29,10 +29,15 @@
 				$insert_cloumn.=",";
 				$insert_value.=",";
 			}
-	
+			
 			//將值串接上去
 			$insert_cloumn.="`".$column."`";
 			$insert_value.="'".$value."'";
+
+
+			if($column=="StoreType")
+				$StoreType=$value;
+				
 		}
 		
 		if($check==0)
@@ -54,7 +59,13 @@
 
 			$data=array("ID varchar(20)","Name varchar(30)","State varchar(20)","Value int(255)","Now_Value int(255)");
 			$db->create_table($SerialNumbers,$data);
-
+						
+			if($StoreType=="2")
+			{
+				$data=array("ItemID varchar(30)","CustomID varchar(30)","GroupID int(255)","Life int(255)","Time varchar(50)","Quantity int(255)");
+				$db->create_table("Type2".$SerialNumbers,$data);		
+			}
+	
 			if($result)
 			{
 				//echo"註冊成功";
@@ -121,7 +132,7 @@
 						{"UserID":UserID,"UserPassword":UserPassword,
 						"StoreName":StoreName,"StoreTelephone":StoreTelephone,
 						"StoreAddress":StoreAddress,"GPS_Latitude":GPS_Latitude,
-						"GPS_Longitude":GPS_Longitude										
+						"GPS_Longitude":GPS_Longitude,"StoreType":StoreType										
 						});	
 
 			});

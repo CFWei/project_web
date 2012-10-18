@@ -143,7 +143,11 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 ?>
 <div id="Type2Block">
 	<div id="RightBlock">
-			
+		<div id="CustomItemListBlock">
+		</div>
+		<div id="ItemQueueBlock">
+		</div>
+
 	</div>
 	<div id="LeftBlock">
 		<div id="NumberBlock">
@@ -180,7 +184,7 @@ $("#NumberSelector").change(function()
 		
 		$(this).children("[selected]").each(function(){
 						
-						loadpage("#RightBlock","ChooseCustomItem.php",{"CustomNumber":$(this).val()});
+						loadpage("#CustomItemListBlock","ChooseCustomItem.php",{"CustomNumber":$(this).val()});
 						
 					});
 	}
@@ -192,7 +196,7 @@ $("#NumberSelector").change(function()
 		{
 			$(this).children().each(function(){
 						
-						loadpage("#RightBlock","ChooseCustomItem.php",{"CustomNumber":$(this).val()});
+						loadpage("#CustomItemListBlock","ChooseCustomItem.php",{"CustomNumber":$(this).val()});
 						
 					});
 		}

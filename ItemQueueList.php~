@@ -1,0 +1,27 @@
+<?php
+
+require_once("session.php");
+$session=new session();
+
+if(!$SerialNumbers=$session->get_value("SerialNumbers"))
+{
+	echo "******************取得SerialNumbers失敗******************";
+	exit();
+}
+
+require_once("connect_mysql_class.php");
+require_once("mysql_inc.php");
+
+$db=new DB();
+$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+
+$query="SELET * FROM Type2".$SerialNumbers;
+echo $query;
+//$db->query($query);
+
+
+
+
+
+
+?>

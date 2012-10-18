@@ -417,7 +417,7 @@ function GetValue(Item_Id)
 						}
 						else
 						{
-							NumberSelector.children().remove():
+							NumberSelector.children().remove();
 						}
 						if(data.WaitCustomValue!=-1)
 							$('#WaitValue').html(data.WaitCustomValue.length);

@@ -117,7 +117,7 @@ $db->query($query);
 $('#CloseCustomItemWindow').click(function()
 		{	
 			//清除rightblock
-			$('#RightBlock').html("");
+			$('#CustomItemListBlock').html("");
 
 			var Number=$('#NumberSelector').children("[selected]").val();
 			if(!Number==undefined)
@@ -132,7 +132,7 @@ $('#CloseCustomItemWindow').click(function()
 					$('#NumberSelector').children().each(function()
 										{
 											if($(this).attr("selected")==undefined)
-												alert("請選取號碼");
+												;
 											else
 												CloseCustomItemWindow($(this).val());
 										});

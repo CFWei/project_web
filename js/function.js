@@ -242,7 +242,7 @@ function loadpage(DivName,LoadPage,parameter)
 					
 					});
 	}
-	else if(DivName=="#RightBlock"&&LoadPage=="ChooseCustomItem.php")
+	else if(DivName=="#CustomItemListBlock"&&LoadPage=="ChooseCustomItem.php")
 	{	
 		$(DivName).load(LoadPage,{"CustomNumber":parameter.CustomNumber});
 	}

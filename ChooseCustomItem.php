@@ -116,8 +116,8 @@ $db->query($query);
 <script>
 $('#CloseCustomItemWindow').click(function()
 		{	
-			//清除rightblock
-			$('#RightBlock').html("");
+			//清除CustomItemListBlock
+			$('#CustomItemListBlock').html("");
 
 			var Number=$('#NumberSelector').children("[selected]").val();
 			if(!Number==undefined)
