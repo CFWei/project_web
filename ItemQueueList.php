@@ -1,5 +1,4 @@
 <?php
-
 require_once("session.php");
 $session=new session();
 
@@ -23,11 +22,9 @@ while($temp=$db->fetch_array())
 	echo $temp['ItemID']." ".$temp['Quantity'];
 	echo "<button>完成</button>";
 	echo "<br>";
-
 }
 
-
-
-
-
 ?>
+<script>
+	
+</script>
