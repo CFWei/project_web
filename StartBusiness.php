@@ -39,6 +39,10 @@ for($i=0;$i<10;$i++)
 $query="INSERT INTO `".$SerialNumbers."`(`ID`,`Name`,`State`,`Value`,`Now_Value`) VALUES ('".$item_id."','TYPE2','STOP','0','0')";
 $db->query($query);
 
+$data=array("Num int PRIMARY KEY AUTO_INCREMENT","ItemID varchar(30)","CustomID varchar(30)","GroupID int(255) DEFAULT 0","Life int(255) DEFAULT 0","Quantity int(255)");
+$db->create_table("Type2".$item_id,$data);
+
+
 echo '1';
 
 ?>

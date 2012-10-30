@@ -62,8 +62,7 @@
 						
 			if($StoreType=="2")
 			{
-				$data=array("ItemID varchar(30)","CustomID varchar(30)","GroupID int(255)","Life int(255)","Time varchar(50)","Quantity int(255)");
-				$db->create_table("Type2".$SerialNumbers,$data);		
+						
 			}
 	
 			if($result)

@@ -285,8 +285,8 @@
 
 #Type2Block
 {
-	width:800px;
-	height:450px;
+	width:1100px;
+	height:650px;
 
 	border:5px solid;
 	margin:0 auto;
@@ -297,34 +297,39 @@
 {	
 	width:25%;
 	height:100%;
-	border:1px double;
+	/*border:1px solid;*/
+	border-right:5px solid;
 
 }
 
 #RightBlock
 {	
-	width:75%;
+	width:50%;
 	height:100%;
 	float:right;
-	border:1px double blue;
+	/*border:1px double;*/
 }
 #CustomItemListBlock
 {
 	width:100%;
-	height:70%;
-	border:2px solid;
+	height:99%;
+	/*border:2px solid;*/
+	overflow:auto;
 }
 #ItemQueueBlock
 {
-	width:100%;
-	height:29%;
-	border:2px solid;
+	width:24%;
+	height:100%;
+	float:right;
+	/*border:1px solid;*/
+	border-left:5px solid;
+	overflow:hidden;
 }
 #NumberBlock
 {	
-	width:98%;
-	height:32%;
-	border:2px solid red;
+	width:99%;
+	height:42%;
+	border:2px solid;
 
 	/*
 	width:100px;
@@ -345,16 +350,16 @@
 }
 #StatusBlock
 {
-	width:98%;
-	height:33%;
-	border:2px solid yellow;
+	width:99%;
+	height:24%;
+	border:1px solid;
 
 }
 #ControlBlock
 {	
-	width:98%;
-	height:32.5%;
-	border:2px solid green;
+	width:99%;
+	height:33%;
+	border:2px solid;
 	/*
 	width:100px;
 	height:100px;
@@ -598,4 +603,21 @@
 
 }
 
+#StoreItemQueueList
+{
+	display:inline-table;
+	margin-top:10px;
+}
+#StoreItemQueueList .StoreItemQueueListTr
+{
+	display:table-row;
+	height:60px;
 
+
+}
+.StoreQueueFinishButton
+{
+	width:200px;
+	height:50px;
+	font-size:30px;
+}

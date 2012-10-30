@@ -1,7 +1,7 @@
 
 <html>
 <head>
-
+<title></title>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 <link href="css/style.css" rel=stylesheet type="text/css" >
 <link href="css/imprompt.css" rel="stylesheet" type="text/css" media="screen" />
@@ -19,7 +19,8 @@
 			TAKE A NUMBER SYSTEM
 		</div>
 	</div>
-
+	<div id="ControlBar">
+	</div>
 	<div id="content">
 
 	</div>
@@ -30,8 +31,7 @@
 	<div id="footer">
 		Copyright (c) 2012 Sitename.com. All rights reserved. Design by CFWei.		
 	</div>
-	<div id="ControlBar">
-	</div>
+	
 </div>
 <script>
 	FullScreenUpdateValue();

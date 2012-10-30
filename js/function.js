@@ -384,12 +384,12 @@ function GetValue(Item_Id)
 						{
 							for(i=0;i<data.WaitCustomValue.length;i++)
 							{
-								var Number=NumberSelector.children("option[value='"+data.WaitCustomValue[i]+"']").size();
+								var Number=NumberSelector.children("option[value='"+data.WaitCustomValue[i].number+"']").size();
 							
 								if(Number==0)
 								{	
 									
-						NumberSelector.append(new Option(data.WaitCustomValue[i]+"號", data.WaitCustomValue[i], false, false));
+									NumberSelector.append(new Option(data.WaitCustomValue[i].number+"號"+"("+data.WaitCustomValue[i].TotalCost+"元)", data.WaitCustomValue[i].number, false, false));
 								}
 							}
 							//檢查是否有已不在server上的資料 若有則remove()
@@ -400,7 +400,7 @@ function GetValue(Item_Id)
 												for(i=0;i<data.WaitCustomValue.length;i++)
 												{	
 													
-													if(data.WaitCustomValue[i]==$(this).val())
+													if(data.WaitCustomValue[i].number==$(this).val())
 													{	
 														flag=1;
 														break;
@@ -458,7 +458,7 @@ function Type2NextValue(SelectNumber,ItemID)
 						
 						$('#NumberSelector').children("[value="+data.Number+"]").attr("selected","selected");
 						$('#NowValue').html(data.Number);
-						loadpage("#RightBlock","ChooseCustomItem.php",{"CustomNumber":data.Number});
+						loadpage("#CustomItemListBlock","ChooseCustomItem.php",{"CustomNumber":data.Number});
 						//$('#RightBlock').html("");
 						
 						
@@ -513,3 +513,103 @@ function CloseCustomItemWindow(SelectNumber)
 		});
 
 }
+function GetStoreItemQueue()
+{	
+	var StoreItemQueueList=$('#StoreItemQueueList');
+	$.ajax({
+		  type: 'POST',
+		  url: 'ItemQueueListUpdate.php',
+		  data: {},
+		  statusCode:{
+				200:function(data){	
+							
+							
+							for(var key in data)
+							{	
+								$button = $("<button class=\"StoreQueueFinishButton\" name=\""+data[key].Num+"\">"+data[key].Name+" "+data[key].Quantity+"</button>");
+								$button.bind("click",FinishItemQueue);
+								
+								var Number=StoreItemQueueList.find("[name='"+data[key].Num+"']").size();
+								if(Number==0)
+								{	
+									StoreItemQueueList.append($button);
+									
+									for(var i=0;i<10;i++)
+									{
+										var tempsize=$('.StoreItemButtonBlock').eq(i).children().size();
+										if(tempsize==0)
+										{
+											$('.StoreItemButtonBlock').eq(i).append($button);
+											break;
+										}
+												
+									}
+										
+
+									
+								}
+								
+								
+				
+							}
+							
+						
+						}
+						
+				},
+		  dataType: "json"
+		});
+	window.setTimeout('GetStoreItemQueue();', 2000);
+}
+function FinishItemQueue()
+{
+	var Num=$(this).attr("name");
+	var Button = $(this);
+	Button.remove();
+	
+	$.ajax({
+		  type: 'POST',
+		  url: 'ItemQueueFinish.php',
+		  data: {'Num':Num},
+		  statusCode:{
+				200:function(data){	
+							
+							Button.remove();
+							$('#ItemQueueBlock').load("ItemQueueList.php");
+
+							var Count=$('#NumberSelector').children("[selected]").size();
+							if(Count!=0)
+							{	
+								var Number=$('#NumberSelector').children("[selected]").val();
+								//alert($('#NumberSelector').val());
+								loadpage("#CustomItemListBlock","ChooseCustomItem.php",{"CustomNumber":Number});
+							}
+							else
+							{	/*
+								var Count=$('#NumberSelector').children().size();
+								if(Count==1)
+								{
+									$('#NumberSelector').children().each(function(){
+						
+									loadpage("#CustomItemListBlock","ChooseCustomItem.php",{"CustomNumber":$(this).val()});
+						
+									});
+								}
+								*/
+							}
+							
+							
+							
+						}
+						
+				},
+		  dataType: "text"
+		});
+		
+}
+
+function EmptyQueue()
+{
+
+}
+

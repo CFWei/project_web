@@ -26,7 +26,7 @@ foreach($Jsontemp as $Num=>$ItemData)
 			$NeedValue=$Data;
 		}
 	}
-	$StoreData[]=array('TakenItemID'=>$TakenItemID,'NeedValue'=>$NeedValue);
+	$StoreData[]=array('TakenItemID'=>$TakenItemID,'NeedValue'=>$NeedValue,'Life'=>"0");
 }
 
 $FinalStoreData=json_encode($StoreData);
@@ -80,7 +80,7 @@ foreach($Jsontemp as $Num=>$ItemData)
 			$NeedValue=$Data;
 		}
 	}
-	$query="INSERT INTO  `Type2".$SerialNumbers."` ( `ItemID` , `CustomID`,`Quantity`)  VALUES ('".$TakenItemID."','".$UserIMEI."','".$NeedValue."')";
+	$query="INSERT INTO  `Type2".$ItemID."` ( `ItemID` , `CustomID`,`Quantity`)  VALUES ('".$TakenItemID."','".$UserIMEI."','".$NeedValue."')";
 	$db->query($query);
 }
 	

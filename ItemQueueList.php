@@ -1,30 +1,58 @@
-<?php
-require_once("session.php");
-$session=new session();
+<div style="font-size:30px; color:blue; border-bottom:10px solid black; background-color:yellow;">待做商品</div>
+<div id="StoreItemQueueList">
+	<div class="StoreItemQueueListTr" id="QTd1">
+	<span class="StoreItemButtonBlock">
+	</span>
+</div>
 
-if(!$SerialNumbers=$session->get_value("SerialNumbers"))
-{
-	echo "******************取得SerialNumbers失敗******************";
-	exit();
-}
+<div class="StoreItemQueueListTr" id="QTd2">
+	<span class="StoreItemButtonBlock">
+	</span>
+</div>
 
-require_once("connect_mysql_class.php");
-require_once("mysql_inc.php");
+<div class="StoreItemQueueListTr" id="QTd3">
+	<span class="StoreItemButtonBlock">
+	</span>
+</div>
 
-$db=new DB();
-$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+<div class="StoreItemQueueListTr" id="QTd4">
+	<span class="StoreItemButtonBlock">
+	</span>
+</div>
 
-$query="SELECT ItemID,Quantity,GroupID FROM Type2".$SerialNumbers;
-$db->query($query);
+<div class="StoreItemQueueListTr" id="QTd5">
+	<span class="StoreItemButtonBlock">
+	</span>
+</div>
 
-while($temp=$db->fetch_array())
-{	
-	echo $temp['ItemID']." ".$temp['Quantity'];
-	echo "<button>完成</button>";
-	echo "<br>";
-}
+<div class="StoreItemQueueListTr" id="QTd6">
+	<span class="StoreItemButtonBlock">
+	</span>
+</div>
 
-?>
+<div class="StoreItemQueueListTr" id="QTd7">
+	<span class="StoreItemButtonBlock">
+	</span>
+</div>
+
+<div class="StoreItemQueueListTr" id="QTd8">
+	<span class="StoreItemButtonBlock">
+	</span>
+</div>
+
+<div class="StoreItemQueueListTr" id="QTd9">
+	<span class="StoreItemButtonBlock">
+	</span>
+</div>
+
+<div class="StoreItemQueueListTr" id="QTd10">
+	<span class="StoreItemButtonBlock">
+	</span>
+</div>
+
+
+</div>
+
 <script>
-	
+GetStoreItemQueue();
 </script>

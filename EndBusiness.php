@@ -34,6 +34,9 @@ if($count!=0)
 
 $query="UPDATE ".$SerialNumbers." SET State ='DIE' WHERE ID ='".$ItemID."'";
 $db->query($query);
+
+//刪除此表單
+$query="DROP TABLE Type2".$ItemID;
 ?>
 <script>
 	loadpage("#content","managepage.php","2");

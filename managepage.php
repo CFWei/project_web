@@ -142,16 +142,19 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 
 ?>
 <div id="Type2Block">
+	<div id="ItemQueueBlock">
+			<script>
+					$('#ItemQueueBlock').load("ItemQueueList.php");
+			</script>
+	</div>
+	
 	<div id="RightBlock">
 		<div id="CustomItemListBlock">
 		</div>
-		<div id="ItemQueueBlock">
-		</div>
-
 	</div>
 	<div id="LeftBlock">
 		<div id="NumberBlock">
-			<select id="NumberSelector" multiple="1">
+			<select id="NumberSelector" style="font-size:20px;" multiple="1">
 			</select>
 		</div>
 		<div id="StatusBlock">
@@ -161,9 +164,10 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 			<div>等候人數:<span id="WaitValue">9999</span></div>
 		</div>
 		<div id="ControlBlock">
-			<button id="CallNumber" style="width:99%; height:99%; font-size:30px;">叫號</button>
+			<button id="CallNumber" style="width:99%; height:99%; font-size:70px;">叫號</button>
 		</div>
 	</div>
+	
 
 </div>
 
@@ -193,9 +197,9 @@ $("#NumberSelector").change(function()
 
 		var Count=$(this).children().size();
 		if(Count==1)
-		{
+		{	
 			$(this).children().each(function(){
-						
+						$(this).attr("selected",true);
 						loadpage("#CustomItemListBlock","ChooseCustomItem.php",{"CustomNumber":$(this).val()});
 						
 					});
@@ -208,12 +212,15 @@ $("#NumberSelector").change(function()
 $('#CallNumber').click(function()
 		{	
 			var Number=$('#NumberSelector').children("[selected]").val();
-			if(!Number==undefined)
+			
+			if(Number!=undefined)
 			{
 				Type2NextValue(Number,'<?php echo $ItemID ?>');
+				alert(Number);
 			}
 			else
 			{
+				/*
 				var Count=$('#NumberSelector').children().size();
 				if(Count==1)
 				{
@@ -225,9 +232,11 @@ $('#CallNumber').click(function()
 												Type2NextValue($(this).val(),'<?php echo $ItemID ?>');
 										});
 				}
-				else
+				else*/
 					alert("請選取號碼");
+				
 			}
+				
 		});
 
 

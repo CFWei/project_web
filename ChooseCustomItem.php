@@ -2,7 +2,6 @@
 require_once("session.php");
 $session=new session();
 
-
 if(!$SerialNumbers=$session->get_value("SerialNumbers"))
 {
 	echo "******************取得SerialNumbers失敗******************";
@@ -44,7 +43,9 @@ $db->query($query);
 ?>
 
 
-<div>這是第 <font size="13"><?php echo $_POST['CustomNumber'] ?></font> 號客戶的商品列表<button id="CloseCustomItemWindow">X</button></div>
+<div><span style="font-size:20px">這是第</span> <font size="13" style="color:red;"><?php echo $_POST['CustomNumber'] ?></font> <span style="font-size:20px">號客戶的商品列表</span></div>
+<div><button id="CloseCustomItemWindow">結束服務</button>
+<button id="CancelSelect">取消選取</button></div>
 <div id="ItemListBlock">
 		<div class="ItemListTr">
 			<div class="ItemListTd">
@@ -55,6 +56,9 @@ $db->query($query);
 			</div>
 			<div class="ItemListTd">
 				商品單價
+			</div>
+			<div class="ItemListTd">
+				狀態
 			</div>
 		</div>
 		<?php	
@@ -74,6 +78,9 @@ $db->query($query);
 							$TakenItemID=$Data;
 						if($ItemColumn=="NeedValue")
 							$NeedValue=$Data;
+						if($ItemColumn=="Life")
+							$Life=$Data;
+							
 					}
 					
 					echo '<div class="ItemListTr">';
@@ -101,6 +108,13 @@ $db->query($query);
 					echo '<div class="ItemContentTd">';
 					echo $TakenItemPriceList[$Record];
 					echo '</div>';
+					
+					echo '<div class="ItemContentTd">';
+					if($Life=='0')
+						echo '未完成';
+					if($Life=='1')
+						echo '<span style="color:blue;font-weight:bolder;">已完成</span>';
+					echo '</div>';
 
 					echo '</div>';
 					$TotalCost+=(int)$TakenItemPriceList[$Record]*(int)$NeedValue;
@@ -109,10 +123,10 @@ $db->query($query);
 			}
 		?>
 				
+</div >
+<div style="font-size:30px">
+總金額: <span style="color:red;"><?php echo $TotalCost ?></span> 元
 </div>
-
-總金額: <?php echo $TotalCost ?> 元
-
 <script>
 $('#CloseCustomItemWindow').click(function()
 		{	
@@ -120,7 +134,7 @@ $('#CloseCustomItemWindow').click(function()
 			$('#CustomItemListBlock').html("");
 
 			var Number=$('#NumberSelector').children("[selected]").val();
-			if(!Number==undefined)
+			if(Number!=undefined)
 			{
 				CloseCustomItemWindow(Number);
 			}
@@ -146,5 +160,12 @@ $('#CloseCustomItemWindow').click(function()
 			$('#NumberSelector').children().attr("selected",false);
 
 			
+		});
+$('#CancelSelect').click(function()
+		{
+			$('#NumberSelector').children().attr("selected",false);
+			$('#CustomItemListBlock').html("");
+			
+
 		});
 </script>
