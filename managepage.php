@@ -216,7 +216,7 @@ $('#CallNumber').click(function()
 			if(Number!=undefined)
 			{
 				Type2NextValue(Number,'<?php echo $ItemID ?>');
-				alert(Number);
+			
 			}
 			else
 			{

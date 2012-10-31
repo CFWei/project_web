@@ -220,7 +220,7 @@ $('#CallNumber').click(function()
 			}
 			else
 			{
-				
+				/*
 				var Count=$('#NumberSelector').children().size();
 				if(Count==1)
 				{
@@ -232,7 +232,7 @@ $('#CallNumber').click(function()
 												Type2NextValue($(this).val(),'<?php echo $ItemID ?>');
 										});
 				}
-				else
+				else*/
 					alert("請選取號碼");
 				
 			}
