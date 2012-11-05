@@ -66,14 +66,25 @@ if($ID!=""&&$PASSWD!="")
 function changepage($StoreType)
 {	
 		//120 270
-		echo '<script>
-		loadpage("#content","managepage.php","'.$StoreType.'");
+		/*
 		$("#ControlBar").animate({
 						width:"900px",
 						height:"50px",
 						borderWidth:"5px"
 					 },800);
+		*/
+		echo '<script>
+		loadpage("#content","managepage.php","'.$StoreType.'");
+		
 		loadpage("#ControlBar","controlbar.php");
+		/*
+			<div id="MenuBar">
+		<span style="font-size:30px;">選單</span>
+		</div>*/
+
+		$("#main").append($("<div id=\"MenuBar\">").html("<span style=\"font-size:30px;\">選單</span>").bind({mouseenter:function(){$(this).height("205px");
+					loadpage("#MenuBar","controlbar.php");},mouseleave:function(){		$(this).height("30px");
+					$(this).html("<span style=\"font-size:30px;\">選單</span>");}}));
 		</script>';
 
 }

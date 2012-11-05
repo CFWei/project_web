@@ -96,7 +96,17 @@
 	border-color:red;
 	overflow:hidden;
 }
+#MenuBar
+{
+	width:120px;
+	height:30px;
+	position:absolute;
+	top:7px;
+	right:10px;
+	background:#fff;	
+	border:5px solid red;
 
+}
 .ButtonStyle
 {
 	font-size:25px;

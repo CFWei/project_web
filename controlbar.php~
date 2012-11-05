@@ -30,9 +30,9 @@ if(!$StoreType=$session->get_value("StoreType"))
 		{
 			echo 
 			'
-			<button class="controlbarbutton" id="Setting">設定</button>
+			<button class="controlbarbutton" id="Setting" onclick="SettingButtonEvent()";>設定</button>
 			<button class="controlbarbutton" onclick="self.location.href=\'FullScreen.php\'">全螢幕</button>
-			<button class="controlbarbutton" id="BackToManage">返回主頁</button>
+			<button class="controlbarbutton" id="BackToManage" onclick="BackToManageEvent()">返回主頁</button>
 			<button class="controlbarbutton" id="EndBusiness">結束營業</button>
 			<button class="controlbarbutton" id="Logout">登出</button>
 			';
@@ -43,6 +43,31 @@ if(!$StoreType=$session->get_value("StoreType"))
 </div>
 
 <script>
+	function SettingButtonEvent()
+	{
+		loadpage("#content","StoreSetting.php");
+	};
+
+	function BackToManageEvent()
+	{
+		loadpage("#content","managepage.php","<?php echo $StoreType ?>");
+	};
+		
+	function EndBusinessEvent()
+	{
+		check=confirm("你確定要結束營業嗎?");
+			if(check)
+			{
+				loadpage("#content","EndBusiness.php");
+			}
+	};
+
+	function LogoutEvent()
+	{
+		loadpage("#content","logout.php");
+	};
+
+
 	$("#additem").click(function(){
 				loadpage("#content","add_item.php");				
 			});
@@ -65,6 +90,7 @@ if(!$StoreType=$session->get_value("StoreType"))
 	$('#Setting').click(
 		function(){
 				loadpage("#content","StoreSetting.php");
+			
 			});
 
 	$("#EndBusiness").click(
@@ -73,7 +99,7 @@ if(!$StoreType=$session->get_value("StoreType"))
 			check=confirm("你確定要結束營業嗎?");
 			if(check)
 			{
-				loadpage("#content","StoreSetting.php");
+				loadpage("#content","EndBusiness.php");
 			}
 		});
 	
@@ -83,6 +109,7 @@ if(!$StoreType=$session->get_value("StoreType"))
 		function()
 		{	
 			loadpage("#content","logout.php");
+			$();
 		});
 
 </script>

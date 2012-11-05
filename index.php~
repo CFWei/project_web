@@ -1,7 +1,7 @@
 
 <html>
 <head>
-<title></title>
+<title>Take A Number</title>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 <link href="css/style.css" rel=stylesheet type="text/css" >
 <link href="css/imprompt.css" rel="stylesheet" type="text/css" media="screen" />
@@ -19,8 +19,7 @@
 			TAKE A NUMBER SYSTEM
 		</div>
 	</div>
-	<div id="ControlBar">
-	</div>
+
 	<div id="content">
 
 	</div>
@@ -35,6 +34,16 @@
 </div>
 <script>
 	FullScreenUpdateValue();
+				
+			$('#MenuBar').hover(function(){
+					
+					$(this).height("205px");
+					loadpage('#MenuBar',"controlbar.php");
+				},function(){
+				
+					$(this).height("30px");
+					$(this).html('<span style="font-size:30px;">選單</span>');
+					});
 </script>
 </body>
 </html>

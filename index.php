@@ -19,8 +19,7 @@
 			TAKE A NUMBER SYSTEM
 		</div>
 	</div>
-	<div id="ControlBar">
-	</div>
+
 	<div id="content">
 
 	</div>
@@ -35,6 +34,16 @@
 </div>
 <script>
 	FullScreenUpdateValue();
+					
+			$('#MenuBar').hover(function(){
+					
+					$(this).height("205px");
+					loadpage('#MenuBar',"controlbar.php");
+				},function(){
+				
+					$(this).height("30px");
+					$(this).html('<span style="font-size:30px;">選單</span>');
+					});
 </script>
 </body>
 </html>

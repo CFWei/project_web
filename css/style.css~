@@ -96,7 +96,17 @@
 	border-color:red;
 	overflow:hidden;
 }
+#MenuBar
+{
+	width:120px;
+	height:200px;
+	position:absolute;
+	top:7px;
+	right:10px;
+	background:#fff;	
+	border:5px solid red;
 
+}
 .ButtonStyle
 {
 	font-size:25px;
@@ -328,7 +338,7 @@
 #NumberBlock
 {	
 	width:99%;
-	height:40%;
+	height:42%;
 	border:2px solid;
 
 	/*
@@ -351,7 +361,7 @@
 #StatusBlock
 {
 	width:99%;
-	height:26%;
+	height:24%;
 	border:1px solid;
 
 }
