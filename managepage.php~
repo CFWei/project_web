@@ -144,8 +144,14 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 <div id="Type2Block">
 	<div id="ItemQueueBlock">
 			<script>
-					$('#ItemQueueBlock').load("ItemQueueList.php");
+					//$('#ItemQueueBlock').load("ItemQueueList.php");
 			</script>
+			<div style="border:3px solid red">紅茶
+				<li>1號</li>
+				<li>2號</li>
+			</div>
+
+			
 	</div>
 	
 	<div id="RightBlock">
@@ -174,7 +180,7 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 <script>
 $("#NumberSelector").change(function()
 {	
-	
+	$(".ListBlock").css("background-color","white");
 	var Count=$(this).children("[selected]").size();
 	if(Count>1)
 	{
@@ -188,7 +194,11 @@ $("#NumberSelector").change(function()
 		
 		$(this).children("[selected]").each(function(){
 						
-						loadpage("#CustomItemListBlock","ChooseCustomItem.php",{"CustomNumber":$(this).val()});
+						//loadpage("#CustomItemListBlock","ChooseCustomItem.php",{"CustomNumber":$(this).val()});
+						$('#Num'+$(this).val()).css("background-color","#AFEEEE");
+						var newposition=$('#Num'+$(this).val()).offset().top;
+						//alert(newposition);
+						$('#CustomItemListBlock').scrollTop(newposition-166	);
 						
 					});
 	}
@@ -200,7 +210,7 @@ $("#NumberSelector").change(function()
 		{	
 			$(this).children().each(function(){
 						$(this).attr("selected",true);
-						loadpage("#CustomItemListBlock","ChooseCustomItem.php",{"CustomNumber":$(this).val()});
+						//loadpage("#CustomItemListBlock","ChooseCustomItem.php",{"CustomNumber":$(this).val()});
 						
 					});
 		}
@@ -216,7 +226,7 @@ $('#CallNumber').click(function()
 			if(Number!=undefined)
 			{
 				Type2NextValue(Number,'<?php echo $ItemID ?>');
-				alert(Number);
+			
 			}
 			else
 			{
@@ -242,6 +252,25 @@ $('#CallNumber').click(function()
 
 
 GetValue('<?php echo $ItemID ?>');
+
+
+$(function(){
+	$("li:has(ul)").click(function(e){
+		if(this==e.target){
+			if($(this).children().is(":hidden"))
+			{
+				$(this).css("list-style-image","url(img/minus.gif)").children().show();
+			}
+			else
+			{
+				$(this).css("list-style-image","url(img/plus.gif)").children().hide();
+			}
+
+		}
+		return false;
+
+	}).css("cursor","pointer").click();
+});
 </script>
 
 	

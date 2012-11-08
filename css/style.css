@@ -334,6 +334,7 @@
 	/*border:1px solid;*/
 	border-left:5px solid;
 	overflow:hidden;
+	text-align:left;
 }
 #NumberBlock
 {	

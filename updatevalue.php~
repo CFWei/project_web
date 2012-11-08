@@ -75,11 +75,11 @@ if($Type=="2")
 		while($temp=$db->fetch_array())
 		{	
 			$output['number']=$temp['number'];
-			$output['price']=0;
-			//$Result['WaitCustomValue'][]=$temp['number'];
-			$Result['WaitCustomValue'][]=$output;
-			$SelectItem=json_decode($temp['SelectItem']);
 		
+			//$Result['WaitCustomValue'][]=$temp['number'];
+			
+			$SelectItem=json_decode($temp['SelectItem']);
+			$TotalCost=0;
 			foreach($SelectItem as $ItemTemp=>$ItemData)
 			{		
 				$TakenItemID="";
@@ -108,6 +108,9 @@ if($Type=="2")
 				}
 				$TotalCost+=(int)$TakenItemPriceList[$Record]*(int)$NeedValue;
 			}
+
+			$output['TotalCost']=$TotalCost;
+			$Result['WaitCustomValue'][]=$output;
 			
 
 		}

@@ -44,8 +44,8 @@ $db->query($query);
 
 
 <div><span style="font-size:20px">這是第</span> <font size="13" style="color:red;"><?php echo $_POST['CustomNumber'] ?></font> <span style="font-size:20px">號客戶的商品列表</span></div>
-<div><button id="CloseCustomItemWindow">結束服務</button>
-<button id="CancelSelect">取消選取</button></div>
+<!--<div><button id="CloseCustomItemWindow">結束服務</button>-->
+<!--<button id="CancelSelect">取消選取</button></div>-->
 <div id="ItemListBlock">
 		<div class="ItemListTr">
 			<div class="ItemListTd">

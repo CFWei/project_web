@@ -28,7 +28,7 @@ if($Now_Value==$Number)
 
 }
 
-//$query="UPDATE custom_information SET `life` = 1 where `store` ='".$SerialNumbers."' and item ='".$ItemID."' and number ='".$Now_Value."'";
+$query="UPDATE custom_information SET `life` = 1 where `store` ='".$SerialNumbers."' and item ='".$ItemID."' and number ='".$Now_Value."'";
 //$db->query($query);
 
 $query="UPDATE `".$SerialNumbers."` SET `Now_Value`=\"".$Number."\" where `ID` =\"".$ItemID."\"";

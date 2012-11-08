@@ -79,7 +79,7 @@ if($Type=="2")
 			//$Result['WaitCustomValue'][]=$temp['number'];
 			
 			$SelectItem=json_decode($temp['SelectItem']);
-		
+			$TotalCost=0;
 			foreach($SelectItem as $ItemTemp=>$ItemData)
 			{		
 				$TakenItemID="";
