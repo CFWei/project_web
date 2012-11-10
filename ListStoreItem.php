@@ -35,29 +35,62 @@ while($temp=$db->fetch_array())
 $query="SELECT * FROM Type2".$ItemID;
 $db->query($query);
 
-$output[]=null;
+
 $count=0;
 while($temp=$db->fetch_array())
-{
-	if(in_array($temp['ItemID'],$output))
+{	
+	$data=null;
+	$data['CustomID']=$temp['CustomID'];
+	$data['Quantity']=$temp['Quantity'];
+
+	if($count==0)
 	{
-		echo "1";
-	}	
+		for($i=0;$i<count($TakenItemIDList);$i++)
+		{
+			if($TakenItemIDList[$i]==$temp['ItemID'])
+			{
+				$output[$count]['ItemName']=$TakenItemNameList[$i];
+			}
+		}
+		$output[$count]['ItemID']=$temp['ItemID'];
+		$output[$count]['WaitingCustomData'][]=$data;
+		$count++;
+			
+		
+	}
 	else
 	{
-		$output[$count]['ID']=$temp['ItemID'];
-	}
+		$flag=0;
+		for($i=0;$i<count($output);$i++)
+		{
+			if($output[$i]['ItemID']==$temp['ItemID'])
+			{
+				$output[$i]['WaitingCustomData'][]=$data;
+				$flag=1;
+				break;
+			}
+		}
+		if($flag==0)
+		{
+			for($i=0;$i<count($TakenItemIDList);$i++)
+			{
+				if($TakenItemIDList[$i]==$temp['ItemID'])
+				{
+					$output[$count]['ItemName']=$TakenItemNameList[$i];
+				}
+			}
+			$output[$count]['ItemID']=$temp['ItemID'];
+			$output[$count]['WaitingCustomData'][]=$data;
+			$count++;
+		}
 
-	$data['ItemID']=$temp['ItemID'];
-	$data['Quantity']=$temp['Quantity'];
-	$output[]=$data;
+	}	
 }
 
-function test($value,$array)
-{
-	echo
 
-}
+echo json_encode($output);
+
 
 //print_r($output);
+
 ?>

@@ -635,3 +635,24 @@ function RemoveCustomList(number)
 
 	$('#Num'+number).remove();
 }
+
+function ListStoreItem()
+{
+	
+	$.ajax({
+		  type: 'POST',
+		  url: 'ListStoreItem.php',
+		  data: {},
+		  statusCode:{
+				200:function(data){
+							for(var i=0;i<data.length;i++)							
+							{alert(data[i].ItemName);}
+						
+						}
+						
+				},
+		  dataType: "json"
+		});
+
+
+}

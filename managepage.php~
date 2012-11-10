@@ -145,13 +145,8 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 	<div id="ItemQueueBlock">
 			<script>
 					//$('#ItemQueueBlock').load("ItemQueueList.php");
+					ListStoreItem();
 			</script>
-			<div style="border:3px solid red">紅茶
-				<li>1號</li>
-				<li>2號</li>
-			</div>
-
-			
 	</div>
 	
 	<div id="RightBlock">

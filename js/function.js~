@@ -625,7 +625,7 @@ function UpdateCustomList(number)
 {
 		$("#CustomItemListBlock").append('<div class="ListBlock" id="Num'+number+'"></div>');
 		$('#Num'+number).load('ChooseCustomItem.php',{"CustomNumber":number},function(){
-
+								$(this).append("<hr>");
 							});
 		
 		
@@ -634,4 +634,25 @@ function RemoveCustomList(number)
 {
 
 	$('#Num'+number).remove();
+}
+
+function ListStoreItem()
+{
+	
+	$.ajax({
+		  type: 'POST',
+		  url: 'ListStoreItem.php',
+		  data: {},
+		  statusCode:{
+				200:function(data){
+							for(var i=0;i<data.length;i++)							
+							{alert(data[0].ItemName);}
+						
+						}
+						
+				},
+		  dataType: "json"
+		});
+
+
 }
