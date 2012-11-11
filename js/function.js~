@@ -646,7 +646,7 @@ function ListStoreItem()
 		  statusCode:{
 				200:function(data){
 							for(var i=0;i<data.length;i++)							
-							{alert(data[0].ItemName);}
+							{alert(data[i].ItemName);}
 						
 						}
 						

@@ -637,20 +637,45 @@ function RemoveCustomList(number)
 }
 
 function ListStoreItem()
-{
-	
+{	
 	$.ajax({
-		  type: 'POST',
-		  url: 'ListStoreItem.php',
-		  data: {},
-		  statusCode:{
+		 type: 'POST',
+		 url: 'ListStoreItem.php',
+		 data: {},
+		 statusCode:{
 				200:function(data){
-							for(var i=0;i<data.length;i++)							
-							{alert(data[i].ItemName);}
+					for(var i=0;i<data.length;i++){
+						var ItemName = data[i].ItemName;
+						var ItemID=data[i].ItemID;
 						
+						//建外面的ItemBlock 以ItemID為名字
+						var AppendItem=$('<div name="'+ItemID+'" class="WaitItemBlock"></div>');
+						
+						//建立ItemName Block 並塞入ItemBlock
+						var ItemNameBlock=$('<span class="WaitItemName">'+ItemName+'</span>');
+						AppendItem.append(ItemNameBlock);
+						
+						//將ItemBlock塞入頁面的ItemQueueBlock
+						$('#ItemQueueBlock').append(AppendItem);
+
+						for(var j=0;j<data[i].WaitingCustomData.length;j++){	
+							
+							var CustomData=data[i].WaitingCustomData[j];
+							
+							//建立一個CustomDataBlock
+							var CustomDataBlock=$('<div class="CustomDataBlock"></div>');
+					
+							CustomDataBlock.append('<span class="WaitCustomNum">'+CustomData.CustomNumber+'號</span>');
+							CustomDataBlock.append('<span class="WaitCustomQuan">'+CustomData.Quantity+'個</span>');
+
+							AppendItem.append(CustomDataBlock);
 						}
+
+					}
 						
-				},
+				}
+						
+			},
 		  dataType: "json"
 		});
 

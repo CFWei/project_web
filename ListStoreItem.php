@@ -40,6 +40,14 @@ $count=0;
 while($temp=$db->fetch_array())
 {	
 	$data=null;
+
+	$dbtemp=new DB();
+	$dbtemp->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+	$query="Select number From custom_information where store ='".$SerialNumbers."' and item ='".$ItemID."' and custom_id ='".$temp['CustomID']."' and life='0'";
+	$dbtemp->query($query);
+	$dbtempdata=$dbtemp->fetch_array();
+	
+	$data['CustomNumber']=$dbtempdata['number'];
 	$data['CustomID']=$temp['CustomID'];
 	$data['Quantity']=$temp['Quantity'];
 
