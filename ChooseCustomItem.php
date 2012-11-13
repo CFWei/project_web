@@ -65,7 +65,7 @@ $db->query($query);
 			$TotalCost=0;
 			while(($temp=$db->fetch_assoc())!=null)
 			{
-
+			
 				$SelectItem=json_decode($temp['SelectItem']);
 				foreach($SelectItem as $ItemTemp=>$ItemData)
 				{	
@@ -161,11 +161,5 @@ $('#CloseCustomItemWindow').click(function()
 
 			
 		});
-$('#CancelSelect').click(function()
-		{
-			$('#NumberSelector').children().attr("selected",false);
-			$('#CustomItemListBlock').html("");
-			
 
-		});
 </script>

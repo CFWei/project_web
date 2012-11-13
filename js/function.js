@@ -415,9 +415,10 @@ function GetValue(Item_Id)
 													{
 														
 														
-														alert('hello');
+														
 														RemoveCustomList($(this).val());
 														$(this).remove();
+														
 
 													}
 											});
@@ -425,7 +426,9 @@ function GetValue(Item_Id)
 						else
 						{
 							NumberSelector.children().remove();
-							alert('11');
+							$("#CustomItemListBlock").html("");
+							
+							
 						}
 						if(data.WaitCustomValue!=-1)
 							$('#WaitValue').html(data.WaitCustomValue.length);
@@ -644,40 +647,103 @@ function ListStoreItem()
 		 data: {},
 		 statusCode:{
 				200:function(data){
+					if(data==null){
+						$('#ItemQueueBlock').html("");
+						return;
+					}
+
 					for(var i=0;i<data.length;i++){
 						var ItemName = data[i].ItemName;
 						var ItemID=data[i].ItemID;
-						
-						//建外面的ItemBlock 以ItemID為名字
-						var AppendItem=$('<div name="'+ItemID+'" class="WaitItemBlock"></div>');
-						
-						//建立ItemName Block 並塞入ItemBlock
-						var ItemNameBlock=$('<span class="WaitItemName">'+ItemName+'</span>');
-						AppendItem.append(ItemNameBlock);
-						
-						//將ItemBlock塞入頁面的ItemQueueBlock
-						$('#ItemQueueBlock').append(AppendItem);
+						if($('.WaitItemBlock[name="'+ItemID+'"]').length==0){
+							//建外面的ItemBlock 以ItemID為名字
+							var AppendItem=$('<div name="'+ItemID+'" class="WaitItemBlock"></div>');
+							//建立ItemName Block 並塞入ItemBlock
+							var ItemNameBlock=$('<span class="WaitItemName">'+ItemName+'</span>');
+							AppendItem.append(ItemNameBlock);
+							//將ItemBlock塞入頁面的ItemQueueBlock
+							$('#ItemQueueBlock').append(AppendItem);
+
+						}
+						else{
+							//若Block已存在 則直接選取
+							var AppendItem=$('.WaitItemBlock[name="'+ItemID+'"]');
+						}						
 
 						for(var j=0;j<data[i].WaitingCustomData.length;j++){	
 							
 							var CustomData=data[i].WaitingCustomData[j];
-							
-							//建立一個CustomDataBlock
-							var CustomDataBlock=$('<div class="CustomDataBlock"></div>');
-					
-							CustomDataBlock.append('<span class="WaitCustomNum">'+CustomData.CustomNumber+'號</span>');
-							CustomDataBlock.append('<span class="WaitCustomQuan">'+CustomData.Quantity+'個</span>');
+							var Count=AppendItem.children('.CustomDataBlock[name="'+CustomData.CustomNumber+'"]').length;
+							if(Count==0){
+								//建立一個CustomDataBlock
+								var CustomDataBlock=$('<div name="'+CustomData.CustomNumber+'" class="CustomDataBlock"></div>');
+								CustomDataBlock.append('<span class="WaitCustomNum">'+CustomData.CustomNumber+'號</span>');
+								CustomDataBlock.append('<span class="WaitCustomQuan">'+CustomData.Quantity+'個</span>');
+								AppendItem.append(CustomDataBlock);
+							}
 
-							AppendItem.append(CustomDataBlock);
+						
 						}
 
+						//檢查CustomDataBlock裡的號碼是否還在server上 若沒有則remove
+						AppendItem.children(".CustomDataBlock").each(function(){
+								var Name=$(this).attr("name");
+								var flag=0;
+								for(var k=0;k<data[i].WaitingCustomData.length;k++){
+									var CheckData=data[i].WaitingCustomData[k];
+									if(CheckData.CustomNumber==Name){
+										flag=1
+										break;
+									}
+								}
+								if(flag==0)
+									$(this).remove();
+
+							});
+
 					}
-						
+					
+					$('#ItemQueueBlock').children('.WaitItemBlock').each(function(){
+						var ItemID=$(this).attr('name');
+						var flag=0;						
+						for(var l=0;l<data.length;l++){
+							if(ItemID==data[l].ItemID){
+								flag=1;
+								break;
+							}
+							
+						}
+						if(flag==0)
+							$(this).remove();
+					});
+	
 				}
 						
 			},
 		  dataType: "json"
 		});
 
+	window.setTimeout("ListStoreItem();",2000);
+}
+function WaitItemClickEvent(){
+
+	var CustomNumber=$(this).attr('name');
+	var ItemID=$(this).parent().attr('name');
+	var Button=$(this);
+	$.ajax({
+		type:'POST',
+		url:'ItemFinish.php',
+		data:{"ItemID":ItemID,"CustomNumber":CustomNumber},
+		success:function(data){
+				$('#Num'+CustomNumber).load('ChooseCustomItem.php',{"CustomNumber":CustomNumber},function(){
+								$(this).append("<hr>");
+							});
+				$('.WaitItemBlock[name="'+ItemID+'"]').children('.CustomDataBlock[name="'+CustomNumber+'"]').remove();
+			
+			},
+		dataType:"text"
+		});
+	
 
 }
+

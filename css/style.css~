@@ -334,7 +334,7 @@
 	/*border:1px solid;*/
 	border-left:5px solid;
 	overflow:hidden;
-	padding:left;
+	text-align:left;
 }
 #NumberBlock
 {	
@@ -415,6 +415,36 @@
 	font-size:15px;
 }
 
+/*waititemblock*/
+.WaitItemBlock
+{
+	
+	line-height:26px;
+	margin-bottom:15px; 　
+} 
+.WaitItemBlock .WaitItemName
+{
+	font-size:25px;
+	font-weight:bold;
+}
+.WaitItemBlock .CustomDataBlock
+{
+	border:6px outset ;
+	
+	height:28px;
+
+}
+
+.WaitItemBlock .CustomDataBlock .WaitCustomNum
+{
+	font-size:18px;
+	margin-right:5px;
+}
+
+.WaitItemBlock .CustomDataBlock .WaitCustomQuan
+{
+	font-size:22px;	
+}
 
 /*******************/
 /*controlbar.html*/

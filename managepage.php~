@@ -146,6 +146,15 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 			<script>
 					//$('#ItemQueueBlock').load("ItemQueueList.php");
 					ListStoreItem();
+					$('.CustomDataBlock').live("mouseover",function(){
+					$(this).css("background","yellow");
+					});
+
+					$('.CustomDataBlock').live("mouseout",function(){
+					$(this).css("background","white");
+					});
+
+					$('.CustomDataBlock').live("click",WaitItemClickEvent);
 			</script>
 	</div>
 	
@@ -165,7 +174,9 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 			<div>等候人數:<span id="WaitValue">9999</span></div>
 		</div>
 		<div id="ControlBlock">
-			<button id="CallNumber" style="width:99%; height:99%; font-size:70px;">叫號</button>
+			<button id="CallNumber" style="width:99%; height:69%; font-size:70px;">叫號</button>
+			<button id="CancelSelect" style="width:49%; height:31%; font-size:30px;">取消選取</button>
+			<button id="EndNumber" style="width:49%; height:30%; font-size:40px;">結束</button>
 		</div>
 	</div>
 	
@@ -193,7 +204,7 @@ $("#NumberSelector").change(function()
 						$('#Num'+$(this).val()).css("background-color","#AFEEEE");
 						var newposition=$('#Num'+$(this).val()).offset().top;
 						//alert(newposition);
-						$('#CustomItemListBlock').scrollTop(newposition-166	);
+						$('#CustomItemListBlock').scrollTop(newposition-166);
 						
 					});
 	}
@@ -205,6 +216,7 @@ $("#NumberSelector").change(function()
 		{	
 			$(this).children().each(function(){
 						$(this).attr("selected",true);
+						$('#Num'+$(this).val()).css("background-color","#AFEEEE");
 						//loadpage("#CustomItemListBlock","ChooseCustomItem.php",{"CustomNumber":$(this).val()});
 						
 					});
@@ -246,8 +258,48 @@ $('#CallNumber').click(function()
 
 
 
-GetValue('<?php echo $ItemID ?>');
 
+$('#CancelSelect').click(function(){
+	$('#NumberSelector').children().attr("selected",false);
+	$('#CustomItemListBlock').children().each(function(){
+					$(this).css("background-color","white");
+
+				});
+			
+});
+
+
+
+$('#EndNumber').click(function(){
+$.ajax({
+		type:'POST',
+		url:'EndNumber.php',
+		data:{},
+		success:function(data){
+		
+			if(data=="-1")
+			{
+				alert("無法取得SerialNumber");
+			}
+			else if(data=="-2")
+			{	
+				alert("目前的號碼已結束");
+			}
+			else
+			{
+				alert(data);
+			}
+			
+			},
+		dataType:"text"
+		});
+
+
+
+});
+
+
+GetValue('<?php echo $ItemID ?>');
 
 $(function(){
 	$("li:has(ul)").click(function(e){

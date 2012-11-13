@@ -23,11 +23,16 @@ $db->query($query);
 $temp=$db->fetch_array();
 $ItemID=$temp['ID'];
 
+
+
 $query="SELECT * FROM Type2".$ItemID." where Num='".$Num."'";
 $db->query($query);
 $temp=$db->fetch_array();
 $CustomID=$temp['CustomID'];
 $CustomItemID=$temp['ItemID'];
+
+
+
 
 $query="Select * FROM custom_information where custom_id='".$CustomID."' and store ='".$SerialNumbers."' and life='0'";
 $db->query($query);
@@ -45,6 +50,8 @@ for ($i=0;$i<sizeof($SelectItem);$i++)
 $SelectItem=json_encode($SelectItem);
 $query="Update custom_information set `SelectItem` ='".$SelectItem."' where store ='".$SerialNumbers."' and custom_id='".$CustomID."' and life='0'";
 $db->query($query);
+
+
 
 $query="Delete FROM Type2".$ItemID." where Num ='".$Num."'";
 $db->query($query);
