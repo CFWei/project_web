@@ -314,7 +314,7 @@
 
 #RightBlock
 {	
-	width:50%;
+	width:74%;
 	height:100%;
 	float:right;
 	/*border:1px double;*/
@@ -438,7 +438,7 @@
 .WaitItemBlock .CustomDataBlock .WaitCustomNum
 {
 	font-size:18px;
-	margin-right:5px;
+	margin-right:15px;
 }
 
 .WaitItemBlock .CustomDataBlock .WaitCustomQuan

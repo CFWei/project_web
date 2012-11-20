@@ -38,8 +38,14 @@ if($StoreType=="2")
 		<div class="StoreSettingTableTd">
 			<button id="StoreItemListSettingButton" class="StoreSettngFont"><span ><?php echo $text; ?></span></button>
 		</div>
+	</div>	
+	<div class="StoreSettingTableTr">
+		<div class="StoreSettingTableTd">
+			<button id="PreferenceSetting" class="StoreSettngFont"><span>喜好設定</span></button>
+		</div>
 	</div>
 </div>
+
 
 
 <script>
