@@ -1,20 +1,13 @@
 <?php
-require_once("session.php");
-$se=new session();	
-if(!$SerialNumbers=$se->get_value("SerialNumbers"))
-{
-	echo "-1";
-	exit();
-}
-
-require_once("connect_mysql_class.php");
-require_once("mysql_inc.php");
+require_once("../../connect_mysql_class.php");
+require_once("../../mysql_inc.php");
 
 $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
 $ItemID=$_POST['ItemID'];
 $CustomNumber=$_POST['CustomNumber'];
+$SerialNumbers=$_POST['SerialNumbers'];
 
 //取得StoreItemID
 $query="SELECT ID FROM ".$SerialNumbers." WHERE State !='DIE'";
@@ -34,13 +27,11 @@ $query="Select * FROM custom_information where custom_id='".$CustomID."' and sto
 $db->query($query);
 $temp=$db->fetch_array();
 $SelectItem=json_decode($temp['SelectItem']);
-
-
 for ($i=0;$i<sizeof($SelectItem);$i++)
 {
 	if($SelectItem[$i]->TakenItemID==$ItemID)
-	{	
-
+	{
+		//$SelectItem[$i]->Life=1;
 		if($SelectItem[$i]->Life==0){
 			$SelectItem[$i]->Life=2;
 			$CheckNum=2;
@@ -54,10 +45,13 @@ for ($i=0;$i<sizeof($SelectItem);$i++)
 		else{}
 	}
 }
-
 $SelectItem=json_encode($SelectItem);
 $query="Update custom_information set `SelectItem` ='".$SelectItem."' where store ='".$SerialNumbers."' and custom_id='".$CustomID."' and life='0'";
 $db->query($query);
+
+//刪除清單裡面的item資訊
+//$query="Delete FROM Type2".$StoreItemID." where ItemID ='".$ItemID."' and CustomID='".$CustomID."'";
+//$db->query($query);
 
 
 if($CheckNum==1){
@@ -71,6 +65,7 @@ else{
 }
 
 
-echo $query;
+
+echo $CheckNum;
 
 ?>

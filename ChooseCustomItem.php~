@@ -161,11 +161,5 @@ $('#CloseCustomItemWindow').click(function()
 
 			
 		});
-$('#CancelSelect').click(function()
-		{
-			$('#NumberSelector').children().attr("selected",false);
-			$('#CustomItemListBlock').html("");
-			
 
-		});
 </script>

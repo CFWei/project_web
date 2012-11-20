@@ -1,29 +1,22 @@
 <?php
-require_once("session.php");
-$se=new session();	
-if(!$SerialNumbers=$se->get_value("SerialNumbers"))
-{
-	echo "******************取得SerialNumbers失敗******************";
-	exit();
-}
+require_once("../../connect_mysql_class.php");
+require_once("../../mysql_inc.php");
 
-
-require_once("connect_mysql_class.php");
-require_once("mysql_inc.php");
-
+$SerialNumbers=$_POST['SerialNumbers'];
+$SerialNumbers="2jdCLFdWFQWxPm9Khrds";
 
 $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
+//擷取ItemID
 $query="SELECT ID FROM ".$SerialNumbers." WHERE State !='DIE'";
 $db->query($query);
 $temp=$db->fetch_array();
 $ItemID=$temp['ID'];
 
+//找出所有商品清單 之後轉換名字用
 $query="SELECT * FROM StoreTakenItem WHERE Store='".$SerialNumbers."'";
 $db->query($query);
-	
-//找出所有商品清單 之後轉換名字用
 while($temp=$db->fetch_array())
 {
 	$TakenItemIDList[]=$temp['TakenItemID'];
@@ -34,8 +27,6 @@ while($temp=$db->fetch_array())
 
 $query="SELECT * FROM Type2".$ItemID;
 $db->query($query);
-
-
 $count=0;
 while($temp=$db->fetch_array())
 {	
@@ -100,6 +91,6 @@ while($temp=$db->fetch_array())
 echo json_encode($output);
 
 
-//print_r($output);
+
 
 ?>

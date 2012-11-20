@@ -114,6 +114,8 @@ $db->query($query);
 						echo '未完成';
 					if($Life=='1')
 						echo '<span style="color:blue;font-weight:bolder;">已完成</span>';
+					if($Life=='2')
+						echo '製作中';
 					echo '</div>';
 
 					echo '</div>';

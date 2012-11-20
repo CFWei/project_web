@@ -46,10 +46,11 @@ while($temp=$db->fetch_array())
 	$query="Select number From custom_information where store ='".$SerialNumbers."' and item ='".$ItemID."' and custom_id ='".$temp['CustomID']."' and life='0'";
 	$dbtemp->query($query);
 	$dbtempdata=$dbtemp->fetch_array();
-
-
+	
+	$data['CustomNumber']=$dbtempdata['number'];
 	$data['CustomID']=$temp['CustomID'];
 	$data['Quantity']=$temp['Quantity'];
+	$data['Life']=$temp['Quantity'];
 
 	if($count==0)
 	{

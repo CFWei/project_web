@@ -34,24 +34,43 @@ $query="Select * FROM custom_information where custom_id='".$CustomID."' and sto
 $db->query($query);
 $temp=$db->fetch_array();
 $SelectItem=json_decode($temp['SelectItem']);
+
+
 for ($i=0;$i<sizeof($SelectItem);$i++)
 {
 	if($SelectItem[$i]->TakenItemID==$ItemID)
-	{
-		$SelectItem[$i]->Life=1;
+	{	
+
+		if($SelectItem[$i]->Life==0){
+			$SelectItem[$i]->Life=2;
+			$CheckNum=2;
+
+			}
+		else if($SelectItem[$i]->Life==2){
+
+			$SelectItem[$i]->Life=1;
+			$CheckNum=1;
+			}
+		else{}
 	}
 }
+
 $SelectItem=json_encode($SelectItem);
 $query="Update custom_information set `SelectItem` ='".$SelectItem."' where store ='".$SerialNumbers."' and custom_id='".$CustomID."' and life='0'";
 $db->query($query);
 
 
+if($CheckNum==1){
+	//刪除清單裡面的item資訊
+	$query="Delete FROM Type2".$StoreItemID." where ItemID ='".$ItemID."' and CustomID='".$CustomID."'";
+	$db->query($query);
+}
+else{
+	$query="Update Type2".$StoreItemID." set Life ='2' where ItemID ='".$ItemID."' and CustomID='".$CustomID."'";
+	$db->query($query);
+}
 
-//刪除清單裡面的item資訊
-$query="Delete FROM Type2".$StoreItemID." where ItemID ='".$ItemID."' and CustomID='".$CustomID."'";
-$db->query($query);
 
-
-echo "1";
+echo $CheckNum;
 
 ?>

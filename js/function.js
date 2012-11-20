@@ -676,10 +676,27 @@ function ListStoreItem()
 							var Count=AppendItem.children('.CustomDataBlock[name="'+CustomData.CustomNumber+'"]').length;
 							if(Count==0){
 								//建立一個CustomDataBlock
+
 								var CustomDataBlock=$('<div name="'+CustomData.CustomNumber+'" class="CustomDataBlock"></div>');
+
+									
+
 								CustomDataBlock.append('<span class="WaitCustomNum">'+CustomData.CustomNumber+'號</span>');
-								CustomDataBlock.append('<span class="WaitCustomQuan">'+CustomData.Quantity+'個</span>');
+								CustomDataBlock.append('<span class="WaitCustomQuan">'+CustomData.Quantity+'個</span>');	
+								if(CustomData.Life==2)								
+									CustomDataBlock.append('<span class="WaitStatus">製作中</span>');
 								AppendItem.append(CustomDataBlock);
+								
+							}
+							else{
+
+								var SelectI=AppendItem.children('.CustomDataBlock[name="'+CustomData.CustomNumber+'"]');							
+								var count=SelectI.children('.WaitStatus').length;
+									
+								if(CustomData.Life==2&&count==0)
+								{
+									SelectI.append('<span class="WaitStatus">製作中</span>');
+								}
 							}
 
 						
@@ -729,16 +746,23 @@ function WaitItemClickEvent(){
 
 	var CustomNumber=$(this).attr('name');
 	var ItemID=$(this).parent().attr('name');
+
 	var Button=$(this);
 	$.ajax({
 		type:'POST',
 		url:'ItemFinish.php',
 		data:{"ItemID":ItemID,"CustomNumber":CustomNumber},
 		success:function(data){
+				//更新List
 				$('#Num'+CustomNumber).load('ChooseCustomItem.php',{"CustomNumber":CustomNumber},function(){
 								$(this).append("<hr>");
 							});
-				$('.WaitItemBlock[name="'+ItemID+'"]').children('.CustomDataBlock[name="'+CustomNumber+'"]').remove();
+				
+				if(data==1)
+					$('.WaitItemBlock[name="'+ItemID+'"]').children('.CustomDataBlock[name="'+CustomNumber+'"]').remove();
+
+				if(data==2)
+					$('.WaitItemBlock[name="'+ItemID+'"]').children('.CustomDataBlock[name="'+CustomNumber+'"]').append('<span class="WaitStatus">製作中</span>');
 			
 			},
 		dataType:"text"
