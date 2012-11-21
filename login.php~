@@ -82,8 +82,8 @@ function changepage($StoreType)
 		<span style="font-size:30px;">選單</span>
 		</div>*/
 
-		$("#main").append($("<div id=\"MenuBar\">").html("hello").bind({mouseenter:function(){$(this).height("205px");
-					loadpage("#MenuBar","controlbar.php");},mouseleave:function(){		$(this).height("30px");
+		$("#main").append($("<div id=\"MenuBar\">").html("<span style=\"font-size:30px;\">選單</span>").bind({mouseenter:function(){$(this).height("205px");
+					loadpage("#MenuBar","controlbar.php");},mouseleave:function(){		$(this).height("40px");
 					$(this).html("<span style=\"font-size:30px;\">選單</span>");}}));
 		</script>';
 

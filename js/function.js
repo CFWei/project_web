@@ -172,6 +172,8 @@ function loadpage(DivName,LoadPage,parameter)
 						heig="120";
 						wid="50%";
 					}
+					wid="99%";
+					heig="79%";
 				}
 			
 			$("#content").animate({
@@ -271,6 +273,10 @@ function loadpage(DivName,LoadPage,parameter)
 				      },800,function(){});
 					
 					});
+	}
+	else if(DivName=="#content"&&LoadPage=="WaitItemModeList.php")
+	{
+		$(DivName).load(LoadPage,{"ItemID":parameter});
 	}
 	else
 	{	
@@ -769,5 +775,100 @@ function WaitItemClickEvent(){
 		});
 	
 
+}
+
+function WaitItemModeUpdate(GetItemID){
+$.ajax({
+		 type: 'POST',
+		 url: 'ListStoreItem.php',
+		 data: {},
+		 statusCode:{
+				200:function(data){
+					if(data==null){
+						//$('#ItemQueueBlock').html("");
+						$(".CustomDataBlock").each().html("");
+						return;
+					}
+
+					for(var i=0;i<data.length;i++){
+						var ItemName = data[i].ItemName;
+						var ItemID=data[i].ItemID;
+
+						var AppendItem=$('.WaitCustomList[name="'+ItemID+'"]');
+						
+
+						for(var j=0;j<data[i].WaitingCustomData.length;j++){	
+							
+							var CustomData=data[i].WaitingCustomData[j];
+							var Count=AppendItem.children('.CustomDataBlock[name="'+CustomData.CustomNumber+'"]').length;
+							if(Count==0){
+								//建立一個CustomDataBlock
+
+								var CustomDataBlock=$('<div name="'+CustomData.CustomNumber+'" class="CustomDataBlock"></div>');
+
+								CustomDataBlock.append('<span class="WaitCustomNum">'+CustomData.CustomNumber+'號</span>');
+								CustomDataBlock.append('<span class="WaitCustomQuan">'+CustomData.Quantity+'個</span>');	
+								if(CustomData.Life==2)								
+									CustomDataBlock.append('<span class="WaitStatus">製作中</span>');
+								AppendItem.append(CustomDataBlock);
+								
+							}
+							else{
+
+								var SelectI=AppendItem.children('.CustomDataBlock[name="'+CustomData.CustomNumber+'"]');							
+								var count=SelectI.children('.WaitStatus').length;
+									
+								if(CustomData.Life==2&&count==0)
+								{
+									SelectI.append('<span class="WaitStatus">製作中</span>');
+								}
+							}
+
+						
+						}
+
+						//檢查CustomDataBlock裡的號碼是否還在server上 若沒有則remove
+
+
+					}
+					
+					$(".CustomDataBlock").each(function(){
+								var Name=$(this).attr("name");
+								var ItemID=$(this).parent().attr('name');
+
+								
+								var flag=0;
+								for(var k=0;k<data.length;k++)
+								{
+									var testItemID=data[k].ItemID;
+									if(testItemID==ItemID){
+										for(var l=0;l<data[k].WaitingCustomData.length;l++){
+											var CheckData=data[k].WaitingCustomData[l];
+											if(CheckData.CustomNumber==Name){
+												
+												flag=1
+												//alert(flag);
+												break;
+											}	
+										}
+									}
+								}
+								//
+								if(flag==0)
+								{	
+
+									$(this).remove();
+									
+								}
+
+							});
+					
+					
+				}
+						
+			},
+		  dataType: "json"
+		});
+window.setTimeout("WaitItemModeUpdate();",2000);
 }
 

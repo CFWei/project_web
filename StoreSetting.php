@@ -39,11 +39,13 @@ if($StoreType=="2")
 			<button id="StoreItemListSettingButton" class="StoreSettngFont"><span ><?php echo $text; ?></span></button>
 		</div>
 	</div>	
+<!---
 	<div class="StoreSettingTableTr">
 		<div class="StoreSettingTableTd">
 			<button id="PreferenceSetting" class="StoreSettngFont"><span>喜好設定</span></button>
 		</div>
 	</div>
+-->
 </div>
 
 
@@ -60,6 +62,12 @@ if($StoreType=="2")
 		{	
 			loadpage("#content","<?php echo $link; ?>");
 		});
-
+	/*
+	$('#PreferenceSetting').click(
+		function()
+		{	
+			loadpage("#content","PreferenceSetting.php");
+		});
+	*/
 
 </script>

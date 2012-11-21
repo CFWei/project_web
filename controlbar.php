@@ -30,7 +30,8 @@ if(!$StoreType=$session->get_value("StoreType"))
 		{
 			echo 
 			'
-			<button class="controlbarbutton" id="Setting" onclick="SettingButtonEvent()";>設定</button>
+			<button class="controlbarbutton" id="Setting" onclick="SettingButtonEvent();">設定</button>
+			<button class="controlbarbutton" id="WaitItemMode" onclick="WaitItemMode();" style="font-size:18px;">待做商品模式</button>
 			<button class="controlbarbutton" onclick="self.location.href=\'FullScreen.php\'">全螢幕</button>
 			<button class="controlbarbutton" id="BackToManage" onclick="BackToManageEvent()">返回主頁</button>
 			<button class="controlbarbutton" id="EndBusiness">結束營業</button>
@@ -67,7 +68,11 @@ if(!$StoreType=$session->get_value("StoreType"))
 		loadpage("#content","logout.php");
 	};
 
-
+	function WaitItemMode()
+	{
+		loadpage("#content","WaitItemModeSetting.php");
+		//loadpage("#content","WaitItemModeList.php");
+	}
 	$("#additem").click(function(){
 				loadpage("#content","add_item.php");				
 			});

@@ -143,7 +143,7 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 ?>
 
 <div id="Type2Block">
-<!--
+
 	<div id="ItemQueueBlock">
 			<script>
 					//$('#ItemQueueBlock').load("ItemQueueList.php");
@@ -159,7 +159,7 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 					$('.CustomDataBlock').live("click",WaitItemClickEvent);
 			</script>
 	</div>
--->
+
 	
 	<div id="RightBlock">
 		<div id="CustomItemListBlock">
