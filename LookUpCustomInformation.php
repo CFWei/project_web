@@ -1,3 +1,8 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<link href="css/LookUpCustomInformation.css" rel=stylesheet type="text/css" >
+</head>
+
 <?php
 require_once("connect_mysql_class.php");
 require_once("mysql_inc.php");
@@ -10,8 +15,8 @@ if(!$SerialNumbers=$se->get_value("SerialNumbers"))
 	exit();
 }
 
-$ItemID=$_POST['ItemID'];
-$selector=$_POST['selector'];
+$ItemID=$_GET['ItemID'];
+$selector=$_GET['selector'];
 
 
 //$ID="ueuKJKpyMD";
@@ -19,8 +24,13 @@ $selector=$_POST['selector'];
 
 $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+if($selector=="")
+{
+	$selector=0;
+}
 
-if($selector==""||$selector==-1)
+
+if($selector==-1)
 	{
 		$query="SELECT number,custom_id,life FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."'";
 		$t=0;
@@ -36,6 +46,7 @@ $db->query($query);
 
 $Selectcontent[$t]="selected";
 ?>
+<div id="LookUpCustomInformationPage">
 <div>
 	<form name="SelectorForm">                                                                           
 		<select name="Selector" onchange="LookUpCustomInformationSelector('<?php echo $ItemID ?>')">
@@ -110,8 +121,10 @@ while(($temp=$db->fetch_assoc())!=null)
 ?>
 
 
-<div>
+</div>
+<button id="CloseWindow" style="margin-top:20px;" onclick="javascript:window.close();">關閉視窗</button>
 
+</div>
 <script>
 	$('.SkipButton').click(function(){
 				var ItemID = "<?php echo $ItemID?>";
@@ -148,4 +161,10 @@ while(($temp=$db->fetch_assoc())!=null)
 				LookUpCustomInformation(ItemID);		
 				
 				});
+function LookUpCustomInformationSelector(ItemID)
+{
+	var selector=document.SelectorForm.Selector.value;
+	//loadpage("#content","LookUpCustomInformation.php",{"ItemID":ItemID,"selector":selector});
+	location.href='LookUpCustomInformation.php?ItemID='+ItemID+'&selector='+selector;
+}
 </script>

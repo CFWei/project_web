@@ -45,7 +45,7 @@ if(!$db->query($query))
 	exit;
 }
 
-$query="INSERT INTO  `Type2".$SerialNumbers."` (  `ItemID` ,  `CustomID`)  VALUES ('".$ItemId."','".$SerialNumbers."','".$ItemId."','".$takevalue."')";
+
 
 
 echo $takevalue;

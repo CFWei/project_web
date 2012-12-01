@@ -13,6 +13,12 @@
 <script type="text/javascript" src="js/jquery-impromptu.4.0.js"></script>
 </head>
 <body id="IndexPage">
+
+
+
+	
+
+
 <div id="main">
 	<div id="header">
 		<div id="title">
@@ -34,16 +40,22 @@
 </div>
 <script>
 	FullScreenUpdateValue();
-					
-			$('#MenuBar').hover(function(){
-					
-					$(this).height("205px");
-					loadpage('#MenuBar',"controlbar.php");
-				},function(){
-				
-					$(this).height("30px");
-					$(this).html('<span style="font-size:30px;">選單</span>');
-					});
+	
+	/*
+	$("#main").append($("<div id=\"MenuBar\">")
+		  .html("<span style=\"font-size:30px;\">選單</span>")
+                  .bind({mouseenter:function(){
+                                        $(this).height("210px");
+					loadpage("#MenuBar","controlbar.php");
+				    },
+                         mouseleave:function(){
+                          		$(this).height("30px");
+					$(this).html("<span style=\"font-size:30px;\">選單</span>");
+                                    }
+                        }
+                      )
+                      );
+	*/
 </script>
 </body>
 </html>

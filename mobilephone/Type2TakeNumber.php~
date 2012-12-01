@@ -9,6 +9,17 @@ $CustomItemList=$_POST['CustomItemList'];
 $Jsontemp=json_decode($CustomItemList);
 $i=0;
 
+$db=new DB();
+$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+
+$query="SELECT * FROM custom_information WHERE store ='".$SerialNumbers."' AND custom_id ='".$UserIMEI."' AND life ='0'";
+$db->query($query);
+if($db->get_num_rows()!=0)
+{
+	echo "-2";
+	exit;
+}
+
 //加入要的商品
 foreach($Jsontemp as $Num=>$ItemData)
 {	
@@ -26,13 +37,24 @@ foreach($Jsontemp as $Num=>$ItemData)
 			$NeedValue=$Data;
 		}
 	}
+	
+	$query="Select * from StoreTakenItem where Store ='".$SerialNumbers."' and TakenItemID ='".$TakenItemID."'";
+	$db->query($query);
+	$temp=$db->fetch_assoc();
+	$LimitQuantity=(int)$temp['LimitQuantity'];
+	$TestQuantity=(int)$NeedValue;
+	if($NeedValue>$LimitQuantity)
+	{
+		echo '-2';
+		exit;
+	}
+
 	$StoreData[]=array('TakenItemID'=>$TakenItemID,'NeedValue'=>$NeedValue,'Life'=>"0");
 }
 
 $FinalStoreData=json_encode($StoreData);
 
-$db=new DB();
-$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+
 
 
 //決定要拿的號碼

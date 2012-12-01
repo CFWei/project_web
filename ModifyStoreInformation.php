@@ -3,10 +3,15 @@
 require_once("session.php");
 $session=new session();
 if(!$SerialNumbers=$session->get_value("SerialNumbers"))
-	{
-		echo "******************取得SerialNumbers失敗******************";
-		exit();
-	}
+{
+	echo "******************取得SerialNumbers失敗******************";
+	exit();
+}
+if(!$StoreType=$session->get_value("StoreType"))
+{
+	echo "******************取得StoreType失敗******************";
+	exit();
+}
 require_once("connect_mysql_class.php");
 require_once("mysql_inc.php");
 
@@ -53,11 +58,12 @@ else
 				<p><div class="RegisterText">店家電話：</div><input type="text" class="RegisterTextArea" id="StoreTelephone"  maxlength="100" value="<?php echo $temp['StoreTelephone']; ?>" ></p>
 				<p><div class="RegisterText">店家地址：</div><input type="text" class="RegisterTextArea" id="StoreAddress" name="StoreAddress" size="50" maxlength="100" onchange="codeAddress()" value="<?php echo $temp['StoreAddress']; ?>" ></p>
 				<p>
-				<div class="RegisterText">經度：</div><input type="text" class="RegisterTextArea" name="GPS_Latitude" id="GPS_Latitude" value="<?php echo $temp['GPS_Latitude']; ?>"> 
-				<a>緯度：</a><input type="text" class="RegisterTextArea" name="GPS_Longitude" id="GPS_Longitude" value="<?php echo $temp['GPS_Longitude']; ?>">
+				<div class="RegisterText" style="width:100px;">經度：</div><input type="text" class="RegisterTextArea" name="GPS_Latitude" id="GPS_Latitude" value="<?php echo $temp['GPS_Latitude']; ?>" style="width:200px;"> 
+				<a style="font-size:28px;">緯度：</a><input type="text" class="RegisterTextArea" name="GPS_Longitude" id="GPS_Longitude" value="<?php echo $temp['GPS_Longitude']; ?>" style="width:200px;">
 				</p>	
 		</form>
 		<button id="ModifySubmitButton" class="ButtonStyle" >修改</button>
+		<button id="BackButton" class="ButtonStyle" >返回</button>
 	</div>
 </div>
 <script>
@@ -78,6 +84,9 @@ else
 						});	
 				
 			});
+	$('#BackButton').click(function(){
+		loadpage("#content","managepage.php","<?php echo $StoreType ?>");
+	});
 </script>
 
 

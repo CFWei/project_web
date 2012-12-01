@@ -226,8 +226,8 @@ function loadpage(DivName,LoadPage,parameter)
 		$(DivName).load(LoadPage,{},function(){
 					
 			$("#content").animate({
-					height:"300px",
-					width:"550px",
+					height:"450px",
+					width:"800px",
 					left:"5%",
 				      },800,function(){});
 					
@@ -319,14 +319,17 @@ function DeleteItem(ItemID)
 }
 function LookUpCustomInformation(ItemID)
 {
-	loadpage("#content","LookUpCustomInformation.php",{"ItemID":ItemID});
+	//loadpage("#content","LookUpCustomInformation.php",{"ItemID":ItemID});
+	window.open('LookUpCustomInformation.php?ItemID='+ItemID,"123",config='height=300,width=400,toolbar=no,menubar=no,location=no,resizable=no ');
+
 }
+/*
 function LookUpCustomInformationSelector(ItemID)
 {
 	var selector=document.SelectorForm.Selector.value;
 	loadpage("#content","LookUpCustomInformation.php",{"ItemID":ItemID,"selector":selector});
 }
-
+*/
 function MyItemSelector()
 {
 	var selector=document.SelectorForm.Selector.value;
@@ -468,6 +471,11 @@ function Type2NextValue(SelectNumber,ItemID)
 						if(data==-2)
 						{
 							alert("此號碼正在被服務");
+							return ;
+						}
+						if(data==-3)
+						{
+							alert('商品尚未全部完成');
 							return ;
 						}
 	
@@ -665,7 +673,7 @@ function ListStoreItem()
 							//建外面的ItemBlock 以ItemID為名字
 							var AppendItem=$('<div name="'+ItemID+'" class="WaitItemBlock"></div>');
 							//建立ItemName Block 並塞入ItemBlock
-							var ItemNameBlock=$('<span class="WaitItemName">'+ItemName+'</span>');
+							var ItemNameBlock=$('<div class="WaitItemName">'+ItemName+'</div>');
 							AppendItem.append(ItemNameBlock);
 							//將ItemBlock塞入頁面的ItemQueueBlock
 							$('#ItemQueueBlock').append(AppendItem);
@@ -749,11 +757,14 @@ function ListStoreItem()
 	window.setTimeout("ListStoreItem();",2000);
 }
 function WaitItemClickEvent(){
-
+	
 	var CustomNumber=$(this).attr('name');
 	var ItemID=$(this).parent().attr('name');
 
 	var Button=$(this);
+	
+	alert('hello');
+
 	$.ajax({
 		type:'POST',
 		url:'ItemFinish.php',
@@ -806,8 +817,8 @@ $.ajax({
 
 								var CustomDataBlock=$('<div name="'+CustomData.CustomNumber+'" class="CustomDataBlock"></div>');
 
-								CustomDataBlock.append('<span class="WaitCustomNum">'+CustomData.CustomNumber+'號</span>');
-								CustomDataBlock.append('<span class="WaitCustomQuan">'+CustomData.Quantity+'個</span>');	
+								CustomDataBlock.append('<div class="WaitCustomNum">'+CustomData.CustomNumber+'號</div>');
+								CustomDataBlock.append('<div class="WaitCustomQuan">'+CustomData.Quantity+'個</div>');	
 								if(CustomData.Life==2)								
 									CustomDataBlock.append('<span class="WaitStatus">製作中</span>');
 								AppendItem.append(CustomDataBlock);
@@ -820,7 +831,7 @@ $.ajax({
 									
 								if(CustomData.Life==2&&count==0)
 								{
-									SelectI.append('<span class="WaitStatus">製作中</span>');
+									SelectI.append('<div class="WaitStatus">製作中</div>');
 								}
 							}
 
@@ -869,6 +880,27 @@ $.ajax({
 			},
 		  dataType: "json"
 		});
+
 window.setTimeout("WaitItemModeUpdate();",2000);
+}
+
+function ShowMenu(){
+	var MenuBar='<div class="MenuBar"><li><dt id="MenuText">選單</dt></li></div>';
+	$('#IndexPage').append(MenuBar);
+
+
+	$.ajax({
+		type:'POST',
+		url:'controlbar.php',
+		data:{},
+		success:function(data){
+			var a=data;
+			$('#MenuText').parent().append(a);
+			
+			},
+		dataType:"text"
+		});
+	
+
 }
 

@@ -15,7 +15,7 @@ $ItemID=$temp['ID'];
 
 
 //擷取清單
-$query="SELECT Store,ItemName,TakenItemID,Price FROM StoreTakenItem WHERE Store='".$SerialNumbers."'";
+$query="SELECT Store,ItemName,TakenItemID,Price,LimitQuantity FROM StoreTakenItem WHERE Store='".$SerialNumbers."'";
 $db->query($query);
 while($temp=$db->fetch_assoc())
 {

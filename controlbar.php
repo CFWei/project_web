@@ -12,36 +12,32 @@ if(!$StoreType=$session->get_value("StoreType"))
 	exit();
 }
 
-?>
-<div id="controlbarcontent">
-	<?php
-		if($StoreType=="1")
-		{
-			echo 
-			'
-			<button class="controlbarbutton" id="additem">新增商品</button>
-			<button class="controlbarbutton" id="Setting">設定</button>
-			<button class="controlbarbutton" id="BackToManage">返回主頁</button>
-			<button class="controlbarbutton" id="Logout">登出</button>
-			';
-		}
+if($StoreType=="1")
+{
+	echo 
+	'
+	<div class="content"><button class="controlbarbutton" id="additem">新增商品</button></div>
+	<div class="content"><button class="controlbarbutton" id="Setting">設定</button></div>
+	<div class="content"><button class="controlbarbutton" id="BackToManage">返回主頁</button></div>
+	<div class="content"><button class="controlbarbutton" id="Logout">登出</button></div>
+	';
+}
 
-		if($StoreType=="2")
-		{
-			echo 
-			'
-			<button class="controlbarbutton" id="Setting" onclick="SettingButtonEvent();">設定</button>
-			<button class="controlbarbutton" id="WaitItemMode" onclick="WaitItemMode();" style="font-size:18px;">待做商品模式</button>
-			<button class="controlbarbutton" onclick="self.location.href=\'FullScreen.php\'">全螢幕</button>
-			<button class="controlbarbutton" id="BackToManage" onclick="BackToManageEvent()">返回主頁</button>
-			<button class="controlbarbutton" id="EndBusiness">結束營業</button>
-			<button class="controlbarbutton" id="Logout">登出</button>
-			';
+if($StoreType=="2")
+{
+	echo 
+	'
+	<div class="content"><button class="controlbarbutton" id="Setting" onclick="SettingButtonEvent();">設定</button></div>
 			
-		}
-	?>
+	<div class="content"><button class="controlbarbutton" onclick="self.location.href=\'FullScreen.php\'">全螢幕</button></div>
+	<div class="content"><button class="controlbarbutton" id="BackToManage" onclick="BackToManageEvent()">返回主頁</button></div>
+	<div class="content"><button class="controlbarbutton" id="EndBusiness">結束營業</button></div>
+	<div class="content"><button class="controlbarbutton" id="Logout">登出</button></div>
+	';
+	//<button class="controlbarbutton" id="WaitItemMode" onclick="WaitItemMode();" style="font-size:18px;">待做商品模式</button>
+}
+?>
 
-</div>
 
 <script>
 	function SettingButtonEvent()

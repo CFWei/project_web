@@ -6,12 +6,7 @@
 	echo '<script>
 
 		loadpage("#content","login.php");
-		$("#ControlBar").html("");
-		$("#ControlBar").animate({
-					width:"0px",
-					height:"0px",
-					borderWidth:"0px"
-				 },800);
+		$(".MenuBar").remove();
 	</script>';
 	
 ?>

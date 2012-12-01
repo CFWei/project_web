@@ -10,9 +10,7 @@ $ItemId=$_POST['ItemId'];
 //echo $UserIMEI."<br>".$SerialNumbers."<br>".$ItemId."<br>";
 $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
-
 $query="SELECT Value FROM ".$SerialNumbers." where ID='".$ItemId."'";
-
 $db->query($query);
 
 

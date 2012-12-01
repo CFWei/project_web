@@ -13,7 +13,7 @@ require_once("mysql_inc.php");
 $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
-if(isset($_POST['StoreItemName'])&&isset($_POST['ItemPrice'])&&isset($_POST['ItemNickName']))
+if(isset($_POST['StoreItemName'])&&isset($_POST['ItemPrice'])&&isset($_POST['LimitQuantity']))
 {	
 	
 	//檢查是否有相同名稱商品已存在
@@ -32,9 +32,9 @@ if(isset($_POST['StoreItemName'])&&isset($_POST['ItemPrice'])&&isset($_POST['Ite
 
 		$StoreItemName=$_POST['StoreItemName'];
 		$Price=$_POST['ItemPrice'];
-		$ItemNickName=$_POST['ItemNickName'];		
+		$LimitQuantity=$_POST['LimitQuantity'];		
 		
-		$query="INSERT INTO `StoreTakenItem` (`Store`,`ItemName`,`TakenItemID`,`Price`,`ItemNickName`) VALUES ('".$SerialNumbers."','".$StoreItemName."','".$TakenItemID."','".$Price."','".$ItemNickName."')";
+		$query="INSERT INTO `StoreTakenItem` (`Store`,`ItemName`,`TakenItemID`,`Price`,`LimitQuantity`) VALUES ('".$SerialNumbers."','".$StoreItemName."','".$TakenItemID."','".$Price."','".$LimitQuantity."')";
 		$db->query($query);
 	}
 	else
@@ -69,8 +69,16 @@ $db->query($query);
 				<h1>新增商品</h1>
 				<form method="post" action="">
 					名稱:<input id="AddStoreItemName" type="text" name="ItemName"><br>
-					簡稱:<input id="ItemNickName" type="text"><br>
-					價格:<input id="ItemPrice" type="text" name="ItemPrice">			
+					<!--簡稱:<input id="ItemNickName" type="text"><br>-->
+					價格:<input id="ItemPrice" type="text" name="ItemPrice"><br>
+					數量限制:<select size="1"id ="LimitQuantity">	
+					<option value="1" selected>1
+					<?php
+						for($i=2;$i<=20;$i++)
+							echo '<option value="'.$i.'">'.$i;  
+					?>
+					</select>
+					
 				</form>
 			<button id="AddStoreItemButton">送出</button>
 			</div>
@@ -82,11 +90,16 @@ $db->query($query);
 					<div class="StoreItemListTd">
 						商品名稱
 					</div>
+					<!---
 					<div class="StoreItemListTd">
 						商品簡稱
 					</div>
+					-->
 					<div class="StoreItemListTd">
 						商品價格
+					</div>
+					<div class="StoreItemListTd">
+						限制數量
 					</div>
 					<div class="StoreItemListTd">
 						
@@ -101,14 +114,17 @@ $db->query($query);
 						echo $temp['ItemName'];
 						echo '</div>';
 						
-						echo '<div class="StoreItemListTd">';
-						echo $temp['ItemNickName'];
-						echo '</div>';					
+						//echo '<div class="StoreItemListTd">';
+						//echo $temp['ItemNickName'];
+						//echo '</div>';
+					
 		
 						echo '<div class="StoreItemListTd">';
 						echo $temp['Price'];
 						echo '</div>';
-
+	
+						echo '<div class="StoreItemListTd">'.$temp['LimitQuantity'].'</div>';						
+						
 						echo '<div class="StoreItemListTd" ><button class="DeleteItem">刪除</button></div>';
 			
 						echo '</div>';
@@ -132,13 +148,10 @@ $("#AddStoreItemButton").click(
 	{
 		var StoreItemName=$("#AddStoreItemName").val();
 		var ItemPrice=$("#ItemPrice").val();
-		var ItemNickName=$("#ItemNickName").val();
-		
-
-		if(ItemNickName.length>2)
-			alert("商品暱稱長度不能超過2");
-		else
-			$('#content').load('StoreTakenItemList.php',{"StoreItemName":StoreItemName,"ItemPrice":ItemPrice,"ItemNickName":ItemNickName},
+	//	var ItemNickName=$("#ItemNickName").val();
+		var LimitQuantity=$('#LimitQuantity').val();	
+		alert(LimitQuantity);
+		$('#content').load('StoreTakenItemList.php',{"StoreItemName":StoreItemName,"ItemPrice":ItemPrice,"LimitQuantity":LimitQuantity},
 							function()
 							{
 								

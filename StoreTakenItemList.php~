@@ -82,11 +82,16 @@ $db->query($query);
 					<div class="StoreItemListTd">
 						商品名稱
 					</div>
+					<!---
 					<div class="StoreItemListTd">
 						商品簡稱
 					</div>
+					-->
 					<div class="StoreItemListTd">
 						商品價格
+					</div>
+					<div class="StoreItemListTd">
+						限制數量
 					</div>
 					<div class="StoreItemListTd">
 						
@@ -101,14 +106,17 @@ $db->query($query);
 						echo $temp['ItemName'];
 						echo '</div>';
 						
-						echo '<div class="StoreItemListTd">';
-						echo $temp['ItemNickName'];
-						echo '</div>';					
+						//echo '<div class="StoreItemListTd">';
+						//echo $temp['ItemNickName'];
+						//echo '</div>';
+					
 		
 						echo '<div class="StoreItemListTd">';
 						echo $temp['Price'];
 						echo '</div>';
-
+	
+						echo '<div class="StoreItemListTd">'.$temp['LimitQuantity'].'</div>';						
+						
 						echo '<div class="StoreItemListTd" ><button class="DeleteItem">刪除</button></div>';
 			
 						echo '</div>';
@@ -136,7 +144,7 @@ $("#AddStoreItemButton").click(
 		
 
 		if(ItemNickName.length>2)
-			alert("暱稱長度不能超過2");
+			alert("商品暱稱長度不能超過2");
 		else
 			$('#content').load('StoreTakenItemList.php',{"StoreItemName":StoreItemName,"ItemPrice":ItemPrice,"ItemNickName":ItemNickName},
 							function()
