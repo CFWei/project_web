@@ -32,12 +32,12 @@ if($selector=="")
 
 if($selector==-1)
 	{
-		$query="SELECT number,custom_id,life FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."'";
+		$query="SELECT number,PhoneNumber,life FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."'";
 		$t=0;
 	}
 else	
 	{
-		$query="SELECT number,custom_id,life FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."' and life='".$selector."'";
+		$query="SELECT number,PhoneNumber,life FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."' and life='".$selector."'";
 		$t=(int)$selector+1;
 	}
 
@@ -46,7 +46,8 @@ $db->query($query);
 
 $Selectcontent[$t]="selected";
 ?>
-<div id="LookUpCustomInformationPage">
+<body bgcolor="#FFCECD">
+<div id="LookUpCustomInformationPage"  >
 <div>
 	<form name="SelectorForm">                                                                           
 		<select name="Selector" onchange="LookUpCustomInformationSelector('<?php echo $ItemID ?>')">
@@ -65,7 +66,7 @@ $Selectcontent[$t]="selected";
 		號碼
 		</div>
 		<div class="TableTd">
-		使用者ID
+		客戶電話
 		</div>
 		<div class="TableTd">
 		狀態
@@ -88,7 +89,7 @@ while(($temp=$db->fetch_assoc())!=null)
 
 	echo '<div class="TableTd">';	
 		echo '<span class="CustomID">';
-			echo $temp['custom_id'];
+			echo $temp['PhoneNumber'];
 		echo '</span>';
 	echo '</div>';
 
@@ -168,3 +169,4 @@ function LookUpCustomInformationSelector(ItemID)
 	location.href='LookUpCustomInformation.php?ItemID='+ItemID+'&selector='+selector;
 }
 </script>
+</body>

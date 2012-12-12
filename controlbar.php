@@ -17,7 +17,7 @@ if($StoreType=="1")
 	echo 
 	'
 	<div class="content"><button class="controlbarbutton" id="additem">新增商品</button></div>
-	<div class="content"><button class="controlbarbutton" id="Setting">設定</button></div>
+	<div class="content"><button class="controlbarbutton" id="ModifyInformation" style="font-size:18px;">修改商家資訊</button></div>
 	<div class="content"><button class="controlbarbutton" id="BackToManage">返回主頁</button></div>
 	<div class="content"><button class="controlbarbutton" id="Logout">登出</button></div>
 	';
@@ -103,7 +103,11 @@ if($StoreType=="2")
 				loadpage("#content","EndBusiness.php");
 			}
 		});
-	
+	$('#ModifyInformation').click(
+		function()
+		{	
+			loadpage("#content","ModifyStoreInformation.php");
+		});
 
 
 	$('#Logout').click(

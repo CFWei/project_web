@@ -5,6 +5,7 @@ require_once("../mysql_inc.php");
 $SerialNumbers=$_POST['SerialNumbers'];
 $UserIMEI=$_POST['UserIMEI'];
 $CustomItemList=$_POST['CustomItemList'];
+$phoneNubmer=$_POST['phoneNubmer'];
 
 $Jsontemp=json_decode($CustomItemList);
 $i=0;
@@ -82,7 +83,7 @@ $db->query($query);
 
 
 
-$query="INSERT INTO  `custom_information` ( `custom_id`, `store`, `item`, `number`,`SelectItem`)  VALUES ('".$UserIMEI."','".$SerialNumbers."','".$ItemID."','".$takevalue."','".$FinalStoreData."')";
+$query="INSERT INTO  `custom_information` ( `custom_id`, `store`, `item`, `number`,`SelectItem`,`PhoneNumber`)  VALUES ('".$UserIMEI."','".$SerialNumbers."','".$ItemID."','".$takevalue."','".$FinalStoreData."','".$phoneNubmer."')";
 $db->query($query);
 
 

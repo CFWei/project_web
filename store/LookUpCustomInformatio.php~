@@ -17,14 +17,12 @@ $query="SELECT number,custom_id,life FROM custom_information WHERE store='".$sto
 
 $db->query($query);
 
-
-echo $query;
 while(($temp=$db->fetch_assoc())!=null)
 {
 
 	$custom[]=$temp;
 
 }
-//echo json_encode($custom);
+echo json_encode($custom);
 ?>
 

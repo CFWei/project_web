@@ -284,13 +284,13 @@
 	
 }
 
-.InformationBlock
+.ItemBlock .InformationBlock
 {
 	float:left;
 	width:70%;
 	margin:0 0 0 0;
 }
-.ItemTop
+.ItemBlock .InformationBlock .ItemTop
 {
 	width:100%;
 	height:80%;
@@ -298,7 +298,7 @@
 
 
 }
-.ItemName
+.ItemBlock .InformationBlock .ItemTop .ItemName
 {
 	width:100%;
 	height:30%;
@@ -306,7 +306,7 @@
 	font-size:50px;
 	border-bottom:solid 3px;
 }
-.NowValue
+.ItemBlock .InformationBlock .ItemTop .NowValue
 {
 	width:100%;
 	height:70%;
@@ -316,13 +316,13 @@
 }
 
 
-.ItemButtom
+.ItemBlock .InformationBlock .ItemButtom
 {
-	width:99%;
+	width:100%;
 	height:20%;
 	
 }
-.WaitNum
+.ItemBlock .InformationBlock .ItemButtom .WaitNum
 {
 	float:right;
 	width:50%;
@@ -331,14 +331,14 @@
 	overflow:hidden;
 }
 
-.TakenNum
+.ItemBlock .InformationBlock .ItemButtom .TakenNum
 {
 	width:50%;
 	line-height:50px;
 	font-size:30px;
 	overflow:hidden;	
 }
-.ControlBlock
+.ItemBlock .ControlBlock
 {
 	width:30%;
 	height:100%;
@@ -346,7 +346,7 @@
 	border-left:solid 2px;
 }
 
-.ControlButton
+.ItemBlock .ControlBlock .ControlButton
 {
 	width:100%;
 	height:25%;
@@ -355,6 +355,99 @@
 }
 
 
+/*OneItemBlock.php*/
+.OneItemBlock
+{	
+	z-index: 1; 
+	text-align:left;
+	width:99%;
+	height:97%;
+	border-style:ridge;
+	border-width:8px;
+	border-color:blue;
+	border-radius:10px;
+	overflow:hidden;
+	margin:0 auto;
+	
+}
+
+.OneItemBlock .InformationBlock
+{
+	float:left;
+	width:69.9%;
+	margin:0 0 0 0;
+}
+.OneItemBlock .InformationBlock .ItemTop
+{
+	width:100%;
+	height:85%;
+	text-align:center;
+
+
+}
+.OneItemBlock .InformationBlock .ItemTop .ItemName
+{
+	width:100%;
+	height:27%;
+	line-height:170px;
+	text-align:center;
+	font-size:120px;
+	border-bottom:solid 3px;
+}
+.OneItemBlock .InformationBlock .ItemTop .NowValue
+{
+	width:100%;
+	height:73%;
+	line-height:464px;
+	text-align:center;
+	font-size:340px;
+	border-bottom:solid 3px;
+}
+
+
+.OneItemBlock .InformationBlock .ItemButtom
+{
+	width:99%;
+	height:15%;
+
+	
+}
+.OneItemBlock .InformationBlock .ItemButtom .WaitNum
+{
+	float:right;
+	width:50%;
+	line-height:100px;
+	font-size:50px;
+	overflow:hidden;
+	text-align:center;
+}
+
+.OneItemBlock .InformationBlock .ItemButtom .TakenNum
+{
+	width:50%;
+	line-height:100px;
+	font-size:50px;
+	overflow:hidden;
+	text-align:center;	
+}
+.OneItemBlock .ControlBlock
+{
+	width:30%;
+	height:100%;
+	float:right;
+	border-left:solid 2px;
+}
+
+.OneItemBlock .ControlBlock .ControlButton
+{
+	width:100%;
+	height:25%;
+	font-size:80px;
+	margin:0 0 0 0;
+}
+
+
+/*OneItemBlock.php end*/
 #Type2Block
 {
 	width:99%;
@@ -376,7 +469,7 @@
 
 #RightBlock
 {	
-	width:56%;
+	width:48.5%;
 	height:100%;
 	float:right;
 	/*border:1px double;*/
@@ -390,7 +483,7 @@
 }
 #ItemQueueBlock
 {
-	width:18%;
+	width:26%;
 	height:100%;
 	float:right;
 	/*border:1px solid;*/
@@ -455,6 +548,8 @@
 	margin:0 auto;
 	padding-top:15px;
 	font-size:25px;
+	width:99%;
+
 
 
 }
@@ -474,7 +569,7 @@
 {
 	display:table-cell;
 	border:solid 1px; 
-	font-size:15px;
+	font-size:17px;
 }
 
 /*waititemblock*/

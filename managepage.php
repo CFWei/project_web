@@ -66,12 +66,14 @@ if($StoreType=="1")
 	echo'</script>';
 	echo '<div class="contextMenu" id="myMenu1" style="display:none;">
 		<ul>
+			<li id="OneItemScreen">此商品全螢幕</li>
+			
 			<li id="delete">刪除商品</li>		
 		</ul>
 		</div>';
 
 	exit;
-
+//<li id="LiveTakeNumber">現場取號系統</li>
 }
 
 if($StoreType=="2")
@@ -305,7 +307,7 @@ $.ajax({
 
 
 GetValue('<?php echo $ItemID ?>');
-
+/*
 $(function(){
 	$("li:has(ul)").click(function(e){
 		if(this==e.target){
@@ -322,7 +324,7 @@ $(function(){
 		return false;
 
 	}).css("cursor","pointer").click();
-});
+});*/
 </script>
 
 	

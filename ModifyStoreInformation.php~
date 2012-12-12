@@ -85,7 +85,7 @@ else
 				
 			});
 	$('#BackButton').click(function(){
-		
+		loadpage("#content","managepage.php","<?php echo $StoreType ?>");
 	});
 </script>
 

@@ -1,6 +1,7 @@
 #LookUpCustomInformationPage
 {
 	text-align:center;
+	background-color:#FFCECD;
 }
 
 #LookUpCustomInformationTable
@@ -23,4 +24,5 @@
 	display:table-cell;
 	border:solid;
 	font-size:20px;
+	background-color:#fff;
 }

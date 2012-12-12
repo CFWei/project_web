@@ -307,6 +307,14 @@ function RegisterContextMenu(SerialNumbers)
 							
 										},800);
 							*/
+						},
+					"OneItemScreen":function(t)
+						{	
+							OneItemScreen(t.id);
+							
+						},
+					"LiveTakeNumber":function(t){
+							LiveTakeNumber(t.id);
 						}
 						
 
@@ -316,6 +324,18 @@ function RegisterContextMenu(SerialNumbers)
 function DeleteItem(ItemID)
 {
 	$('#content').load('DeleteItem.php',{"ItemID":ItemID});
+}
+function OneItemScreen(ItemID)
+{
+	$('#content').animate({
+				height:"80%",
+				width:"100%",			
+				},800);
+	$('#content').load('OneItemScreen.php',{"ItemID":ItemID});
+}
+function LiveTakeNumber(ItemID)
+{
+	window.open("LiveTakeANumber.php?ItemID="+ItemID);
 }
 function LookUpCustomInformation(ItemID)
 {
@@ -903,4 +923,31 @@ function ShowMenu(){
 	
 
 }
+function UpdateOneItemScreen(ItemID){
+ 	$.post('updatevalue.php',
+		 {"Item_Id":ItemID,"Type":"1"},
+			function(data)
+			{	
+
+				if($("#"+data.Item_Id+" .WaiNumValue").html()!=data.WaiNumValue)
+					$("#"+data.Item_Id+" .WaiNumValue").html(data.WaiNumValue);
+							
+				if($("#"+data.Item_Id+" .TakenNumValue").html()!=data.Value)
+					$("#"+data.Item_Id+" .TakenNumValue").html(data.Value);	
+
+				if($("#"+data.Item_Id+" .NowValue").html()!=data.Now_Value)
+					$("#"+data.Item_Id+" .NowValue").html(data.Now_Value);
+		
+				if(data.State=="WAIT")
+					{
+						NextValue(data.Item_Id,3);
+					}
+				 
+			},
+			"json"
+		 	);
+	window.setTimeout("UpdateOneItemScreen('"+ItemID+"');",2000);
+
+}
+
 

@@ -40,12 +40,14 @@ while($temp=$db->fetch_array())
 
 $query="SELECT * FROM custom_information WHERE store='".$SerialNumbers."' AND item='".$ItemID."' AND number='".$_POST['CustomNumber']."'";
 $db->query($query);
+$temp=$db->fetch_assoc();
 ?>
 
 
-<div><span style="font-size:20px">這是第</span> <font size="13" style="color:red;"><?php echo $_POST['CustomNumber'] ?></font> <span style="font-size:20px">號客戶的商品列表</span></div>
+<div><span style="font-size:20px">這是第</span> <font size="18" style="color:red;"><?php echo $_POST['CustomNumber'] ?></font> <span style="font-size:20px">號客戶的商品列表</span></div>
 <!--<div><button id="CloseCustomItemWindow">結束服務</button>-->
 <!--<button id="CancelSelect">取消選取</button></div>-->
+<span id="phoneNumber" style="font-size:18px;">電話：<?php echo $temp['PhoneNumber'];?></span>
 <div id="ItemListBlock">
 		<div class="ItemListTr">
 			<div class="ItemListTd">
@@ -63,8 +65,8 @@ $db->query($query);
 		</div>
 		<?php	
 			$TotalCost=0;
-			while(($temp=$db->fetch_assoc())!=null)
-			{
+
+			
 			
 				$SelectItem=json_decode($temp['SelectItem']);
 				foreach($SelectItem as $ItemTemp=>$ItemData)
@@ -122,7 +124,7 @@ $db->query($query);
 					$TotalCost+=(int)$TakenItemPriceList[$Record]*(int)$NeedValue;
 				}
 
-			}
+			
 		?>
 				
 </div >

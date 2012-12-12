@@ -5,14 +5,13 @@ require_once("../mysql_inc.php");
 $UserIMEI=$_POST['UserIMEI'];
 $SerialNumbers=$_POST['SerialNumbers'];
 $ItemId=$_POST['ItemId'];
+$phoneNumber=$_POST['phoneNubmer'];
 
 
 //echo $UserIMEI."<br>".$SerialNumbers."<br>".$ItemId."<br>";
 $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
-
 $query="SELECT Value FROM ".$SerialNumbers." where ID='".$ItemId."'";
-
 $db->query($query);
 
 
@@ -37,7 +36,7 @@ if(!$db->query($query))
 	echo "fail";	
 
 
-$query="INSERT INTO  `custom_information` (  `custom_id` ,  `store` ,  `item` ,  `number` )  VALUES ('".$UserIMEI."','".$SerialNumbers."','".$ItemId."','".$takevalue."')";
+$query="INSERT INTO  `custom_information` (  `custom_id` ,  `store` ,  `item` ,  `number`,`PhoneNumber` )  VALUES ('".$UserIMEI."','".$SerialNumbers."','".$ItemId."','".$takevalue."')";
 
 if(!$db->query($query))
 {

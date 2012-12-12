@@ -5,6 +5,7 @@ require_once("../mysql_inc.php");
 $UserIMEI=$_POST['UserIMEI'];
 $SerialNumbers=$_POST['SerialNumbers'];
 $ItemId=$_POST['ItemId'];
+$phoneNumber=$_POST['phoneNubmer'];
 
 
 //echo $UserIMEI."<br>".$SerialNumbers."<br>".$ItemId."<br>";
@@ -35,7 +36,7 @@ if(!$db->query($query))
 	echo "fail";	
 
 
-$query="INSERT INTO  `custom_information` (  `custom_id` ,  `store` ,  `item` ,  `number` )  VALUES ('".$UserIMEI."','".$SerialNumbers."','".$ItemId."','".$takevalue."')";
+$query="INSERT INTO  `custom_information` (  `custom_id` ,  `store` ,  `item` ,  `number`,`PhoneNumber` )  VALUES ('".$UserIMEI."','".$SerialNumbers."','".$ItemId."','".$takevalue."','".$phoneNumber."')";
 
 if(!$db->query($query))
 {

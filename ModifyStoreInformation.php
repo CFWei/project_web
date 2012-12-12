@@ -52,7 +52,7 @@ else
 
 ?>
 <div id="RegisterPage">
-	<div id="RegisterTitle">修改資料</div>
+	<div id="RegisterTitle">修改商家資料</div>
 		<form method="post" action="">
 				<p><div class="RegisterText">店家名稱：</div><input type="text" class="RegisterTextArea" id="StoreName" maxlength="100" value="<?php echo $temp['StoreName']; ?>"></p>
 				<p><div class="RegisterText">店家電話：</div><input type="text" class="RegisterTextArea" id="StoreTelephone"  maxlength="100" value="<?php echo $temp['StoreTelephone']; ?>" ></p>

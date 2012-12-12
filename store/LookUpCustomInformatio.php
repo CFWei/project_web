@@ -13,7 +13,7 @@ $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
 
-$query="SELECT number,custom_id,life FROM custom_information WHERE store='".$store."' and item='".$ID."'";
+$query="SELECT number,custom_id,life,PhoneNumber FROM custom_information WHERE store='".$store."' and item='".$ID."'";
 
 $db->query($query);
 
