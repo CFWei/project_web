@@ -52,15 +52,49 @@ else
 
 ?>
 <div id="RegisterPage">
-	<div id="RegisterTitle">修改資料</div>
-		<form method="post" action="">
-				<p><div class="RegisterText">店家名稱：</div><input type="text" class="RegisterTextArea" id="StoreName" maxlength="100" value="<?php echo $temp['StoreName']; ?>"></p>
-				<p><div class="RegisterText">店家電話：</div><input type="text" class="RegisterTextArea" id="StoreTelephone"  maxlength="100" value="<?php echo $temp['StoreTelephone']; ?>" ></p>
-				<p><div class="RegisterText">店家地址：</div><input type="text" class="RegisterTextArea" id="StoreAddress" name="StoreAddress" size="50" maxlength="100" onchange="codeAddress()" value="<?php echo $temp['StoreAddress']; ?>" ></p>
-				<p>
-				<div class="RegisterText" style="width:100px;">經度：</div><input type="text" class="RegisterTextArea" name="GPS_Latitude" id="GPS_Latitude" value="<?php echo $temp['GPS_Latitude']; ?>" style="width:200px;"> 
-				<a style="font-size:28px;">緯度：</a><input type="text" class="RegisterTextArea" name="GPS_Longitude" id="GPS_Longitude" value="<?php echo $temp['GPS_Longitude']; ?>" style="width:200px;">
-				</p>	
+	<div id="RegisterTitle">修改商家資料</div>
+		<form id="RegisterFormTable" method="post" action="">
+				<div class="Tr">
+					<div class="Td" style="text-align:right; width:160px;">
+						<div class="RegisterText">店家名稱：</div>
+					</div>	
+					<div class="Td" style="text-align:left;">				
+						<input type="text" class="RegisterTextArea" id="StoreName" maxlength="100" value="<?php echo $temp['StoreName']; ?>">
+					</div>		
+				</div>
+				<div class="Tr">
+					<div class="Td" style="text-align:right;">
+						<div class="RegisterText">店家電話：</div>
+					</div>
+					<div class="Td" style="text-align:left;">
+						<input type="text" class="RegisterTextArea" id="StoreTelephone"  maxlength="100" value="<?php echo $temp['StoreTelephone']; ?>" >
+					</div>
+				</div>
+				<div class="Tr">
+					<div class="Td" style="text-align:right;">
+						<div class="RegisterText" >店家地址：</div>
+					</div>
+					<div class="Td" style="text-align:left;">
+						<input type="text" class="RegisterTextArea" id="StoreAddress" name="StoreAddress" size="40" maxlength="100" onchange="codeAddress()" value="<?php echo $temp['StoreAddress']; ?>" >
+					</div>
+				</div>
+				<div class="Tr">
+					<div class="Td" style="text-align:right;">
+						<div class="RegisterText">經度：</div>
+					</div>
+					<div class="Td">
+						<input type="text" class="RegisterTextArea" name="GPS_Latitude" id="GPS_Latitude" value="<?php echo $temp['GPS_Latitude']; ?>" style="width:200px;">
+					</div>
+				</div>
+				<div class="Tr">
+					<div class="Td" style="text-align:right;"> 
+						<div class="RegisterText">緯度：</div>
+					</div>
+					<div class="Td"> 	
+						<input type="text" class="RegisterTextArea" name="GPS_Longitude" id="GPS_Longitude" value="<?php echo $temp['GPS_Longitude']; ?>" style="width:200px;">
+					</div>
+				</div>
+					
 		</form>
 		<button id="ModifySubmitButton" class="ButtonStyle" >修改</button>
 		<button id="BackButton" class="ButtonStyle" >返回</button>

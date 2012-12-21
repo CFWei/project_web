@@ -44,10 +44,14 @@ $temp=$db->fetch_assoc();
 ?>
 
 
-<div><span style="font-size:20px">這是第</span> <font size="18" style="color:red;"><?php echo $_POST['CustomNumber'] ?></font> <span style="font-size:20px">號客戶的商品列表</span></div>
+<div style="border:1px solid;background-color:#EB87EA;margin-top:1px;">
+	<span style="font-size:20px">第</span> 
+	<font size="18" style="color:#F7FA00;"><?php echo $_POST['CustomNumber'] ?></font> 
+	<span style="font-size:20px">號客戶的商品列表</span>
+</div>
 <!--<div><button id="CloseCustomItemWindow">結束服務</button>-->
 <!--<button id="CancelSelect">取消選取</button></div>-->
-<span id="phoneNumber" style="font-size:18px;position:relative;top:5px;right:3px;">電話：<?php echo $temp['PhoneNumber'];?></span>
+<span id="phoneNumber" style="font-size:18px;">電話：<?php echo $temp['PhoneNumber'];?></span>
 <div id="ItemListBlock">
 		<div class="ItemListTr">
 			<div class="ItemListTd">

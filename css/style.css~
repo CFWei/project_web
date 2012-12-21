@@ -198,16 +198,15 @@
 
 /*register.html*/
 #RegisterPage
-{
-	text-align:left;
+{	
+	text-align:center;
 	font-weight:bold;
 	padding-left:13px;
 	padding-top:8px;
 }
 .RegisterText
 {
-	float:left;
-	width:150px;
+	
 	font-size:28px;
 	display:inline;
 	letter-spacing:0.1px;
@@ -218,6 +217,20 @@
 	font-size:20px;
 }
 
+#RegisterFormTable{
+	width:700px;
+	margin:0 auto;
+	display:table;
+	padding-top:10px;
+}
+#RegisterFormTable .Tr{
+	display:table-row;
+}
+#RegisterFormTable .Tr .Td{
+	height:40px;
+	border:1px solid;
+	display:table-cell;
+}
 
 #RegisterTitle
 {
@@ -451,11 +464,11 @@
 #Type2Block
 {
 	width:99%;
-	height:96%;
+	height:97%;
 
 	border:5px solid;
 	margin:0 auto;
-	margin-top:15px;
+	margin-top:5px;
 
 }
 #LeftBlock
@@ -548,7 +561,7 @@
 	margin:0 auto;
 	padding-top:15px;
 	font-size:25px;
-	width:100%;
+	width:99%;
 
 
 

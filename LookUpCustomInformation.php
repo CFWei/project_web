@@ -1,6 +1,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 <link href="css/LookUpCustomInformation.css" rel=stylesheet type="text/css" >
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 
 <?php
@@ -109,7 +110,7 @@ while(($temp=$db->fetch_assoc())!=null)
 	if($temp['life']==0)
 	{
 		echo '<button class="SkipButton">
-					跳號
+					叫號
 				</button>';
 		echo '<button class="DeleteButton">
 				刪除
@@ -136,7 +137,7 @@ while(($temp=$db->fetch_assoc())!=null)
 					function(data)
 					{
 						if(data==EditValue)
-							loadpage("#content","managepage.php");
+							;//loadpage("#content","managepage.php");
 						else
 						{
 							alert("跳號失敗");	

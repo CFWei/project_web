@@ -67,13 +67,13 @@ if($StoreType=="1")
 	echo '<div class="contextMenu" id="myMenu1" style="display:none;">
 		<ul>
 			<li id="OneItemScreen">此商品全螢幕</li>
-			<li id="LiveTakeNumber">現場取號系統</li>
+			
 			<li id="delete">刪除商品</li>		
 		</ul>
 		</div>';
 
 	exit;
-
+//<li id="LiveTakeNumber">現場取號系統</li>
 }
 
 if($StoreType=="2")
@@ -120,7 +120,7 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 							<span class="WaitNumText">
 								等候人數：
 							</span>
-							<span id="4564" name="WaiNumValue" class="WaiNumValue">
+							<span name="WaiNumValue" class="WaiNumValue">
 								100
 							</span>
 						</div>

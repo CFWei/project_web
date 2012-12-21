@@ -226,8 +226,8 @@ function loadpage(DivName,LoadPage,parameter)
 		$(DivName).load(LoadPage,{},function(){
 					
 			$("#content").animate({
-					height:"450px",
-					width:"800px",
+					height:"500px",
+					width:"98%",
 					left:"5%",
 				      },800,function(){});
 					
@@ -783,7 +783,6 @@ function WaitItemClickEvent(){
 
 	var Button=$(this);
 	
-	alert('hello');
 
 	$.ajax({
 		type:'POST',
