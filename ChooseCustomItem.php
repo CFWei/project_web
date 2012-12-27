@@ -51,7 +51,7 @@ $temp=$db->fetch_assoc();
 </div>
 <!--<div><button id="CloseCustomItemWindow">結束服務</button>-->
 <!--<button id="CancelSelect">取消選取</button></div>-->
-<span id="phoneNumber" style="font-size:18px;">電話：<?php echo $temp['PhoneNumber'];?></span>
+<div id="phoneNumber" style="font-size:18px;margin-top:10px;margin-bottom:10px;">電話：<?php echo $temp['PhoneNumber'];?></div>
 <div id="ItemListBlock">
 		<div class="ItemListTr">
 			<div class="ItemListTd">

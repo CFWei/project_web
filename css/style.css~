@@ -201,9 +201,34 @@
 {	
 	text-align:center;
 	font-weight:bold;
-	padding-left:13px;
-	padding-top:8px;
+	padding-top:10px;
+	margin:0 auto;
 }
+#RegisterTable{
+	display:table;
+	margin:0 auto;
+	
+
+}
+#RegisterTable .Tr{
+	display:table-row;
+	
+}
+#RegisterTable .Tr .Td{
+	display:table-cell;
+	
+
+}
+#RegisterTable .Tr .Text{
+	width:42%;
+	text-align:right;
+}
+#RegisterTable .Tr .input{
+	width:58%;
+	text-align:left;
+}
+
+
 .RegisterText
 {
 	
@@ -216,6 +241,7 @@
 	border:double;
 	font-size:20px;
 }
+
 
 #RegisterFormTable{
 	width:700px;
@@ -231,6 +257,8 @@
 	border:1px solid;
 	display:table-cell;
 }
+
+
 
 #RegisterTitle
 {
@@ -468,7 +496,7 @@
 
 	border:5px solid;
 	margin:0 auto;
-	margin-top:5px;
+	margin-top:7px;
 
 }
 #LeftBlock

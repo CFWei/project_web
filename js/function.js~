@@ -23,7 +23,7 @@ function gopage(choose)
 		$('#content').animate({
 				height:"58%"
 			      },800);
-		$('#content').load('register.php');	
+		 loadpage('#content','register.php');	
 	}
 	
 }
@@ -158,31 +158,52 @@ function loadpage(DivName,LoadPage,parameter)
 	{	
 		
 		$(DivName).load(LoadPage,function(){
-			$('#ItemTable').hide();
-			var wid="95%";
-			if(parameter=="1")
 			
+			var wid="95%";
+			if(parameter=="1"){
 				var heig=$('#ItemTable').height()+30;
+				$('#ItemTable').hide();
+
+			}
 				
 			if(parameter=="2")
-				{	
-					var heig=$('#Type2Block').height()+50;
-					if(heig=="30")
-					{
-						heig="120";
-						wid="50%";
-					}
-					wid="99%";
-					heig="79%";
+			{	
+				var heig=$('#Type2Block').height()+50;
+				if(heig=="30"){
+					heig="120";
+					wid="50%";
 				}
-			
+				$('#Type2Block').hide();
+				wid="99%";
+				heig="79%";
+			}
+
 			$("#content").animate({
 					height:heig, 
 					width:wid,
-				      },800,function(){$('#ItemTable').fadeIn(400);});
+				      },800,function(){
+					if(parameter==1)
+						$('#ItemTable').fadeIn(400);
+					else{
+						$('#Type2Block').fadeIn(400);
+					}
+
+					});
 			
 			});
 		
+	}
+	else if(DivName=="#content"&&LoadPage=="register.php"){
+		$(DivName).load(LoadPage,function(){
+			$('#RegisterPage').hide();
+			$("#content").animate({
+					height:"60%",
+					width:"80%"
+				      },800,function(){$('#RegisterPage').fadeIn(400);});
+		});
+
+
+
 	}
 
 	else if(DivName=="#content"&&LoadPage=="add_item.php")
@@ -198,8 +219,10 @@ function loadpage(DivName,LoadPage,parameter)
 		});
 	}
 	else if(DivName=="#content"&&LoadPage=="login.php")
-	{
+	{	
+		
 		$(DivName).load(LoadPage,function(){
+			$('#centerbox').hide();
 			$("#content").animate({
 					height:"220px",
 					width:"650px",
@@ -265,13 +288,15 @@ function loadpage(DivName,LoadPage,parameter)
 	}
 	else if(DivName=="#content"&&LoadPage=="StoreSetting.php")
 	{
+
+		
 		$(DivName).load(LoadPage,{},function(){
-					
+			$('#StoreSettingTable').hide();		
 			$("#content").animate({
 					height:"300px",
 					width:"800px",
-				      },800,function(){});
-					
+				      },800,function(){$('#StoreSettingTable').fadeIn(400);});
+						
 					});
 	}
 	else if(DivName=="#content"&&LoadPage=="WaitItemModeList.php")
@@ -783,7 +808,6 @@ function WaitItemClickEvent(){
 
 	var Button=$(this);
 	
-	alert('hello');
 
 	$.ajax({
 		type:'POST',
