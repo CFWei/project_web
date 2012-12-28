@@ -573,6 +573,26 @@
 	border:5px solid;
 	*/
 }
+#ControlBlockTable
+{
+	 width:100%;
+	 height:100%;
+	border:1px solid;
+
+}
+#ControlBlockTable .Tr
+{
+	 display:table-row;
+	width:99%;
+}
+
+#ControlBlockTable .Tr .Td
+{
+	 display:table-cell;
+	border:1px solid;
+
+}
+
 #NumberSelector
 {
 	width:99%;
@@ -587,7 +607,6 @@
 	display:table;	
 	text-align:center;
 	margin:0 auto;
-	padding-top:15px;
 	font-size:25px;
 	width:99%;
 

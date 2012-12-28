@@ -181,9 +181,23 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 			<div style="height:15%;font-size:18px;">等候人數:<span id="WaitValue">9999</span></div>
 		</div>
 		<div id="ControlBlock">
-			<button id="CallNumber" style="width:99%; height:69%; font-size:70px;">叫號</button>
-			<button id="CancelSelect" style="width:49%; height:31%; font-size:30px;">取消選取</button>
-			<button id="EndNumber" style="width:49%; height:30%; font-size:40px;">結束</button>
+			<table id="ControlBlockTable">
+				<tr class="Tr" >
+					<td class="Td" colspan="2">
+						<button id="CallNumber" style="width:100%; height:100%; font-size:90px;">叫號</button>
+					</td>		
+				</tr>
+				<tr class="Tr" >
+					<td class="Td">
+						<button id="CancelSelect" style="width:100%; height:100%; font-size:50px;">取消選取</button>
+					</td>
+					
+					<td class="Td">
+						<button id="EndNumber" style="width:101%; height:100%; font-size:50px;">結束服務</button>
+					</td>
+				
+				</tr>
+			</table>
 		</div>
 	</div>
 	
