@@ -193,7 +193,7 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 					</td>
 					
 					<td class="Td">
-						<button id="EndNumber" style="width:101%; height:100%; font-size:50px;">結束</button>
+						<button id="EndNumber" style="width:101%; height:100%; font-size:50px;">結束服務</button>
 					</td>
 				
 				</tr>

@@ -184,16 +184,16 @@ function addItem($ItemID,$ItemName,$ItemValue,$ItemNowValue,$SerialNumbers)
 			<table id="ControlBlockTable">
 				<tr class="Tr" >
 					<td class="Td" colspan="2">
-						<button id="CallNumber" style="width:100%; height:100%; font-size:90px;">叫號</button>
+						<button id="CallNumber" style="width:100%; height:100%; font-size:50px;">叫號</button>
 					</td>		
 				</tr>
 				<tr class="Tr" >
 					<td class="Td">
-						<button id="CancelSelect" style="width:100%; height:100%; font-size:50px;">取消選取</button>
+						<button id="CancelSelect" style="width:100%; height:100%; font-size:30px;">取消選取</button>
 					</td>
 					
 					<td class="Td">
-						<button id="EndNumber" style="width:101%; height:100%; font-size:50px;">結束服務</button>
+						<button id="EndNumber" style="width:101%; height:100%; font-size:30px;">結束服務</button>
 					</td>
 				
 				</tr>
