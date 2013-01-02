@@ -577,7 +577,7 @@
 {
 	 width:100%;
 	 height:100%;
-	border:1px solid;
+	
 
 }
 #ControlBlockTable .Tr
@@ -829,8 +829,20 @@
 #StoreItemListTable .StoreItemListTableTr .StoreItemListTableTd
 {
 	display:table-cell;
+	border:1px solid;
 
 }
+#AddStoreItem
+{
+	
+}
+#AddStoreItem h1
+{
+	font-size:20px;
+
+}
+
+
 /*FullScreen.php*/
 #FullScreen
 {

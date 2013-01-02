@@ -137,7 +137,7 @@ while(($temp=$db->fetch_assoc())!=null)
 					function(data)
 					{
 						if(data==EditValue)
-							//loadpage("#content","managepage.php");
+							window.location.reload();//loadpage("#content","managepage.php");
 						else
 						{
 							alert("跳號失敗");	
@@ -149,18 +149,18 @@ while(($temp=$db->fetch_assoc())!=null)
 				});	
 
 	$('.DeleteButton').click(function(){
-				var ItemID="<?php
-						echo $ItemID;
-						?>";
-				var CustomID = $(this).parent().parent().children('.TableTd').children('.CustomID').html();
+				var ItemID="<?php echo $ItemID;?>";
 				var Value = $(this).parent().parent().children('.TableTd').children('.Number').html();
+				alert(Value);
+				
 				$.post('ModifyCustomState.php',
-					{"ItemID":ItemID,"CustomID":CustomID,"Value":Value},
+					{"ItemID":ItemID,"Value":Value},
 					function(data)
 					{
+						window.location.reload();
 					},
 					"text");					
-				LookUpCustomInformation(ItemID);		
+		
 				
 				});
 function LookUpCustomInformationSelector(ItemID)

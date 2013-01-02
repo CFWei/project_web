@@ -59,7 +59,7 @@ function NextValue(Item_Id,choose)
 		{	
 			if(data==(-1))
 			{
-				alert("wait!!");
+				alert("目前沒有下一個號碼的客戶");
 				
 			}
 			else

@@ -227,7 +227,7 @@ function loadpage(DivName,LoadPage,parameter)
 					height:"220px",
 					width:"650px",
 					left:"5%",
-				      },800,function(){});
+				      },800,function(){$('#centerbox').fadeIn();});
 		});
 	
 	}

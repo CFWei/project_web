@@ -829,8 +829,20 @@
 #StoreItemListTable .StoreItemListTableTr .StoreItemListTableTd
 {
 	display:table-cell;
+	
 
 }
+#AddStoreItem
+{
+	
+}
+#AddStoreItem h1
+{
+	font-size:20px;
+
+}
+
+
 /*FullScreen.php*/
 #FullScreen
 {

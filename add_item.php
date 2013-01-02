@@ -51,7 +51,7 @@ if(isset($_POST['Item_Name']))
 					exit;
 				}				
 			echo '<script>';
-			echo 'loadpage("#content","managepage.php");';
+			echo 'loadpage("#content","managepage.php","1");';
 			//echo 'alert("新增商品成功");';
 			echo '</script>';
 			$content="新增商品成功";

@@ -70,9 +70,7 @@
 				//echo"註冊成功";
 				//header("Refresh: 1; url=\"index.html\"");
 					echo '<script>
-					     $("#content").animate({
-							height:"220px"
-						      },800);
+						loadpage("#content","login.php");
 						$("#content").load("login.php")</script>';	
 					exit;
 				
@@ -160,7 +158,7 @@
 			<div class="Td Text">
 				<div class="RegisterText">緯度：</div>
 			</div>
-			<div class="Td input	">
+			<div class="Td input">
 				<input type="text" class="RegisterTextArea" name="GPS_Longitude" id="GPS_Longitude" >
 			</div>
 		</div>

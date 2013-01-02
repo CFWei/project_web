@@ -150,7 +150,7 @@ $("#AddStoreItemButton").click(
 		var ItemPrice=$("#ItemPrice").val();
 	//	var ItemNickName=$("#ItemNickName").val();
 		var LimitQuantity=$('#LimitQuantity').val();	
-		alert(LimitQuantity);
+
 		$('#content').load('StoreTakenItemList.php',{"StoreItemName":StoreItemName,"ItemPrice":ItemPrice,"LimitQuantity":LimitQuantity},
 							function()
 							{

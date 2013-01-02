@@ -70,10 +70,8 @@
 				//echo"註冊成功";
 				//header("Refresh: 1; url=\"index.html\"");
 					echo '<script>
-					     $("#content").animate({
-							height:"220px"
-						      },800);
-						$("#content").load("login.php")</script>';	
+						loadpage("#content","login.php");
+						</script>';	
 					exit;
 				
 			}
