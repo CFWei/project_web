@@ -35,7 +35,7 @@ $query="SELECT number,SelectItem FROM custom_information WHERE store='".$SerialN
 $db->query($query);
 if($db->get_num_rows()<=0)
 {
-	$result['CustomList'][]="-1";
+	$result['CustomList']="-1";
 }
 else
 {	
