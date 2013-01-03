@@ -31,7 +31,7 @@ while($temp=$db->fetch_array())
 }
 
 //取出CustomInformation
-$query="SELECT number,SelectItem FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."' and life=0";
+$query="SELECT number,SelectItem,PhoneNumber FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."' and life=0";
 $db->query($query);
 if($db->get_num_rows()<=0)
 {

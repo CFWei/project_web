@@ -3,7 +3,7 @@ require_once("../../connect_mysql_class.php");
 require_once("../../mysql_inc.php");
 
 $SerialNumbers=$_POST['SerialNumbers'];
-$SerialNumbers="2jdCLFdWFQWxPm9Khrds";
+
 
 $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
@@ -31,7 +31,7 @@ while($temp=$db->fetch_array())
 }
 
 //取出CustomInformation
-$query="SELECT number,SelectItem FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."' and life=0";
+$query="SELECT number,SelectItem,PhoneNumber FROM custom_information WHERE store='".$SerialNumbers."' and item='".$ItemID."' and life=0";
 $db->query($query);
 if($db->get_num_rows()<=0)
 {

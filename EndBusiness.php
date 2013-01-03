@@ -30,13 +30,19 @@ $count=$db->get_num_rows();
 if($count!=0)
 {
 
+
+
 }
+//刪除custom_information有此商品的人
+$query="UPDATE custom_information SET life ='1' where store='".$SerialNumbers."' and item ='".$ItemID."' and life='0'";
+$db->query($query);
 
 $query="UPDATE ".$SerialNumbers." SET State ='DIE' WHERE ID ='".$ItemID."'";
 $db->query($query);
 
 //刪除此表單
 $query="DROP TABLE Type2".$ItemID;
+$db->query($query);
 ?>
 <script>
 	loadpage("#content","managepage.php","2");

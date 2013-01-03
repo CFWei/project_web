@@ -11,6 +11,16 @@ $phoneNumber=$_POST['phoneNubmer'];
 //echo $UserIMEI."<br>".$SerialNumbers."<br>".$ItemId."<br>";
 $db=new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+
+$query="Select * from custom_information where store ='".$SerialNumbers."' and item='".$ItemId."' and custom_id='".$UserIMEI."' and life ='0'";
+$db->query($query);
+if($db->get_num_rows()!=0){
+	echo "-1";
+	exit;
+
+
+}
+
 $query="SELECT Value FROM ".$SerialNumbers." where ID='".$ItemId."'";
 $db->query($query);
 
@@ -28,6 +38,8 @@ if($item=$db->fetch_assoc())
 	$takevalue=(int)$item['Value'];
 	$takevalue++;
 }
+
+
 
 
 $query="UPDATE ".$SerialNumbers." SET Value=".$takevalue." where ID='".$ItemId."'";

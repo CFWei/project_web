@@ -44,13 +44,24 @@ while(($temp=$db->fetch_assoc())!=null)
 	//$distance=getDis(120,120.1,23,23.1)."<br>";
 	//echo $distance.<br>";
 	
-	if($distance<=$limit_distance)
-	{	
-		$distance=round($distance);
-		$temp['distance']=$distance;
-		$near_store_list[]=$temp;
-	}
-	
+	$db1=new DB();
+	$db1->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);				
+				
+	$query="Select * from ".$temp['SerialNumbers']." where State !='DIE' ";
+	$db1->query($query);
+		
+		
+	if($db1->get_num_rows()!=0){
+
+
+		if($distance<=$limit_distance)
+		{	
+
+			$distance=round($distance);
+			$temp['distance']=$distance;
+			$near_store_list[]=$temp;
+		}
+	}	
 
 
 
